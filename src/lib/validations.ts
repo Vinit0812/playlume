@@ -46,7 +46,7 @@ export type AdminLoginFormData = z.infer<typeof adminLoginSchema>;
 // Product schema (admin)
 export const productSchema = z.object({
   name: z.string().min(2).max(200),
-  categoryId: z.number({ required_error: "Category is required" }),
+  categoryId: z.number({ message: "Category is required" }),
   brand: z.string().max(100).optional(),
   description: z.string().optional(),
   shortDescription: z.string().max(500).optional(),
