@@ -10,9 +10,10 @@ import { notFound } from "next/navigation";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const category = CATEGORIES_FEATURED.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const category = CATEGORIES_FEATURED.find((c) => c.slug === slug);
   if (!category) return { title: "Category Not Found — PLAYLUME" };
   return {
     title: `${category.name} Wholesale Sourcing & Distribution — PLAYLUME`,
@@ -20,12 +21,13 @@ export async function generateMetadata({
   };
 }
 
-export default function CategoryLandingPage({
+export default async function CategoryLandingPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const category = CATEGORIES_FEATURED.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const category = CATEGORIES_FEATURED.find((c) => c.slug === slug);
   if (!category) notFound();
 
   return (

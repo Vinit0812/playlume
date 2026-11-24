@@ -134,9 +134,10 @@ const CATALOGUE_DATA: Record<string, ProductData> = {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const product = CATALOGUE_DATA[params.slug];
+  const { slug } = await params;
+  const product = CATALOGUE_DATA[slug];
   if (!product) return { title: "Product Not Found — PLAYLUME" };
   return {
     title: `${product.title} (MOQ: ${product.moq} pcs) — Wholesale | PLAYLUME`,
@@ -144,12 +145,13 @@ export async function generateMetadata({
   };
 }
 
-export default function ProductDetailPage({
+export default async function ProductDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const product = CATALOGUE_DATA[params.slug] || CATALOGUE_DATA["lcd-writing-tablet-8-5"];
+  const { slug } = await params;
+  const product = CATALOGUE_DATA[slug] || CATALOGUE_DATA["lcd-writing-tablet-8-5"];
 
   const whatsappMessage = encodeURIComponent(
     `Hello PLAYLUME, I am requesting a formal wholesale quotation for:
