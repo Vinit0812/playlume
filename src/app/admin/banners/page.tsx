@@ -38,6 +38,7 @@ export default function AdminBannersPage() {
   const [ctaText, setCtaText] = useState("Explore Full Collection");
   const [ctaLink, setCtaLink] = useState("/products");
   const [imageUrl, setImageUrl] = useState("");
+  const [previewSrc, setPreviewSrc] = useState("");
   const [themeStyle, setThemeStyle] = useState<"amber" | "teal" | "navy" | "crimson">("amber");
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
@@ -107,6 +108,7 @@ export default function AdminBannersPage() {
     setCtaText("Explore Collection");
     setCtaLink("/products");
     setImageUrl("");
+    setPreviewSrc("");
     setThemeStyle("amber");
     setUploadError("");
     setModalOpen(true);
@@ -121,6 +123,7 @@ export default function AdminBannersPage() {
     setCtaText(b.ctaText || "Explore Collection");
     setCtaLink(b.ctaLink);
     setImageUrl(b.imageUrl || "");
+    setPreviewSrc(b.imageUrl || "");
     setUploadError("");
     if (b.bgColor?.includes("#082220")) setThemeStyle("teal");
     else if (b.bgColor?.includes("#141b26")) setThemeStyle("navy");
@@ -133,8 +136,11 @@ export default function AdminBannersPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setUploading(true);
+    // Instant local preview for smooth user feedback
+    const localBlobUrl = URL.createObjectURL(file);
+    setPreviewSrc(localBlobUrl);
     setUploadError("");
+    setUploading(true);
 
     try {
       const formData = new FormData();
@@ -457,7 +463,11 @@ export default function AdminBannersPage() {
                   <input
                     type="text"
                     value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
+                    onChange={(e) => {
+                      setImageUrl(e.target.value);
+                      setPreviewSrc(e.target.value);
+                      setUploadError("");
+                    }}
                     placeholder="e.g. /banners/christmas-banner.jpg or https://..."
                     className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
                   />
@@ -473,8 +483,10 @@ export default function AdminBannersPage() {
                       type="button"
                       onClick={() => {
                         setImageUrl("/banners/christmas-banner.jpg");
+                        setPreviewSrc("/banners/christmas-banner.jpg");
                         setTitle("NIRAL INDUSTRIES • TRENDING CHRISTMAS COLLECTION");
                         setSubtitle("Festive Candle Moulds & Decor Sourcing");
+                        setUploadError("");
                       }}
                       className="px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-blue-500 text-[11px] font-medium text-slate-700 transition"
                     >
@@ -484,8 +496,10 @@ export default function AdminBannersPage() {
                       type="button"
                       onClick={() => {
                         setImageUrl("/banners/urli-collection-banner.jpg");
+                        setPreviewSrc("/banners/urli-collection-banner.jpg");
                         setTitle("NIRAL INDUSTRIES • ELEGANT URLI COLLECTION");
                         setSubtitle("Metal Urlis & Diya Decor Wholesale");
+                        setUploadError("");
                       }}
                       className="px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-blue-500 text-[11px] font-medium text-slate-700 transition"
                     >
@@ -495,8 +509,10 @@ export default function AdminBannersPage() {
                       type="button"
                       onClick={() => {
                         setImageUrl("/banners/electronics-wholesale-banner.jpg");
+                        setPreviewSrc("/banners/electronics-wholesale-banner.jpg");
                         setTitle("NEXT-GEN GAN 65W ELECTRONICS WHOLESALE");
                         setSubtitle("GaN Chargers, Audio & Gadget Lots");
+                        setUploadError("");
                       }}
                       className="px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-blue-500 text-[11px] font-medium text-slate-700 transition"
                     >
@@ -506,13 +522,17 @@ export default function AdminBannersPage() {
                 </div>
 
                 {/* Image Live Preview */}
-                {imageUrl && (
+                {(previewSrc || imageUrl) && (
                   <div className="mt-2 border border-slate-300 rounded-xl overflow-hidden bg-neutral-900 relative">
                     <img
-                      src={imageUrl}
+                      src={previewSrc || imageUrl}
                       alt="Banner Preview"
                       className="w-full h-32 object-cover"
-                      onError={() => setUploadError("Failed to load image preview from this URL.")}
+                      onError={() => {
+                        if (!previewSrc?.startsWith("blob:")) {
+                          setUploadError("Failed to load image preview from this URL.");
+                        }
+                      }}
                     />
                     <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] text-white font-medium">
                       Live Preview
