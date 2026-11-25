@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import DynamicHeroSlider from "@/components/home/DynamicHeroSlider";
+import CategoryCarousel from "@/components/home/CategoryCarousel";
 import HeroQuickQuote from "@/components/home/HeroQuickQuote";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import {
@@ -12,14 +13,12 @@ import {
   Tag,
   Headset,
   Factory,
-  Layers,
-  Gamepad2,
-  Shirt,
-  Gem,
-  Cpu,
-  Utensils,
-  ShoppingBag,
   CheckCircle2,
+  TrendingUp,
+  FileText,
+  Truck,
+  Building2,
+  Sparkles,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -29,75 +28,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const categories = [
-    {
-      id: "toys-games",
-      name: "Toys & Games",
-      icon: Gamepad2,
-      tone: "toys",
-      toneClass: "tone-toys",
-      count: "13 products",
-      moq: "20 pcs",
-      from: "₹75",
-      href: "/category/toys-games",
-    },
-    {
-      id: "clothing-apparel",
-      name: "Clothing & Apparel",
-      icon: Shirt,
-      tone: "clothing",
-      toneClass: "tone-clothing",
-      count: "9 products",
-      moq: "20 pcs",
-      from: "₹75",
-      href: "/category/clothing-apparel",
-    },
-    {
-      id: "artificial-jewellery",
-      name: "Artificial Jewellery",
-      icon: Gem,
-      tone: "jewellery",
-      toneClass: "tone-jewellery",
-      count: "8 products",
-      moq: "30 pcs",
-      from: "₹49",
-      href: "/category/artificial-jewellery",
-    },
-    {
-      id: "consumer-electronics",
-      name: "Consumer Electronics",
-      icon: Cpu,
-      tone: "electronics",
-      toneClass: "tone-electronics",
-      count: "9 products",
-      moq: "20 pcs",
-      from: "₹49",
-      href: "/category/consumer-electronics",
-    },
-    {
-      id: "home-kitchen",
-      name: "Home & Kitchen",
-      icon: Utensils,
-      tone: "home",
-      toneClass: "tone-home",
-      count: "7 products",
-      moq: "20 pcs",
-      from: "₹99",
-      href: "/category/home-kitchen",
-    },
-    {
-      id: "fashion-accessories",
-      name: "Fashion Accessories",
-      icon: ShoppingBag,
-      tone: "fashion",
-      toneClass: "tone-fashion",
-      count: "6 products",
-      moq: "30 pcs",
-      from: "₹49",
-      href: "/category/fashion-accessories",
-    },
-  ];
-
   const featuredProducts: ProductProps[] = [
     {
       id: "t001",
@@ -189,14 +119,59 @@ export default function HomePage() {
       status: "in_stock",
       description: "Water-resistant vegan leather crossbody sling bag with adjustable strap and zip pocket.",
     },
+    {
+      id: "j003",
+      slug: "kundan-necklace-set",
+      sku: "JWL-103-KDN",
+      name: "Traditional Kundan Choker Necklace Set with Earrings",
+      category: "Artificial Jewellery",
+      categorySlug: "artificial-jewellery",
+      categoryTone: "jewellery",
+      image: "/products/kundan-necklace-set.jpg",
+      moq: 15,
+      price: 199,
+      mrp: 599,
+      status: "in_stock",
+      description: "Handcrafted Kundan stone choker necklace with matching dangling earrings and drawstring closure.",
+    },
+    {
+      id: "e006",
+      slug: "fast-charger-25w",
+      sku: "ELE-106-CHG",
+      name: "GaN 25W PD Fast Charging Power Adapter",
+      category: "Consumer Electronics",
+      categorySlug: "consumer-electronics",
+      categoryTone: "electronics",
+      image: "/products/fast-charger-25w.jpg",
+      moq: 30,
+      price: 89,
+      mrp: 249,
+      status: "in_stock",
+      description: "BIS certified 25W Type-C Power Delivery wall charger with multi-layer surge protection.",
+    },
+    {
+      id: "t004",
+      slug: "montessori-stacking-wooden",
+      sku: "TOY-104-WOD",
+      name: "Natural Pine Wood Montessori Stacking Toy Set",
+      category: "Toys & Games",
+      categorySlug: "toys-games",
+      categoryTone: "toys",
+      image: "/products/montessori-stacking-wooden.jpg",
+      moq: 25,
+      price: 129,
+      mrp: 299,
+      status: "in_stock",
+      description: "Eco-friendly non-toxic water-painted geometric rainbow sorting and stacking tower for toddlers.",
+    },
   ];
 
   const steps = [
-    { title: "Browse Products", desc: "Pick items across 6 categories with MOQs shown upfront." },
-    { title: "Build Quote Basket", desc: "Add lots to your basket and share your trade requirements." },
-    { title: "Get Official Quotation", desc: "Receive proforma invoice with exact GST & freight terms." },
-    { title: "Confirm Order", desc: "Approve tax invoice and settle payment via bank transfer." },
-    { title: "Rapid Pan-India Dispatch", desc: "Inspected master cartons ship directly to your warehouse." },
+    { title: "Browse Wholesale Lots", desc: "Select verified merchandise lines with factory transparent MOQs shown upfront." },
+    { title: "Build RFQ Basket", desc: "Add lots to your commercial basket and input your expected delivery timelines." },
+    { title: "Official Proforma Invoice", desc: "Receive transparent rate slab calculations with exact GST and interstate freight terms." },
+    { title: "Confirm & Settle", desc: "Verify billing legal entity, approve proforma, and settle via corporate RTGS / NEFT." },
+    { title: "Rapid Master Carton Dispatch", desc: "100% QC checked cartons dispatch directly from central logistics hubs across India." },
   ];
 
   return (
@@ -208,7 +183,7 @@ export default function HomePage() {
         <DynamicHeroSlider />
 
         {/* 1. Executive Trust Indicators Strip */}
-        <section className="bg-white border-b border-line py-7 shadow-xs relative z-10">
+        <section className="bg-white border-b border-slate-200/80 py-6 sm:py-7 shadow-2xs relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
@@ -216,7 +191,7 @@ export default function HomePage() {
               </div>
               <div>
                 <h4 className="font-extrabold text-xs text-neutral-900">Direct Factory Sourcing</h4>
-                <p className="text-[11px] text-neutral-500">Zero broker markups</p>
+                <p className="text-[11px] text-neutral-500">Zero intermediary markups</p>
               </div>
             </div>
             <div className="flex items-center gap-3.5">
@@ -249,79 +224,31 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. Merchandise Division Tiles */}
-        <section className="py-16 px-4 bg-surface-2 border-b border-line">
+        {/* 2. Top Wholesale Categories Carousel (Matching User Reference Image) */}
+        <CategoryCarousel />
+
+        {/* 3. Trending Wholesale Deals (Candlemould style with Save XX% badges) */}
+        <section className="py-14 sm:py-18 px-4 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
               <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-600 block mb-1">
-                  One Supplier • Multiple Lines
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-brand-950 tracking-tight">
-                  Wholesale Product Categories
-                </h2>
-              </div>
-              <Link
-                href="/products"
-                className="text-xs font-bold text-brand-700 hover:text-brand-900 transition flex items-center gap-1"
-              >
-                <span>View Full Catalogue</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {categories.map((c) => {
-                const Icon = c.icon;
-                return (
-                  <Link
-                    key={c.id}
-                    href={c.href}
-                    className="bg-white border border-line rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500 hover:shadow-md hover:-translate-y-0.5 transition group"
-                  >
-                    <div>
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${c.toneClass} mb-4`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <h3 className="font-extrabold text-sm text-neutral-text group-hover:text-brand-700 transition">
-                        {c.name}
-                      </h3>
-                      <span className="text-[11px] text-neutral-muted block mt-1">
-                        {c.count} • MOQ {c.moq}
-                      </span>
-                    </div>
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <span className="font-extrabold text-brand-700">From {c.from}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition" />
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. Trending Wholesale Deals */}
-        <section className="py-16 px-4 bg-surface border-b border-line">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-              <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-accent-700 block mb-1">
-                  High Demand Lots
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-brand-950 tracking-tight">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10.5px] font-extrabold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 mb-2">
+                  <TrendingUp className="w-3.5 h-3.5 text-amber-600" />
+                  <span>High Demand Commercial Lots • Up to 67% Retail Margins</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight">
                   Trending Wholesale Deals
                 </h2>
-                <p className="text-xs text-neutral-muted mt-1">
-                  Fast-moving commercial lots our retailers and distributors reorder most often.
+                <p className="text-xs text-neutral-500 mt-1 max-w-xl">
+                  Fast-moving commercial inventory curated for verified retail showrooms, stockists, and wholesale distributors across India.
                 </p>
               </div>
               <Link
                 href="/products"
-                className="text-xs font-bold text-brand-700 hover:text-brand-900 transition flex items-center gap-1"
+                className="text-xs font-bold text-amber-700 hover:text-amber-800 transition flex items-center gap-1 group shrink-0"
               >
-                <span>Browse All Products</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Browse Full Wholesale Catalogue</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
               </Link>
             </div>
 
@@ -333,9 +260,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. Executive Wholesale Quotation & RFQ Desk */}
+        {/* 4. Executive Wholesale Quotation & RFQ Desk */}
         <section className="py-16 px-4 bg-[#141414] text-white border-y border-neutral-800 shadow-xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
             <div className="lg:col-span-6 space-y-5 text-left">
               <span className="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
@@ -373,17 +300,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. 5-Step Ordering Workflow */}
-        <section className="py-16 px-4 bg-surface-2 border-b border-line">
+        {/* 5. 5-Step Ordering Workflow */}
+        <section className="py-16 px-4 bg-slate-50 border-b border-slate-200">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-600 block mb-1">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 block mb-1">
                 Transparent &amp; Reliable
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-brand-950 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight">
                 How Wholesale Ordering Works
               </h2>
-              <p className="text-xs text-neutral-muted mt-1">
+              <p className="text-xs text-neutral-500 mt-1">
                 Engineered for business buyers without the confusion of a consumer retail checkout.
               </p>
             </div>
@@ -392,17 +319,17 @@ export default function HomePage() {
               {steps.map((st, i) => (
                 <div
                   key={st.title}
-                  className="bg-white border border-line rounded-2xl p-5 shadow-xs relative"
+                  className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs relative hover:border-amber-400 hover:shadow-md transition"
                 >
                   <div
-                    className={`w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center mb-3 ${
-                      i === 4 ? "bg-accent-400 text-brand-950" : "bg-brand-700 text-white"
+                    className={`w-8 h-8 rounded-full font-black text-xs flex items-center justify-center mb-3 ${
+                      i === 4 ? "bg-amber-400 text-stone-950" : "bg-[#141414] text-white"
                     }`}
                   >
                     {i + 1}
                   </div>
-                  <h4 className="font-extrabold text-xs text-neutral-text mb-1">{st.title}</h4>
-                  <p className="text-[11px] text-neutral-muted leading-relaxed">{st.desc}</p>
+                  <h4 className="font-extrabold text-xs text-neutral-900 mb-1">{st.title}</h4>
+                  <p className="text-[11px] text-neutral-500 leading-relaxed">{st.desc}</p>
                 </div>
               ))}
             </div>
@@ -411,30 +338,31 @@ export default function HomePage() {
 
         {/* 6. Registered Buyer CTA Band */}
         <section className="py-16 px-4">
-          <div className="max-w-7xl mx-auto bg-brand-900 rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
-            <div className="space-y-3 max-w-xl">
-              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-accent-400 text-brand-950">
+          <div className="max-w-7xl mx-auto bg-[#141414] rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl border border-neutral-800 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
+            <div className="space-y-3 max-w-xl relative z-10">
+              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
                 For Retailers &amp; Resellers
               </span>
               <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
                 Become a Registered PLAYLUME Buyer
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Get early access to factory stock releases, preferential volume tier pricing, and customized master packaging support.
+              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                Get early access to factory stock releases, preferential volume tier pricing, and customized master packaging support with dedicated WhatsApp account manager.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 shrink-0">
+            <div className="flex flex-wrap gap-3 shrink-0 relative z-10">
               <Link
                 href="/become-a-buyer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent-400 hover:bg-accent-300 text-brand-950 font-extrabold text-xs uppercase tracking-wider transition shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-xs uppercase tracking-wider transition shadow-lg cursor-pointer"
               >
                 <span>Register as Buyer</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/25 transition"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/25 transition cursor-pointer"
               >
                 <span>About Us</span>
               </Link>

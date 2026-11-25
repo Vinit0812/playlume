@@ -55,6 +55,13 @@ export default function ProductCard({ product }: { product: ProductProps }) {
         href={productHref}
         className={`relative aspect-4/3 flex items-center justify-center ${toneClass} p-4 group overflow-hidden bg-white`}
       >
+        {/* Discount Badge (Candlemould style Save XX%) */}
+        {marginPct > 0 && (
+          <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#e03a3a] text-white text-[10px] font-black uppercase tracking-wider shadow-xs z-10">
+            Save {marginPct}%
+          </span>
+        )}
+
         {product.image ? (
           <img
             src={product.image}
@@ -72,7 +79,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
 
         {/* Stock Status Badge */}
         <span
-          className={`absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border shadow-xs ${
+          className={`absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border shadow-xs z-10 ${
             product.status === "in_stock"
               ? "bg-emerald-50 text-emerald-700 border-emerald-200"
               : product.status === "limited"
@@ -91,31 +98,37 @@ export default function ProductCard({ product }: { product: ProductProps }) {
       {/* Product Body */}
       <div className="p-4 flex flex-col gap-1.5 flex-1 justify-between">
         <div>
-          <span className="text-[10px] font-extrabold text-brand-600 uppercase tracking-wider block">
+          <span className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wider block">
             {product.category}
           </span>
-          <h3 className="text-xs sm:text-sm font-bold text-neutral-text line-clamp-2 mt-0.5">
-            <Link href={productHref} className="hover:text-brand-700 transition">
+          <h3 className="text-xs sm:text-sm font-bold text-neutral-900 line-clamp-2 mt-0.5">
+            <Link href={productHref} className="hover:text-amber-600 transition">
               {product.name}
             </Link>
           </h3>
         </div>
 
-        <div className="pt-3 border-t border-dashed border-line space-y-1 mt-2">
+        <div className="pt-3 border-t border-dashed border-slate-200 space-y-1 mt-2">
           <div className="flex items-baseline justify-between">
-            <span className="text-xs text-neutral-muted">
-              MOQ: <strong className="text-neutral-text">{product.moq} pcs</strong>
+            <span className="text-xs text-neutral-500">
+              MOQ: <strong className="text-neutral-900">{product.moq} pcs</strong>
             </span>
-            <div>
-              <strong className="text-base sm:text-lg font-extrabold text-brand-800">
+            <div className="text-right">
+              <span className="text-[11px] text-neutral-400 line-through mr-1.5 font-semibold">
+                ₹{product.mrp}
+              </span>
+              <strong className="text-base sm:text-lg font-black text-[#e03a3a]">
                 ₹{product.price}
               </strong>
-              <small className="text-[11px] text-neutral-muted"> /pc</small>
+              <small className="text-[11px] text-neutral-500"> /pc</small>
             </div>
           </div>
 
-          <div className="text-[11px] text-neutral-muted">
-            Retail ₹{product.mrp} • <b className="text-emerald-600 font-bold">{marginPct}% margin</b>
+          <div className="text-[11px] text-neutral-500 flex items-center justify-between pt-0.5">
+            <span>Retail ₹{product.mrp}</span>
+            <span className="text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[10px] border border-emerald-200">
+              {marginPct}% margin
+            </span>
           </div>
         </div>
 
@@ -123,15 +136,15 @@ export default function ProductCard({ product }: { product: ProductProps }) {
         <div className="grid grid-cols-[1fr_auto] gap-2 pt-2">
           <button
             onClick={handleAdd}
-            className={`inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition shadow-xs ${
+            className={`inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition shadow-xs cursor-pointer ${
               justAdded || inBasket
-                ? "bg-brand-50 text-brand-800 border border-brand-300"
-                : "bg-brand-700 hover:bg-brand-800 text-white"
+                ? "bg-amber-100 text-amber-900 border border-amber-300"
+                : "bg-amber-500 hover:bg-amber-400 text-stone-950 font-black"
             }`}
           >
             {justAdded || inBasket ? (
               <>
-                <Check className="w-3.5 h-3.5 text-brand-700" />
+                <Check className="w-3.5 h-3.5 text-amber-900" />
                 <span>In Quote ({items.find((i) => i.id === product.id)?.quantity || product.moq})</span>
               </>
             ) : (
@@ -144,7 +157,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
 
           <Link
             href={productHref}
-            className="p-2 rounded-lg border border-line-strong hover:border-brand-500 text-neutral-text hover:text-brand-700 transition flex items-center justify-center"
+            className="p-2 rounded-lg border border-slate-300 hover:border-amber-500 text-neutral-700 hover:text-amber-600 transition flex items-center justify-center cursor-pointer"
             title="View Details"
           >
             <Eye className="w-4 h-4" />
