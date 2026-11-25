@@ -3,8 +3,10 @@ import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
-import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
-import { ArrowRight, Layers, MessageSquare, Filter, ShieldCheck, CheckCircle2 } from "lucide-react";
+import ProductCard, { ProductProps } from "@/components/common/ProductCard";
+import { CATEGORIES_FEATURED } from "@/lib/constants";
+import { CATEGORY_META, MASTER_PRODUCTS } from "@/lib/products-data";
+import { ArrowRight, Layers, Package, Tag, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -13,7 +15,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const category = CATEGORIES_FEATURED.find((c) => c.slug === slug);
+  const category =
+    CATEGORY_META.find((c) => c.slug === slug || c.id === slug) ||
+    CATEGORIES_FEATURED.find((c) => c.slug === slug);
   if (!category) return { title: "Category Not Found — PLAYLUME" };
   return {
     title: `${category.name} Wholesale Sourcing & Distribution — PLAYLUME`,
@@ -23,96 +27,201 @@ export async function generateMetadata({
 
 export default async function CategoryLandingPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ sub?: string }>;
 }) {
   const { slug } = await params;
-  const category = CATEGORIES_FEATURED.find((c) => c.slug === slug);
-  if (!category) notFound();
+  const { sub } = await searchParams;
+
+  const categoryMeta = CATEGORY_META.find((c) => c.slug === slug || c.id === slug);
+  const featured = CATEGORIES_FEATURED.find((c) => c.slug === slug);
+
+  if (!categoryMeta && !featured) notFound();
+
+  const categoryName = categoryMeta?.name || featured?.name || "Category";
+  const categorySlug = categoryMeta?.slug || featured?.slug || slug;
+  const subCategories = categoryMeta?.subCategories || [];
+
+  const allCategoryProducts = MASTER_PRODUCTS.filter(
+    (p) => p.categorySlug === categorySlug || p.categorySlug === slug
+  );
+
+  const displayedProducts = sub
+    ? allCategoryProducts.filter((p) => p.subCategorySlug === sub)
+    : allCategoryProducts;
+
+  const activeSubCategoryName = sub
+    ? subCategories.find((s) => s.slug === sub)?.name || sub
+    : null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased">
+    <div className="min-h-screen flex flex-col bg-surface text-neutral-text antialiased">
       <Header />
 
       <main className="flex-1 py-10 px-4 max-w-7xl mx-auto w-full">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6 font-medium">
-          <Link href="/" className="hover:text-slate-900">Home</Link>
+        <nav className="flex items-center gap-2 text-xs text-neutral-500 mb-6 font-medium">
+          <Link href="/" className="hover:text-amber-600">Home</Link>
           <span>/</span>
-          <Link href="/categories" className="hover:text-slate-900">Divisions</Link>
+          <Link href="/products" className="hover:text-amber-600">Catalogue</Link>
           <span>/</span>
-          <span className="text-slate-900 font-semibold">{category.name}</span>
+          <Link href={`/category/${categorySlug}`} className="hover:text-amber-600">
+            {categoryName}
+          </Link>
+          {activeSubCategoryName && (
+            <>
+              <span>/</span>
+              <span className="text-amber-600 font-bold">{activeSubCategoryName}</span>
+            </>
+          )}
         </nav>
 
         {/* Category Header Hero */}
-        <div className="bg-slate-950 text-white rounded-3xl p-8 sm:p-12 mb-10 border border-slate-800 relative overflow-hidden">
+        <div className="bg-[#141414] text-white rounded-3xl p-8 sm:p-12 mb-8 border border-neutral-800 relative overflow-hidden shadow-xl">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
           <div className="relative z-10 max-w-2xl space-y-3">
-            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">
+            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-neutral-800/80 px-3 py-1 rounded-full border border-neutral-700">
               Commercial Merchandise Division
             </span>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              {category.name}
+              {categoryName}
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {category.subhead}. Sourced through verified manufacturing partnerships with standard MOQs starting at {category.moq}.
+            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              {categoryMeta?.description || featured?.subhead || "Wholesale commercial lots"}. Direct factory wholesale rates with pan-India distribution and verified MOQs.
             </p>
             <div className="flex flex-wrap gap-4 pt-3 text-xs">
-              <span className="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
-                Starting Rate: <strong className="text-white">{category.startingPrice}</strong>
+              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
+                Starting Rate: <strong className="text-amber-400">{categoryMeta?.from || featured?.startingPrice || "₹49+"}</strong>
               </span>
-              <span className="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
-                Standard MOQ: <strong className="text-white">{category.moq}</strong>
+              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
+                Standard MOQ: <strong className="text-white">{categoryMeta?.moq || featured?.moq || "20 pcs"}</strong>
               </span>
-              <span className="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
-                Pan-India Transit
+              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
+                Available Lots: <strong className="text-white">{allCategoryProducts.length}</strong>
               </span>
             </div>
           </div>
         </div>
 
-        {/* Catalogue Link Prompt */}
-        <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm text-center mb-10">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mx-auto mb-3">
-            <Layers className="w-6 h-6" />
+        {/* Sub-Category Navigation Pills */}
+        {subCategories.length > 0 && (
+          <div className="mb-8 bg-white border border-neutral-200 rounded-2xl p-4 shadow-xs">
+            <div className="text-xs font-bold text-neutral-600 uppercase tracking-wider mb-3">
+              Browse Sub-Categories
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href={`/category/${categorySlug}`}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+                  !sub
+                    ? "bg-amber-500 text-stone-950 shadow-sm"
+                    : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+                }`}
+              >
+                All {categoryName} ({allCategoryProducts.length})
+              </Link>
+              {subCategories.map((sc) => {
+                const count = allCategoryProducts.filter((p) => p.subCategorySlug === sc.slug).length;
+                const isActive = sub === sc.slug;
+                return (
+                  <Link
+                    key={sc.slug}
+                    href={`/category/${categorySlug}?sub=${sc.slug}`}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+                      isActive
+                        ? "bg-amber-500 text-stone-950 shadow-sm"
+                        : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+                    }`}
+                  >
+                    {sc.name} ({count})
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-          <h2 className="text-lg font-bold text-slate-950">Active Lots in {category.name}</h2>
-          <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
-            Browse our dedicated product inventory with detailed specifications, master carton packing units, and wholesale quote generator.
-          </p>
-          <div className="flex justify-center gap-3 mt-5">
+        )}
+
+        {/* Product Cards Grid */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
+                {activeSubCategoryName || `All ${categoryName} Lots`}
+              </h2>
+              <p className="text-xs text-neutral-500 mt-0.5">
+                Showing {displayedProducts.length} wholesale ready products
+              </p>
+            </div>
             <Link
-              href={`/products?category=${category.slug}`}
-              className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-md shadow-blue-600/25 flex items-center gap-2"
+              href="/become-a-buyer"
+              className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1"
             >
-              <span>Explore {category.name} Catalogue</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href={`/enquiry?category=${encodeURIComponent(category.name)}`}
-              className="bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs px-6 py-3 rounded-xl transition"
-            >
-              Request Custom Division RFQ
+              <span>Get Wholesale Account</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
+
+          {displayedProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {displayedProducts.map((p) => {
+                const productProps: ProductProps = {
+                  id: p.id,
+                  slug: p.slug,
+                  sku: p.sku,
+                  name: p.name,
+                  category: p.category,
+                  categorySlug: p.categorySlug,
+                  categoryTone: p.categoryTone,
+                  image: p.image,
+                  moq: p.moq,
+                  price: p.price,
+                  mrp: p.mrp,
+                  status: p.status,
+                  description: p.description,
+                  specs: p.specs,
+                };
+                return <ProductCard key={p.id} product={productProps} />;
+              })}
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl p-12 border border-neutral-200 text-center">
+              <Package className="w-12 h-12 text-neutral-400 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-neutral-800">No products found in this subcategory</h3>
+              <p className="text-xs text-neutral-500 mt-1 mb-4">
+                Check back shortly or request custom wholesale manufacturing quotes.
+              </p>
+              <Link
+                href={`/category/${categorySlug}`}
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-stone-950 text-xs font-bold rounded-lg"
+              >
+                View all {categoryName}
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Other Merchandise Divisions */}
-        <div>
-          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Other Merchandise Divisions</h3>
+        <div className="pt-8 border-t border-neutral-200">
+          <h3 className="text-xs font-bold text-neutral-600 uppercase tracking-wider mb-4">
+            Other Wholesale Divisions
+          </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {CATEGORIES_FEATURED.filter((c) => c.slug !== category.slug).map((c) => (
+            {CATEGORY_META.filter((c) => c.slug !== categorySlug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/category/${c.slug}`}
-                className="bg-white rounded-xl p-3.5 border border-slate-200 hover:border-slate-400 hover:-translate-y-0.5 transition shadow-sm text-center"
+                className="bg-white rounded-xl p-3.5 border border-neutral-200 hover:border-amber-500 hover:-translate-y-0.5 transition shadow-xs text-center group"
               >
-                <div className="font-bold text-slate-900 text-xs">{c.name}</div>
-                <div className="text-[10px] text-slate-400 mt-0.5">MOQ {c.moq}</div>
+                <div className="font-bold text-neutral-900 text-xs group-hover:text-amber-600 transition">
+                  {c.name}
+                </div>
+                <div className="text-[10px] text-neutral-400 mt-0.5">MOQ {c.moq} • From {c.from}</div>
               </Link>
             ))}
           </div>
         </div>
-
       </main>
 
       <Footer />

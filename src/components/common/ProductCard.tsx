@@ -12,7 +12,8 @@ export interface ProductProps {
   name: string;
   category: string;
   categorySlug: string;
-  categoryTone?: "toys" | "clothing" | "watches" | "electronics" | "home" | "stationery";
+  categoryTone?: "toys" | "clothing" | "watches" | "electronics" | "home" | "stationery" | "jewellery" | "fashion";
+  image?: string;
   moq: number;
   price: number;
   mrp: number;
@@ -52,12 +53,20 @@ export default function ProductCard({ product }: { product: ProductProps }) {
       {/* Product Image / Icon Tile */}
       <Link
         href={productHref}
-        className={`relative aspect-4/3 flex items-center justify-center ${toneClass} p-6 group`}
+        className={`relative aspect-4/3 flex items-center justify-center ${toneClass} p-4 group overflow-hidden bg-white`}
       >
-        <Package className="w-14 h-14 opacity-80 group-hover:scale-105 transition" />
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+          />
+        ) : (
+          <Package className="w-14 h-14 opacity-80 group-hover:scale-105 transition" />
+        )}
         
         {/* SKU Badge */}
-        <span className="absolute left-3 bottom-2.5 text-[11px] font-bold tracking-wider opacity-70 font-mono">
+        <span className="absolute left-3 bottom-2.5 text-[11px] font-bold tracking-wider opacity-70 font-mono bg-white/80 px-1.5 py-0.5 rounded shadow-xs">
           {product.sku}
         </span>
 
@@ -134,7 +143,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
           </button>
 
           <Link
-            href={`/product/${product.id}`}
+            href={productHref}
             className="p-2 rounded-lg border border-line-strong hover:border-brand-500 text-neutral-text hover:text-brand-700 transition flex items-center justify-center"
             title="View Details"
           >

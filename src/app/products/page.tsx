@@ -18,6 +18,7 @@ const ALL_PRODUCTS: ProductProps[] = MASTER_PRODUCTS.map((p) => ({
   category: p.category,
   categorySlug: p.categorySlug,
   categoryTone: p.categoryTone,
+  image: p.image,
   moq: p.moq,
   price: p.price,
   mrp: p.mrp,
@@ -49,40 +50,47 @@ function CatalogueContent() {
   const categoriesList = [
     { id: "all", name: "All Merchandise Lines", count: ALL_PRODUCTS.length },
     {
-      id: "home",
-      name: "Home & Festive Decor",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "home").length,
-    },
-    {
-      id: "electronics",
-      name: "Consumer Electronics",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "electronics").length,
-    },
-    {
-      id: "clothing",
-      name: "Clothing & Apparel",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "clothing").length,
-    },
-    {
-      id: "toys",
+      id: "toys-games",
       name: "Toys & Games",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "toys").length,
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "toys-games").length,
     },
     {
-      id: "watches",
-      name: "Watches & Horology",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "watches").length,
+      id: "clothing-apparel",
+      name: "Clothing & Apparel",
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "clothing-apparel").length,
     },
     {
-      id: "stationery",
-      name: "Office & Stationery",
-      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "stationery").length,
+      id: "artificial-jewellery",
+      name: "Artificial Jewellery",
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "artificial-jewellery").length,
+    },
+    {
+      id: "consumer-electronics",
+      name: "Consumer Electronics",
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "consumer-electronics").length,
+    },
+    {
+      id: "home-kitchen",
+      name: "Home & Kitchen",
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "home-kitchen").length,
+    },
+    {
+      id: "fashion-accessories",
+      name: "Fashion Accessories",
+      count: ALL_PRODUCTS.filter((p) => p.categorySlug === "fashion-accessories").length,
     },
   ];
 
   const filtered = ALL_PRODUCTS.filter((p) => {
     const matchesCategory =
-      selectedCategory === "all" || p.categorySlug === selectedCategory;
+      selectedCategory === "all" ||
+      p.categorySlug === selectedCategory ||
+      (selectedCategory === "toys" && p.categorySlug === "toys-games") ||
+      (selectedCategory === "clothing" && p.categorySlug === "clothing-apparel") ||
+      (selectedCategory === "jewellery" && p.categorySlug === "artificial-jewellery") ||
+      (selectedCategory === "electronics" && p.categorySlug === "consumer-electronics") ||
+      (selectedCategory === "home" && p.categorySlug === "home-kitchen") ||
+      (selectedCategory === "fashion" && p.categorySlug === "fashion-accessories");
     const matchesStatus = selectedStatus === "all" || p.status === selectedStatus;
     const q = search.toLowerCase().trim();
     const matchesSearch =

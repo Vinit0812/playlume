@@ -28,86 +28,73 @@ interface CategoryNav {
   id: string;
   name: string;
   slug: string;
-  items: string[];
+  items: { name: string; slug: string }[];
 }
 
 const CATEGORY_DATA: CategoryNav[] = [
   {
-    id: "toys",
+    id: "toys-games",
     name: "Toys & Games",
     slug: "toys-games",
     items: [
-      "Educational & STEM Kits",
-      "Die-Cast Scale Vehicles",
-      "Wooden Puzzles & Montessori",
-      "Interactive Electronic Toys",
-      "Action Figures & Dolls",
-      "Board Games & Puzzles",
+      { name: "Educational & Learning Toys", slug: "educational-learning-toys" },
+      { name: "Soft Toys & Plush", slug: "soft-toys-plush" },
+      { name: "Outdoor & Ride-on Toys", slug: "outdoor-ride-on-toys" },
+      { name: "RC & Remote Control Toys", slug: "rc-remote-control-toys" },
+      { name: "Baby & Toddler Toys", slug: "baby-toddler-toys" },
     ],
   },
   {
-    id: "clothing",
+    id: "clothing-apparel",
     name: "Clothing & Apparel",
-    slug: "clothing",
+    slug: "clothing-apparel",
     items: [
-      "180 GSM Bio-Washed Plain Tees",
-      "Kids Hosiery Nightwear",
-      "Men's Combed Cotton Boxers",
-      "Heavyweight Winter Fleece",
-      "Sports Dry-Fit Activewear",
-      "Organic Infant Wear Sets",
+      { name: "Men's Clothing", slug: "mens-clothing" },
+      { name: "Women's Clothing", slug: "womens-clothing" },
+      { name: "Kids Clothing", slug: "kids-clothing" },
     ],
   },
   {
-    id: "watches",
-    name: "Watches & Horology",
-    slug: "watches",
+    id: "artificial-jewellery",
+    name: "Artificial Jewellery",
+    slug: "artificial-jewellery",
     items: [
-      "Minimalist Quartz Dress Watches",
-      "Stainless Steel Mesh Straps",
-      "Smart Fitness Activity Trackers",
-      "Waterproof Chronograph Sports",
-      "Corporate Gifting Watch Sets",
-      "Dual-Tone Metal Link Watches",
+      { name: "Earrings", slug: "earrings" },
+      { name: "Necklace Sets", slug: "necklace-sets" },
+      { name: "Jewellery Sets (Combo)", slug: "jewellery-sets-combo" },
+      { name: "Bangles, Bracelets & Rings", slug: "bangles-bracelets-rings" },
     ],
   },
   {
-    id: "electronics",
+    id: "consumer-electronics",
     name: "Consumer Electronics",
-    slug: "electronics",
+    slug: "consumer-electronics",
     items: [
-      "GaN Turbo 65W Fast Chargers",
-      "TWS Bluetooth 5.3 Earbuds",
-      "Portable USB-C Juicer Blenders",
-      "Magnetic 10,000mAh Power Banks",
-      "Heavy Braided Fast-Charge Cables",
-      "Bluetooth Neckband Earphones",
+      { name: "Mobile Accessories", slug: "mobile-accessories" },
+      { name: "Audio", slug: "audio" },
+      { name: "Power & Charging", slug: "power-charging" },
     ],
   },
   {
-    id: "home",
+    id: "home-kitchen",
     name: "Home & Kitchen",
     slug: "home-kitchen",
     items: [
-      "Festive Urlis & Floating Candle Decor",
-      "Stainless Insulated Bottles (750ml)",
-      "Airtight Kitchen Storage Sets",
-      "Non-Stick Induction Cookware",
-      "Electric Kettle & Food Warmers",
-      "Decorative Diya & Urli Stands",
+      { name: "Kitchen Tools & Gadgets", slug: "kitchen-tools-gadgets" },
+      { name: "Storage & Organisation", slug: "storage-organisation" },
+      { name: "Drinkware", slug: "drinkware" },
+      { name: "Home Decor", slug: "home-decor" },
     ],
   },
   {
-    id: "stationery",
-    name: "Stationery & Office",
-    slug: "stationery",
+    id: "fashion-accessories",
+    name: "Fashion Accessories",
+    slug: "fashion-accessories",
     items: [
-      "Executive Pastel Gel Pens (12 pcs)",
-      "A5 Hardbound Ruled Journals",
-      "Metal Mesh Desk Organisers",
-      "Mathematical Geometry Sets",
-      "Correction Tapes & Neon Sticky Notes",
-      "Commercial Wholesale School Packs",
+      { name: "Bags & Handbags", slug: "bags-handbags" },
+      { name: "Wallets & Belts", slug: "wallets-belts" },
+      { name: "Hair Accessories", slug: "hair-accessories" },
+      { name: "Other Accessories", slug: "other-accessories" },
     ],
   },
 ];
@@ -135,7 +122,7 @@ export default function Header() {
   const categoryDropdownRef = useRef<HTMLDivElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  // Live autocomplete results
+  // Live autocomplete results (selectedCategory now stores slug like "toys-games")
   const autocompleteResults = searchQuery.trim()
     ? MASTER_PRODUCTS.filter((p) => {
         const matchesCategory =
@@ -327,8 +314,12 @@ export default function Header() {
                         className="p-3 hover:bg-amber-50/60 transition flex items-center justify-between gap-3 group"
                       >
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-10 h-10 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">
-                            <Flame className="w-5 h-5 text-amber-600" />
+                          <div className="w-10 h-10 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 transition">
+                            {item.image ? (
+                              <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <Flame className="w-5 h-5 text-amber-600" />
+                            )}
                           </div>
                           <div className="min-w-0">
                             <p className="text-xs font-bold text-neutral-900 group-hover:text-amber-700 truncate">
@@ -478,10 +469,10 @@ export default function Header() {
                           {cat.items.map((item, idx) => (
                             <li key={idx}>
                               <Link
-                                href={`/products?search=${encodeURIComponent(item)}&category=${cat.id}`}
+                                href={`/category/${cat.slug}?sub=${item.slug}`}
                                 className="block px-2 py-1 rounded text-neutral-300 hover:text-white hover:bg-neutral-700/60 transition text-[11.5px]"
                               >
-                                {item}
+                                {item.name}
                               </Link>
                             </li>
                           ))}

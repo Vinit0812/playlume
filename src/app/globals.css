@@ -75,9 +75,11 @@ body {
 .tone-toys { background-color: var(--tone-toys); color: var(--ink-toys); }
 .tone-clothing { background-color: var(--tone-clothing); color: var(--ink-clothing); }
 .tone-watches { background-color: var(--tone-watches); color: var(--ink-watches); }
+.tone-jewellery { background-color: var(--tone-watches); color: var(--ink-watches); }
 .tone-electronics { background-color: var(--tone-electronics); color: var(--ink-electronics); }
 .tone-home { background-color: var(--tone-home); color: var(--ink-home); }
 .tone-stationery { background-color: var(--tone-stationery); color: var(--ink-stationery); }
+.tone-fashion { background-color: var(--tone-stationery); color: var(--ink-stationery); }
 
 /* Brand Backgrounds & Text */
 .bg-brand-950 { background-color: var(--brand-950); }

@@ -20,57 +20,57 @@ export interface CategoryDefinition {
   subhead: string;
   moq: string;
   startingPrice: string;
-  iconName: "Gamepad2" | "Shirt" | "Watch" | "Cpu" | "Home" | "PenTool";
+  iconName: "Gamepad2" | "Shirt" | "Watch" | "Cpu" | "Home" | "PenTool" | "Gem" | "ShoppingBag" | "Utensils";
 }
 
 export const CATEGORIES_FEATURED: CategoryDefinition[] = [
   {
-    name: "Toys & Educational",
+    name: "Toys & Games",
     slug: "toys-games",
-    subhead: "Digital tablets, learning & board games",
-    moq: "50 pcs",
-    startingPrice: "₹70+",
+    subhead: "Educational learning toys, plush, ride-ons & RC vehicles",
+    moq: "20 pcs",
+    startingPrice: "₹75+",
     iconName: "Gamepad2",
   },
   {
-    name: "Apparel & Textiles",
-    slug: "clothing",
-    subhead: "Combed cotton t-shirts, daily essentials",
-    moq: "30 pcs",
-    startingPrice: "₹140+",
+    name: "Clothing & Apparel",
+    slug: "clothing-apparel",
+    subhead: "Men's polo & kurtas, women's ethnic & kids wear",
+    moq: "20 pcs",
+    startingPrice: "₹75+",
     iconName: "Shirt",
   },
   {
-    name: "Watches & Horology",
-    slug: "watches",
-    subhead: "Analog quartz, minimalist & mesh straps",
-    moq: "25 pcs",
-    startingPrice: "₹180+",
-    iconName: "Watch",
+    name: "Artificial Jewellery",
+    slug: "artificial-jewellery",
+    subhead: "Earrings, necklace sets, combo sets & bangles",
+    moq: "30 pcs",
+    startingPrice: "₹49+",
+    iconName: "Gem",
   },
   {
     name: "Consumer Electronics",
-    slug: "electronics",
-    subhead: "Audio, charging cables, smart gadgets",
+    slug: "consumer-electronics",
+    subhead: "Cases, glass, cables, TWS earbuds & power banks",
     moq: "20 pcs",
-    startingPrice: "₹220+",
+    startingPrice: "₹49+",
     iconName: "Cpu",
   },
   {
-    name: "Home & Kitchenware",
+    name: "Home & Kitchen",
     slug: "home-kitchen",
-    subhead: "Portable blenders, culinary accessories",
-    moq: "40 pcs",
-    startingPrice: "₹95+",
-    iconName: "Home",
+    subhead: "Choppers, storage, lunch boxes, bottles & decor",
+    moq: "20 pcs",
+    startingPrice: "₹99+",
+    iconName: "Utensils",
   },
   {
-    name: "Office & Stationery",
-    slug: "stationery",
-    subhead: "Writing instruments, desk accessories",
-    moq: "100 pcs",
-    startingPrice: "₹25+",
-    iconName: "PenTool",
+    name: "Fashion Accessories",
+    slug: "fashion-accessories",
+    subhead: "Sling bags, tote bags, scrunchies & sunglasses",
+    moq: "30 pcs",
+    startingPrice: "₹49+",
+    iconName: "ShoppingBag",
   },
 ];
 

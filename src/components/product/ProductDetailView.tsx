@@ -105,11 +105,22 @@ export default function ProductDetailView({
         </Link>
         <span>&gt;</span>
         <Link
-          href={`/products?category=${product.categorySlug}`}
+          href={`/category/${product.categorySlug}`}
           className="hover:text-amber-600 transition"
         >
           {product.category}
         </Link>
+        {product.subCategory && (
+          <>
+            <span>&gt;</span>
+            <Link
+              href={`/category/${product.categorySlug}?sub=${product.subCategorySlug}`}
+              className="hover:text-amber-600 transition"
+            >
+              {product.subCategory}
+            </Link>
+          </>
+        )}
         <span>&gt;</span>
         <span className="text-neutral-900 font-semibold truncate max-w-md">
           {product.name}
@@ -137,16 +148,26 @@ export default function ProductDetailView({
               </span>
             </div>
 
-            {/* Simulated High-Res Urli / Product Artwork */}
-            <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-br from-amber-100 via-amber-200 to-amber-400 border-4 border-amber-500/40 shadow-xl flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-300">
-              <Flame className="w-16 h-16 sm:w-20 sm:h-20 text-amber-600 drop-shadow-[0_0_12px_rgba(217,119,6,0.6)] animate-pulse" />
-              <div className="text-xs sm:text-sm font-serif font-black text-amber-950 uppercase tracking-widest mt-2">
-                {product.name.split(" ")[0]} {product.name.split(" ")[1] || "Wholesale"}
+            {/* Product Artwork / Image */}
+            {product.image ? (
+              <div className="w-full h-full flex items-center justify-center p-2">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="max-h-72 sm:max-h-84 w-auto object-contain drop-shadow-md transform hover:scale-105 transition duration-300"
+                />
               </div>
-              <div className="text-[10px] font-mono text-amber-800 font-bold mt-0.5">
-                Itemcode : {product.sku}
+            ) : (
+              <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-br from-amber-100 via-amber-200 to-amber-400 border-4 border-amber-500/40 shadow-xl flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-300">
+                <Flame className="w-16 h-16 sm:w-20 sm:h-20 text-amber-600 drop-shadow-[0_0_12px_rgba(217,119,6,0.6)] animate-pulse" />
+                <div className="text-xs sm:text-sm font-serif font-black text-amber-950 uppercase tracking-widest mt-2">
+                  {product.name.split(" ")[0]} {product.name.split(" ")[1] || "Wholesale"}
+                </div>
+                <div className="text-[10px] font-mono text-amber-800 font-bold mt-0.5">
+                  Itemcode : {product.sku}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Watermark / Brand Credential */}
             <div className="absolute bottom-3 inset-x-0 text-center text-[10px] text-neutral-400 font-medium">
@@ -205,6 +226,26 @@ export default function ProductDetailView({
               * Minimum wholesale order: <strong>{product.moq} pcs</strong>. Price reduces automatically with volume tiers below.
             </p>
           </div>
+
+          {/* Product Variants (from Excel specifications) */}
+          {product.variants && product.variants.length > 0 && (
+            <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2">
+              <span className="text-xs font-bold text-neutral-700 uppercase tracking-wider block">
+                Available Lot Options &amp; Variants
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {product.variants.map((v, i) => (
+                  <div
+                    key={i}
+                    className="px-3 py-1.5 rounded-lg bg-white border border-neutral-300 text-xs font-semibold text-neutral-800 shadow-2xs flex items-center gap-1.5"
+                  >
+                    <span className="text-neutral-500 text-[11px]">{v.label}:</span>
+                    <span className="font-bold text-amber-700">{v.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Wholesale Quantity Stepper (Wholesale focused, not retail cart) */}
           <div className="space-y-2">
@@ -514,11 +555,19 @@ export default function ProductDetailView({
                 {/* Visual Thumbnail */}
                 <Link
                   href={`/product/${rel.slug}`}
-                  className="relative aspect-square bg-gradient-to-br from-amber-50 to-neutral-100 p-4 flex flex-col items-center justify-center overflow-hidden"
+                  className="relative aspect-square bg-white border-b border-neutral-100 p-3 flex flex-col items-center justify-center overflow-hidden"
                 >
-                  <div className="w-20 h-20 rounded-full bg-amber-400/30 border border-amber-400/50 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                    <Flame className="w-8 h-8 text-amber-600" />
-                  </div>
+                  {rel.image ? (
+                    <img
+                      src={rel.image}
+                      alt={rel.name}
+                      className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-amber-400/30 border border-amber-400/50 flex items-center justify-center group-hover:scale-110 transition duration-300">
+                      <Flame className="w-8 h-8 text-amber-600" />
+                    </div>
+                  )}
 
                   {/* Save XX% Badge */}
                   <div className="absolute top-2 left-2">

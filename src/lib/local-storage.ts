@@ -232,7 +232,7 @@ const DEFAULT_BANNERS: StoredBanner[] = [
     ctaLink: "/products?category=home",
     position: "Hero Main",
     status: "active",
-    imageUrl: "/banners/christmas-banner.jpg",
+    imageUrl: "/banners/gemini-generated-image-t80ejot-1795608776608.png",
     bgColor: "from-[#141414] via-[#1c1712] to-[#141414]",
     accentColor: "#f59e0b",
     impressionCount: 16820,
