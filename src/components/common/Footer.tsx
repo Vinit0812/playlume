@@ -1,91 +1,112 @@
 import Link from "next/link";
-import { SITE_CONFIG } from "@/lib/constants";
-import { Layers, ShieldCheck, Truck, FileText, Phone, Mail, MapPin } from "lucide-react";
+import { ShieldCheck, Truck, FileText, Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-400 py-14 px-4 border-t border-slate-800 text-xs">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+    <footer className="bg-brand-950 text-slate-300 py-14 px-4 border-t border-brand-900 text-xs">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-brand-900">
         
-        {/* Corporate Identity */}
-        <div className="col-span-2 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center">
-              <Layers className="w-5 h-5" />
+        {/* Column 1: Corporate Profile */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-brand-700 text-accent-400 flex items-center justify-center font-black text-base">
+              P
             </div>
-            <span className="text-xl font-extrabold text-white tracking-tight">PLAYLUME</span>
+            <div>
+              <span className="font-extrabold text-white text-base tracking-tight block">PLAYLUME</span>
+              <span className="text-[9.5px] font-bold text-brand-400 uppercase tracking-widest block -mt-0.5">
+                Wholesale &amp; Trade
+              </span>
+            </div>
           </div>
-          <p className="text-slate-400 leading-relaxed text-xs max-w-sm">
-            PLAYLUME is a multi-category B2B wholesale trading enterprise supplying certified toys, apparel, timepieces, consumer technology, housewares, and commercial stationery.
+          <p className="text-slate-400 leading-relaxed text-xs max-w-xs">
+            Multi-category wholesale trading and distribution enterprise connecting verified manufacturers with retailers, commercial stockists, and institutional distributors across India.
           </p>
-          <div className="space-y-1 text-[11px] text-slate-500 font-medium pt-1">
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>GSTIN: Registered Trade Entity</span>
+          <div className="pt-1 text-[11px] text-slate-400 space-y-1">
+            <div className="flex items-center gap-1.5 text-accent-300">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>GST Registered • Verified B2B Sourcing</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <FileText className="w-3.5 h-3.5 text-blue-400" />
-              <span>Commercial Trade Registration Compliant</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Truck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Commercial E-Way Bill Logistics</span>
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <Truck className="w-3.5 h-3.5" />
+              <span>Pan-India Commercial Freight Logistics</span>
             </div>
           </div>
         </div>
 
-        {/* Merchandise Divisions */}
+        {/* Column 2: Merchandise Lines */}
         <div>
-          <h5 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3.5">Merchandise</h5>
-          <ul className="space-y-2.5 text-slate-400">
-            <li><Link href="/category/toys-games" className="hover:text-white transition">Toys & Educational</Link></li>
-            <li><Link href="/category/clothing" className="hover:text-white transition">Apparel & Textiles</Link></li>
-            <li><Link href="/category/watches" className="hover:text-white transition">Watches & Horology</Link></li>
-            <li><Link href="/category/electronics" className="hover:text-white transition">Consumer Technology</Link></li>
-            <li><Link href="/category/home-kitchen" className="hover:text-white transition">Home & Kitchenware</Link></li>
-            <li><Link href="/category/stationery" className="hover:text-white transition">Office & Stationery</Link></li>
+          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+            Product Lines
+          </h4>
+          <ul className="space-y-2 text-slate-400">
+            <li><Link href="/category/toys-games" className="hover:text-white transition">Toys &amp; Games</Link></li>
+            <li><Link href="/category/clothing" className="hover:text-white transition">Clothing &amp; Apparel</Link></li>
+            <li><Link href="/category/watches" className="hover:text-white transition">Watches &amp; Horology</Link></li>
+            <li><Link href="/category/electronics" className="hover:text-white transition">Consumer Electronics</Link></li>
+            <li><Link href="/category/home-kitchen" className="hover:text-white transition">Home &amp; Kitchen</Link></li>
+            <li><Link href="/category/stationery" className="hover:text-white transition">Office &amp; Stationery</Link></li>
           </ul>
         </div>
 
-        {/* Trade Services */}
+        {/* Column 3: For Trade Buyers */}
         <div>
-          <h5 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3.5">Services</h5>
-          <ul className="space-y-2.5 text-slate-400">
-            <li><Link href="/enquiry" className="hover:text-white transition">Request Commercial RFQ</Link></li>
-            <li><Link href="/become-a-buyer" className="hover:text-white transition">Buyer Registration</Link></li>
-            <li><Link href="/products" className="hover:text-white transition">Wholesale Catalogue</Link></li>
-            <li><Link href="/trending" className="hover:text-white transition">High-Demand Lots</Link></li>
-            <li><Link href="/admin" className="hover:text-white transition">Authorized Staff Login</Link></li>
+          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+            For Trade Buyers
+          </h4>
+          <ul className="space-y-2 text-slate-400">
+            <li><Link href="/enquiry" className="hover:text-white transition">Request a Bulk Quote</Link></li>
+            <li><Link href="/how-it-works" className="hover:text-white transition">How Ordering Works</Link></li>
+            <li><Link href="/become-a-buyer" className="hover:text-white transition">Register as a Buyer</Link></li>
+            <li><Link href="/products" className="hover:text-white transition">Full Product Catalogue</Link></li>
+            <li><Link href="/about" className="hover:text-white transition">About Our Sourcing</Link></li>
+            <li><Link href="/admin/login" className="hover:text-white transition">Staff Management Portal</Link></li>
           </ul>
         </div>
 
-        {/* Commercial Desk */}
-        <div>
-          <h5 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3.5">Commercial Desk</h5>
-          <ul className="space-y-2.5 text-slate-400">
-            <li className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-slate-500" />
-              <span>{SITE_CONFIG.phone}</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-slate-500" />
-              <span>{SITE_CONFIG.email}</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-slate-500" />
-              <span>Pan-India Distribution</span>
-            </li>
-          </ul>
+        {/* Column 4: Contact & Operations */}
+        <div className="space-y-2.5">
+          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+            Trade Operations
+          </h4>
+          <div className="text-slate-400 space-y-2">
+            <p className="flex items-center gap-2">
+              <Phone className="w-3.5 h-3.5 text-accent-400 shrink-0" />
+              <span>+91 98765 43210 (Sales &amp; RFQs)</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail className="w-3.5 h-3.5 text-accent-400 shrink-0" />
+              <span>trade@playlume.in</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Clock className="w-3.5 h-3.5 text-accent-400 shrink-0" />
+              <span>Mon–Sat 09:00 – 19:00 IST</span>
+            </p>
+            <p className="flex items-start gap-2">
+              <MapPin className="w-3.5 h-3.5 text-accent-400 shrink-0 mt-0.5" />
+              <span>Logistics Central Corridor, Bhiwandi, Maharashtra</span>
+            </p>
+          </div>
         </div>
-
       </div>
 
-      <div className="max-w-7xl mx-auto pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-500">
-        <div>© {new Date().getFullYear()} PLAYLUME Commercial Wholesale Trading Co. All rights reserved.</div>
-        <div className="flex gap-6">
-          <Link href="/policies/privacy" className="hover:text-slate-300 transition">Privacy Statement</Link>
-          <Link href="/policies/terms" className="hover:text-slate-300 transition">Wholesale Terms of Supply</Link>
-          <Link href="/policies/shipping" className="hover:text-slate-300 transition">Freight & Logistics Policy</Link>
+      {/* Bottom Legal Row */}
+      <div className="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        <div>
+          © 2026 PLAYLUME B2B Wholesale Trading &amp; Distribution. All rights reserved.
+        </div>
+        <div className="flex gap-4">
+          <Link href="/policies/privacy" className="hover:text-white transition">
+            Privacy Policy
+          </Link>
+          <span>•</span>
+          <Link href="/policies/terms" className="hover:text-white transition">
+            Terms of Wholesale Trade
+          </Link>
+          <span>•</span>
+          <Link href="/policies/shipping" className="hover:text-white transition">
+            Freight &amp; Shipping
+          </Link>
         </div>
       </div>
     </footer>

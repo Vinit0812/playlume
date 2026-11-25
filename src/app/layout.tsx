@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_CONFIG } from "@/lib/constants";
+import { QuoteBasketProvider } from "@/context/QuoteBasketContext";
+import QuoteBasketDrawer from "@/components/common/QuoteBasketDrawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +69,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QuoteBasketProvider>
+          {children}
+          <QuoteBasketDrawer />
+        </QuoteBasketProvider>
       </body>
     </html>
   );

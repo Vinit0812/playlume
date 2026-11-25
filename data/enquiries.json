@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ENQ-911",
+    "buyerName": "123",
+    "businessName": "123",
+    "phone": "+91 1234567891",
+    "whatsapp": "1234567891",
+    "location": "Trade Hub, rajkot",
+    "product": "Toys & Educational (50 units)",
+    "quantity": 50,
+    "status": "new",
+    "createdAt": "Just now"
+  },
+  {
+    "id": "ENQ-101",
+    "buyerName": "Rajesh Sharma",
+    "businessName": "Rajesh Wholesalers",
+    "phone": "+91 98251 23456",
+    "whatsapp": "919825123456",
+    "location": "Surat, Gujarat",
+    "product": "8.5\" Digital LCD Drawing Board (PL-TAB-85)",
+    "quantity": 100,
+    "status": "new",
+    "createdAt": "Today, 14:30"
+  },
+  {
+    "id": "ENQ-102",
+    "buyerName": "Vikram Mehta",
+    "businessName": "Metro Retail Chain",
+    "phone": "+91 98111 67890",
+    "whatsapp": "919811167890",
+    "location": "Mumbai, Maharashtra",
+    "product": "180 GSM Bio-Washed Combed Cotton T-Shirt (PL-TEX-180)",
+    "quantity": 300,
+    "status": "quotation_sent",
+    "createdAt": "Yesterday"
+  }
+]

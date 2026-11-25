@@ -1,419 +1,457 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
-import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
-import {
-  Filter,
-  Search,
-  MessageSquare,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Gamepad2,
-  Shirt,
-  Watch,
-  Cpu,
-  Home,
-  PenTool,
-} from "lucide-react";
+import ProductCard, { ProductProps } from "@/components/common/ProductCard";
+import { Search, Filter, Layers, ArrowRight, Package, CheckCircle2 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Commercial Wholesale Product Catalogue — PLAYLUME",
-  description: "Browse certified wholesale inventory across Toys, Apparel, Watches, Electronics, Home & Kitchen, and Stationery with MOQ brackets and commercial pricing.",
-};
-
-const SAMPLE_PRODUCTS = [
+const ALL_PRODUCTS: ProductProps[] = [
+  // Toys & Games
   {
-    slug: "lcd-writing-tablet-8-5",
-    sku: "PL-TAB-85",
-    title: "8.5\" Digital LCD Drawing & Writing Board with Stylus",
-    category: "Toys & Educational",
-    categorySlug: "toys-games",
+    id: "p001",
+    sku: "TOY-101",
+    name: "8.5-inch Digital LCD Drawing Tablet with Stylus",
+    category: "Toys & Games",
+    categorySlug: "toys",
+    categoryTone: "toys",
     moq: 50,
-    indicativePrice: 75,
-    retailPrice: 199,
-    margin: "62% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "Pressure sensitive stylus • One-touch erase • Battery included (CR2025)",
+    price: 75,
+    mrp: 199,
+    status: "in_stock",
+    description: "Reusable LCD drawing pad with lock button to save work. Popular school-season item.",
   },
   {
-    slug: "stem-magnetic-blocks-set",
-    sku: "PL-TOY-MAG",
-    title: "64-Piece 3D STEM Educational Magnetic Building Tiles",
-    category: "Toys & Educational",
-    categorySlug: "toys-games",
+    id: "p002",
+    sku: "TOY-102",
+    name: "Remote Control Stunt Car with Rechargeable Battery",
+    category: "Toys & Games",
+    categorySlug: "toys",
+    categoryTone: "toys",
+    moq: 24,
+    price: 420,
+    mrp: 999,
+    status: "in_stock",
+    description: "2.4GHz RC car with 360° flips and LED headlights.",
+  },
+  {
+    id: "p003",
+    sku: "TOY-103",
+    name: "Wooden Alphabet & Number Puzzle Board",
+    category: "Toys & Games",
+    categorySlug: "toys",
+    categoryTone: "toys",
     moq: 40,
-    indicativePrice: 320,
-    retailPrice: 899,
-    margin: "64% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "ABS non-toxic food-grade plastic • Ultrasonic welding • BIS standard compliant",
+    price: 95,
+    mrp: 249,
+    status: "in_stock",
+    description: "Colour-coded wooden puzzle for toddlers, non-toxic water-based paint.",
   },
   {
-    slug: "analog-quartz-mesh-watch",
-    sku: "PL-WTC-01",
-    title: "Ultra-Thin Minimalist Analog Quartz Watch (Steel Mesh Strap)",
-    category: "Watches & Horology",
-    categorySlug: "watches",
-    moq: 25,
-    indicativePrice: 185,
-    retailPrice: 599,
-    margin: "69% Retail Margin",
-    availability: "enquiry_only",
-    statusText: "Enquiry Only",
-    spec: "Japanese quartz movement • Hardlex mineral glass • 3ATM water resistance",
-  },
-  {
-    slug: "military-dual-display-sport-watch",
-    sku: "PL-WTC-02",
-    title: "Heavy-Duty Dual Display Digital & Analog Tactical Sport Watch",
-    category: "Watches & Horology",
-    categorySlug: "watches",
-    moq: 20,
-    indicativePrice: 240,
-    retailPrice: 799,
-    margin: "70% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "LED backlight • Alarm, Stopwatch & Calendar • Shock resistant resin casing",
-  },
-  {
-    slug: "cotton-crewneck-tshirt-180gsm",
-    sku: "PL-TEX-180",
-    title: "180 GSM Bio-Washed Combed Cotton Plain Crewneck T-Shirts",
-    category: "Apparel & Textiles",
-    categorySlug: "clothing",
+    id: "p004",
+    sku: "TOY-104",
+    name: "Magnetic Building Tiles STEM Set (64 pcs)",
+    category: "Toys & Games",
+    categorySlug: "toys",
+    categoryTone: "toys",
     moq: 30,
-    indicativePrice: 145,
-    retailPrice: 499,
-    margin: "71% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "100% Super-combed cotton • Pre-shrunk & color-fast • Sizes S to XXL",
+    price: 380,
+    mrp: 999,
+    status: "in_stock",
+    description: "STEM magnetic tiles in 6 colours with storage bag.",
   },
+
+  // Clothing & Apparel
   {
-    slug: "oversized-drop-shoulder-hoodie",
-    sku: "PL-TEX-HOD",
-    title: "320 GSM Heavyweight Fleece Oversized Streetwear Hoodie",
-    category: "Apparel & Textiles",
+    id: "p007",
+    sku: "CLO-106",
+    name: "180 GSM Bio-Washed Combed Cotton Plain T-Shirts",
+    category: "Clothing & Apparel",
     categorySlug: "clothing",
-    moq: 25,
-    indicativePrice: 380,
-    retailPrice: 1199,
-    margin: "68% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "Cotton-poly blend fleece • Kangaroo front pocket • Double-lined drawstring hood",
+    categoryTone: "clothing",
+    moq: 30,
+    price: 145,
+    mrp: 399,
+    status: "in_stock",
+    description: "Round-neck plain tees, pre-shrunk and bio-washed. Ideal for printing and retail.",
   },
   {
-    slug: "portable-usb-rechargeable-blender",
-    sku: "PL-KIT-BLD",
-    title: "6-Blade USB Rechargeable High-Speed Portable Fruit Blender (380ml)",
-    category: "Home & Kitchenware",
-    categorySlug: "home-kitchen",
+    id: "p008",
+    sku: "CLO-107",
+    name: "Kids Cotton Hosiery Night Suit Set (Ages 2-10)",
+    category: "Clothing & Apparel",
+    categorySlug: "clothing",
+    categoryTone: "clothing",
+    moq: 30,
+    price: 180,
+    mrp: 499,
+    status: "in_stock",
+    description: "Printed top and pyjama set for ages 2–10.",
+  },
+  {
+    id: "p009",
+    sku: "CLO-108",
+    name: "Men's Combed Cotton Boxer Shorts (Pack of 3)",
+    category: "Clothing & Apparel",
+    categorySlug: "clothing",
+    categoryTone: "clothing",
+    moq: 40,
+    price: 140,
+    mrp: 399,
+    status: "in_stock",
+    description: "Elastic waistband, breathable cotton, assorted prints.",
+  },
+  {
+    id: "p010",
+    sku: "CLO-109",
+    name: "Fleece Winter Zipper Hoodie — Unisex",
+    category: "Clothing & Apparel",
+    categorySlug: "clothing",
+    categoryTone: "clothing",
     moq: 20,
-    indicativePrice: 260,
-    retailPrice: 699,
-    margin: "63% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "304 Stainless steel blades • 2000mAh battery • Magnetic induction safety switch",
+    price: 390,
+    mrp: 999,
+    status: "limited",
+    description: "280 GSM fleece with kangaroo pockets.",
+  },
+
+  // Watches & Horology
+  {
+    id: "p013",
+    sku: "WAT-112",
+    name: "Ultra-Thin Minimalist Quartz Chronograph Watch",
+    category: "Watches & Horology",
+    categorySlug: "watches",
+    categoryTone: "watches",
+    moq: 25,
+    price: 185,
+    mrp: 599,
+    status: "enquiry",
+    description: "Slim 7mm case with stainless steel back and mesh strap.",
   },
   {
-    slug: "wireless-anc-bluetooth-earbuds",
-    sku: "PL-ELE-TWS",
-    title: "TWS Wireless Earbuds with Active Environmental Noise Cancelling",
+    id: "p014",
+    sku: "WAT-113",
+    name: "Digital Sports Watch with Backlight & 50m Water Resistance",
+    category: "Watches & Horology",
+    categorySlug: "watches",
+    categoryTone: "watches",
+    moq: 25,
+    price: 180,
+    mrp: 549,
+    status: "in_stock",
+    description: "50 m water resistant, alarm, and stopwatch timer.",
+  },
+  {
+    id: "p015",
+    sku: "WAT-114",
+    name: "AMOLED Smart Fitness Calling Watch (BT 5.3)",
+    category: "Watches & Horology",
+    categorySlug: "watches",
+    categoryTone: "watches",
+    moq: 20,
+    price: 780,
+    mrp: 2499,
+    status: "in_stock",
+    description: "Bluetooth calling, heart-rate and SpO2 tracking, 7-day battery.",
+  },
+
+  // Consumer Electronics
+  {
+    id: "p018",
+    sku: "ELE-117",
+    name: "Portable High-Speed Rechargeable Electric Blender",
     category: "Consumer Electronics",
     categorySlug: "electronics",
-    moq: 30,
-    indicativePrice: 310,
-    retailPrice: 999,
-    margin: "69% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "Bluetooth 5.3 chip • 32hr battery with case • Type-C fast charge support",
+    categoryTone: "electronics",
+    moq: 20,
+    price: 260,
+    mrp: 699,
+    status: "in_stock",
+    description: "6-blade 380 ml juicer bottle with USB charging.",
   },
   {
-    slug: "retractable-gel-pens-box-50",
-    sku: "PL-STN-GEL",
-    title: "0.5mm Smooth-Flow Retractable Quick-Dry Gel Pens (Box of 50)",
+    id: "p019",
+    sku: "ELE-118",
+    name: "20W USB-C GaN Fast Charger with Braided Cable",
+    category: "Consumer Electronics",
+    categorySlug: "electronics",
+    categoryTone: "electronics",
+    moq: 40,
+    price: 220,
+    mrp: 599,
+    status: "in_stock",
+    description: "PD fast charging adapter, BIS certified.",
+  },
+  {
+    id: "p020",
+    sku: "ELE-119",
+    name: "Wireless Bluetooth Neckband Earphones (30h Playback)",
+    category: "Consumer Electronics",
+    categorySlug: "electronics",
+    categoryTone: "electronics",
+    moq: 30,
+    price: 290,
+    mrp: 999,
+    status: "in_stock",
+    description: "30-hour playback with magnetic earbuds.",
+  },
+
+  // Home & Kitchen
+  {
+    id: "p023",
+    sku: "HOM-122",
+    name: "Stainless Steel Insulated Water Bottle 750 ml",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 40,
+    price: 180,
+    mrp: 499,
+    status: "in_stock",
+    description: "Double-wall vacuum insulated, 12-hour hot / 24-hour cold.",
+  },
+  {
+    id: "p024",
+    sku: "HOM-123",
+    name: "Airtight Kitchen Container Set (7 pcs)",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 40,
+    price: 210,
+    mrp: 549,
+    status: "in_stock",
+    description: "BPA-free kitchen storage containers.",
+  },
+  {
+    id: "p025",
+    sku: "HOM-124",
+    name: "Non-Stick Tawa 28 cm with Induction Bottom",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 24,
+    price: 320,
+    mrp: 899,
+    status: "in_stock",
+    description: "Gas and induction compatible, 3-layer granite coating.",
+  },
+
+  // Office & Stationery
+  {
+    id: "p028",
+    sku: "STA-127",
+    name: "Gel Pens Set of 12 — Pastel Executive Ink",
     category: "Office & Stationery",
     categorySlug: "stationery",
+    categoryTone: "stationery",
     moq: 100,
-    indicativePrice: 22,
-    retailPrice: 60,
-    margin: "63% Retail Margin",
-    availability: "available",
-    statusText: "In Stock",
-    spec: "Japanese pigment ink • Tungsten carbide ball tip • Ergonomic rubberized grip",
+    price: 25,
+    mrp: 99,
+    status: "in_stock",
+    description: "0.5 mm smooth-flow pens in a zip pouch.",
+  },
+  {
+    id: "p029",
+    sku: "STA-128",
+    name: "A5 Hardbound Ruled Journal Notebook 200 Pages",
+    category: "Office & Stationery",
+    categorySlug: "stationery",
+    categoryTone: "stationery",
+    moq: 100,
+    price: 55,
+    mrp: 149,
+    status: "in_stock",
+    description: "70 GSM paper, sewn binding, satin ribbon bookmark.",
+  },
+  {
+    id: "p030",
+    sku: "STA-129",
+    name: "Executive Desk Organiser with Mesh Pen Stand",
+    category: "Office & Stationery",
+    categorySlug: "stationery",
+    categoryTone: "stationery",
+    moq: 50,
+    price: 110,
+    mrp: 299,
+    status: "limited",
+    description: "Multi-compartment powder-coated metal mesh organiser.",
   },
 ];
 
-export default function ProductsPage({
-  searchParams,
-}: {
-  searchParams?: { category?: string; availability?: string; q?: string };
-}) {
-  const selectedCat = searchParams?.category;
-  const selectedAvail = searchParams?.availability;
-  const searchQuery = searchParams?.q?.toLowerCase() || "";
+export default function CataloguePage() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedStatus, setSelectedStatus] = useState("all");
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("featured");
 
-  const filtered = SAMPLE_PRODUCTS.filter((item) => {
-    if (selectedCat && item.categorySlug !== selectedCat) return false;
-    if (selectedAvail && item.availability !== selectedAvail) return false;
-    if (searchQuery && !item.title.toLowerCase().includes(searchQuery) && !item.sku.toLowerCase().includes(searchQuery)) {
-      return false;
-    }
-    return true;
+  const categoriesList = [
+    { id: "all", name: "All Merchandise Lines", count: ALL_PRODUCTS.length },
+    { id: "toys", name: "Toys & Games", count: 4 },
+    { id: "clothing", name: "Clothing & Apparel", count: 4 },
+    { id: "watches", name: "Watches & Horology", count: 3 },
+    { id: "electronics", name: "Consumer Electronics", count: 3 },
+    { id: "home", name: "Home & Kitchen", count: 3 },
+    { id: "stationery", name: "Office & Stationery", count: 3 },
+  ];
+
+  const filtered = ALL_PRODUCTS.filter((p) => {
+    const matchesCategory = selectedCategory === "all" || p.categorySlug === selectedCategory;
+    const matchesStatus = selectedStatus === "all" || p.status === selectedStatus;
+    const matchesSearch =
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.sku.toLowerCase().includes(search.toLowerCase()) ||
+      p.category.toLowerCase().includes(search.toLowerCase());
+    return matchesCategory && matchesStatus && matchesSearch;
+  }).sort((a, b) => {
+    if (sortBy === "price_asc") return a.price - b.price;
+    if (sortBy === "price_desc") return b.price - a.price;
+    if (sortBy === "moq_asc") return a.moq - b.moq;
+    return 0;
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased">
+    <div className="min-h-screen flex flex-col bg-surface-2 text-neutral-text antialiased">
       <Header />
 
       <main className="flex-1 py-10 px-4 max-w-7xl mx-auto w-full">
-        {/* Header Ribbon */}
-        <div className="bg-slate-950 text-white rounded-2xl p-6 sm:p-8 mb-8 border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        {/* Page Head */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-line pb-6 mb-8">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">Commercial Wholesale Catalogue</div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1">Multi-Category Product Inventory</h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Select lots with verified MOQs, indicative tier pricing, and direct wholesale quotation desk.
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 uppercase tracking-wider mb-1">
+              <Layers className="w-3.5 h-3.5" /> Institutional Inventory
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-black text-brand-950 tracking-tight">
+              Commercial Wholesale Product Catalogue
+            </h1>
+            <p className="text-xs text-neutral-muted mt-1">
+              Verified MOQ brackets, factory-direct tier pricing, and instant Quote Basket aggregation.
             </p>
           </div>
-          <Link
-            href="/enquiry"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition shadow-md shadow-blue-600/30 shrink-0"
-          >
-            <span>Request Custom RFQ</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+
+          <div className="text-xs font-bold text-neutral-muted bg-white px-3.5 py-2 rounded-xl border border-line shadow-xs">
+            Showing <strong className="text-brand-900">{filtered.length}</strong> of {ALL_PRODUCTS.length} lots
+          </div>
         </div>
 
-        {/* Layout: Sidebar + Grid */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        {/* Layout: Filters Sidebar + Products Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 items-start">
           
-          {/* Sidebar Filters */}
-          <aside className="w-full lg:w-64 shrink-0 space-y-6">
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm sticky top-28 space-y-6">
-              
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <span className="font-bold text-slate-950 text-xs uppercase tracking-wider flex items-center gap-2">
-                  <Filter className="w-3.5 h-3.5 text-blue-600" />
-                  Filter Catalogue
-                </span>
-                {(selectedCat || selectedAvail || searchQuery) && (
-                  <Link href="/products" className="text-[11px] font-semibold text-blue-600 hover:underline">
-                    Reset
-                  </Link>
-                )}
+          {/* Left Filters Sidebar */}
+          <aside className="bg-white border border-line rounded-2xl p-5 shadow-xs space-y-6 lg:sticky lg:top-24">
+            {/* Search */}
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-2">
+                Search Catalogue
+              </label>
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="SKU, title, or keywords..."
+                  className="w-full pl-9 pr-3 py-2 bg-surface-2 border border-line-strong rounded-xl text-xs font-medium text-neutral-text focus:outline-none focus:border-brand-500"
+                />
               </div>
+            </div>
 
-              {/* Category Filter */}
-              <div>
-                <h3 className="text-xs font-bold text-slate-900 mb-2.5">Merchandise Division</h3>
-                <ul className="space-y-1.5 text-xs">
-                  <li>
-                    <Link
-                      href="/products"
-                      className={`block px-3 py-1.5 rounded-lg transition ${
-                        !selectedCat ? "bg-slate-950 text-white font-bold" : "text-slate-600 hover:bg-slate-100"
-                      }`}
-                    >
-                      All Merchandise Lines
-                    </Link>
-                  </li>
-                  {CATEGORIES_FEATURED.map((c) => (
-                    <li key={c.slug}>
-                      <Link
-                        href={`/products?category=${c.slug}${selectedAvail ? `&availability=${selectedAvail}` : ""}`}
-                        className={`block px-3 py-1.5 rounded-lg transition ${
-                          selectedCat === c.slug
-                            ? "bg-slate-950 text-white font-bold"
-                            : "text-slate-600 hover:bg-slate-100"
-                        }`}
-                      >
-                        {c.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Availability Filter */}
-              <div className="pt-4 border-t border-slate-100">
-                <h3 className="text-xs font-bold text-slate-900 mb-2.5">Procurement Status</h3>
-                <ul className="space-y-1.5 text-xs">
-                  <li>
-                    <Link
-                      href={`/products?availability=available${selectedCat ? `&category=${selectedCat}` : ""}`}
-                      className={`block px-3 py-1.5 rounded-lg transition ${
-                        selectedAvail === "available"
-                          ? "bg-slate-950 text-white font-bold"
-                          : "text-slate-600 hover:bg-slate-100"
-                      }`}
-                    >
-                      In Stock / Ready Dispatch
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`/products?availability=enquiry_only${selectedCat ? `&category=${selectedCat}` : ""}`}
-                      className={`block px-3 py-1.5 rounded-lg transition ${
-                        selectedAvail === "enquiry_only"
-                          ? "bg-slate-950 text-white font-bold"
-                          : "text-slate-600 hover:bg-slate-100"
-                      }`}
-                    >
-                      Available on RFQ
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Direct Support */}
-              <div className="pt-4 border-t border-slate-100">
-                <div className="p-3 bg-blue-50/70 border border-blue-100 rounded-xl text-center">
-                  <span className="text-[11px] font-bold text-blue-900 block">Looking for Custom Batches?</span>
-                  <p className="text-[10px] text-blue-700 mt-1">We source bespoke specifications directly with manufacturing partners.</p>
-                  <a
-                    href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20PLAYLUME%2C%20I%20need%20a%20custom%20sourcing%20inquiry.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2.5 text-[11px] font-bold bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg"
+            {/* Category Filter */}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-muted mb-2.5">
+                Merchandise Division
+              </h3>
+              <div className="space-y-1">
+                {categoriesList.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setSelectedCategory(c.id)}
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-left transition ${
+                      selectedCategory === c.id
+                        ? "bg-brand-100 text-brand-900 font-bold"
+                        : "text-neutral-text hover:bg-brand-50"
+                    }`}
                   >
-                    Direct Inquiry
-                  </a>
-                </div>
+                    <span>{c.name}</span>
+                    <span className="text-[11px] text-neutral-muted">({c.count})</span>
+                  </button>
+                ))}
               </div>
+            </div>
 
+            {/* Availability Filter */}
+            <div className="pt-4 border-t border-line">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-muted mb-2.5">
+                Stock Status
+              </h3>
+              <div className="space-y-1">
+                {[
+                  { id: "all", label: "All Availability" },
+                  { id: "in_stock", label: "Ready Stock Only" },
+                  { id: "limited", label: "Limited Lot" },
+                  { id: "enquiry", label: "Enquiry Only" },
+                ].map((st) => (
+                  <button
+                    key={st.id}
+                    onClick={() => setSelectedStatus(st.id)}
+                    className={`w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-semibold text-left transition ${
+                      selectedStatus === st.id
+                        ? "bg-brand-100 text-brand-900 font-bold"
+                        : "text-neutral-text hover:bg-brand-50"
+                    }`}
+                  >
+                    <span>{st.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Sorter */}
+            <div className="pt-4 border-t border-line">
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-2">
+                Sort Pricing &amp; MOQ
+              </label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="w-full bg-surface-2 border border-line-strong rounded-xl px-3 py-2 text-xs font-bold text-neutral-text focus:outline-none focus:border-brand-500"
+              >
+                <option value="featured">Featured Lots</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+                <option value="moq_asc">MOQ: Low to High</option>
+              </select>
             </div>
           </aside>
 
-          {/* Product Grid Area */}
-          <div className="flex-1 space-y-6">
-            
-            {/* Top Bar inside Grid */}
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-semibold text-slate-500">
-                Displaying <strong className="text-slate-900">{filtered.length}</strong> wholesale product lots
-              </span>
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <form action="/products" method="GET" className="relative flex-1 sm:w-64">
-                  <input
-                    type="text"
-                    name="q"
-                    defaultValue={searchQuery}
-                    placeholder="Search SKU or product..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-blue-600 outline-none"
-                  />
-                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
-                  {selectedCat && <input type="hidden" name="category" value={selectedCat} />}
-                </form>
-              </div>
-            </div>
-
-            {/* Grid */}
+          {/* Right Products Grid */}
+          <div className="space-y-6">
             {filtered.length === 0 ? (
-              <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
-                  <Search className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-sm">No wholesale lots match your criteria</h3>
-                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                  Try adjusting your filters or send a general commercial enquiry and we will check factory availability.
-                </p>
-                <Link
-                  href="/enquiry"
-                  className="inline-block mt-4 bg-slate-950 text-white font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-slate-800 transition"
+              <div className="bg-white border border-line rounded-2xl p-16 text-center text-neutral-muted space-y-3">
+                <Package className="w-12 h-12 text-slate-300 mx-auto" />
+                <h3 className="font-bold text-sm text-neutral-text">No wholesale lots found</h3>
+                <p className="text-xs">Try clearing search filters or selecting another merchandise division.</p>
+                <button
+                  onClick={() => {
+                    setSelectedCategory("all");
+                    setSelectedStatus("all");
+                    setSearch("");
+                  }}
+                  className="px-4 py-2 bg-brand-700 text-white rounded-xl text-xs font-bold hover:bg-brand-800 transition"
                 >
-                  Submit General Sourcing RFQ
-                </Link>
+                  Reset All Filters
+                </button>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {filtered.map((item) => (
-                  <div
-                    key={item.sku}
-                    className="bg-white rounded-2xl border border-slate-200 p-4 hover:-translate-y-1 transition duration-200 shadow-sm hover:shadow-md flex flex-col justify-between group"
-                  >
-                    <div>
-                      {/* Placeholder Card Image Area */}
-                      <div className="relative bg-slate-50 rounded-xl h-40 flex flex-col items-center justify-center border border-slate-100 p-4 mb-3">
-                        <span className="text-slate-300 group-hover:text-blue-500 transition font-black text-2xl">
-                          {item.sku.split("-")[1]}
-                        </span>
-                        <span className="absolute top-2.5 left-2.5 bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wide">
-                          {item.sku}
-                        </span>
-                        <span
-                          className={`absolute top-2.5 right-2.5 text-[10px] font-bold px-2 py-0.5 rounded border ${
-                            item.availability === "available"
-                              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-                              : "bg-amber-50 text-amber-700 border-amber-200"
-                          }`}
-                        >
-                          {item.statusText}
-                        </span>
-                      </div>
-
-                      <div className="text-[11px] font-semibold text-blue-600 uppercase tracking-wider">{item.category}</div>
-                      <Link href={`/product/${item.slug}`} className="block">
-                        <h3 className="font-bold text-slate-950 text-sm mt-1 leading-snug hover:text-blue-600 transition">
-                          {item.title}
-                        </h3>
-                      </Link>
-
-                      <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">{item.spec}</p>
-
-                      <div className="mt-3 pt-2.5 border-t border-slate-100 space-y-1">
-                        <div className="flex justify-between items-baseline text-xs">
-                          <span className="text-slate-500">Min Order Qty:</span>
-                          <span className="font-bold text-slate-900">{item.moq} Pieces</span>
-                        </div>
-                        <div className="flex justify-between items-baseline text-xs">
-                          <span className="text-slate-500">Indicative Wholesale:</span>
-                          <span className="font-black text-slate-950 text-base">
-                            ₹{item.indicativePrice} <span className="text-[10px] font-normal text-slate-400">/pc</span>
-                          </span>
-                        </div>
-                        <div className="text-[11px] text-emerald-700 font-semibold flex items-center justify-between pt-0.5">
-                          <span>Retail Target: ₹{item.retailPrice}</span>
-                          <span className="bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 text-[10px] font-bold">
-                            {item.margin}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 grid grid-cols-2 gap-2">
-                      <Link
-                        href={`/product/${item.slug}`}
-                        className="bg-slate-950 hover:bg-slate-800 text-white text-xs font-bold py-2.5 rounded-lg transition text-center"
-                      >
-                        View Details
-                      </Link>
-                      <a
-                        href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(
-                          `Hello PLAYLUME, I want to confirm price and availability for ${item.title} (${item.sku}), MOQ: ${item.moq} pcs.`
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold py-2.5 rounded-lg transition flex items-center justify-center gap-1.5"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>WhatsApp</span>
-                      </a>
-                    </div>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filtered.map((product) => (
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             )}
-
           </div>
         </div>
       </main>
