@@ -3,12 +3,17 @@ import { db } from "@/lib/db";
 import { buyers } from "@/lib/db/schema";
 import { buyerRegistrationSchema } from "@/lib/validations";
 import { z } from "zod";
+import { saveBuyer, getStoredBuyers } from "@/lib/local-storage";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const data = buyerRegistrationSchema.parse(body);
 
+    // Save to local storage cache so it immediately shows up in admin dashboard
+    const saved = saveBuyer(data);
+
+    // Try saving to MySQL database if live database is connected
     try {
       await db.insert(buyers).values({
         name: data.name,
@@ -22,10 +27,13 @@ export async function POST(request: NextRequest) {
         status: "active",
       });
     } catch (dbErr) {
-      console.warn("Database storage deferred or offline. Buyer lead queued safely:", data);
+      console.warn("MySQL deferred/offline. Saved safely to local persistent JSON store:", data);
     }
 
-    return NextResponse.json({ success: true, message: "Buyer registered successfully" }, { status: 201 });
+    return NextResponse.json(
+      { success: true, message: "Buyer registered successfully", buyer: saved },
+      { status: 201 }
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ success: false, errors: error.issues }, { status: 400 });
@@ -37,11 +45,16 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    const allBuyers = await db.query.buyers.findMany({
+    const dbBuyers = await db.query.buyers.findMany({
       orderBy: (buyers, { desc }) => [desc(buyers.createdAt)],
     });
-    return NextResponse.json({ data: allBuyers });
+    if (dbBuyers && dbBuyers.length > 0) {
+      return NextResponse.json({ data: dbBuyers });
+    }
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch buyers" }, { status: 500 });
+    // MySQL not reachable - fallback to local storage
   }
+
+  const stored = getStoredBuyers();
+  return NextResponse.json({ data: stored });
 }

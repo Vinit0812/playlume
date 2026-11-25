@@ -3,11 +3,15 @@ import { db } from "@/lib/db";
 import { enquiries } from "@/lib/db/schema";
 import { enquirySchema } from "@/lib/validations";
 import { z } from "zod";
+import { saveEnquiry, getStoredEnquiries } from "@/lib/local-storage";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const data = enquirySchema.parse(body);
+
+    // Save to local storage cache so it immediately shows up in admin CRM
+    const saved = saveEnquiry(data);
 
     try {
       await db.insert(enquiries).values({
@@ -25,12 +29,11 @@ export async function POST(request: NextRequest) {
         source: "website",
       });
     } catch (dbErr) {
-      // High-resilience fallback: log lead so customer is never interrupted even if DB is reconnecting
-      console.warn("Database storage deferred or offline. RFQ Lead queued safely:", data);
+      console.warn("MySQL deferred/offline. RFQ Lead saved safely to local persistent store:", data);
     }
 
     return NextResponse.json(
-      { success: true, message: "RFQ enquiry submitted successfully." },
+      { success: true, message: "RFQ enquiry submitted successfully.", enquiry: saved },
       { status: 201 }
     );
   } catch (error) {
@@ -49,13 +52,17 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  // Admin only — will add auth middleware
   try {
-    const allEnquiries = await db.query.enquiries.findMany({
+    const dbEnquiries = await db.query.enquiries.findMany({
       orderBy: (enquiries, { desc }) => [desc(enquiries.createdAt)],
     });
-    return NextResponse.json({ data: allEnquiries });
+    if (dbEnquiries && dbEnquiries.length > 0) {
+      return NextResponse.json({ data: dbEnquiries });
+    }
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch enquiries" }, { status: 500 });
+    // MySQL not reachable - fallback to local storage
   }
+
+  const stored = getStoredEnquiries();
+  return NextResponse.json({ data: stored });
 }
