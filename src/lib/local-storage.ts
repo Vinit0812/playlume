@@ -199,3 +199,144 @@ export function saveEnquiry(data: {
   fs.writeFileSync(filePath, JSON.stringify(updated, null, 2), "utf-8");
   return newEnq;
 }
+
+// -----------------------------------------------------------------
+// BANNERS STORAGE (Configurable via Admin Console & Dynamic on Home)
+// -----------------------------------------------------------------
+export interface StoredBanner {
+  id: number;
+  title: string;
+  subtitle: string;
+  badge: string;
+  division: string;
+  ctaText: string;
+  ctaLink: string;
+  position: "Hero Main" | "Category Featured" | "Trending Strip";
+  status: "active" | "inactive";
+  bgColor: string;
+  accentColor: string;
+  highlightItems?: { name: string; price: string }[];
+  impressionCount: number;
+  clickCount: number;
+}
+
+const DEFAULT_BANNERS: StoredBanner[] = [
+  {
+    id: 1,
+    title: "NIRAL INDUSTRIES • ELEGANT URLI & FESTIVE COLLECTION",
+    subtitle: "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing",
+    badge: "Festive Wholesale Lots • From ₹22/- Only",
+    division: "Home & Festive Decor",
+    ctaText: "Explore Full Collection",
+    ctaLink: "/products?category=home",
+    position: "Hero Main",
+    status: "active",
+    bgColor: "from-[#1a120c] via-[#26180f] to-[#120a05]",
+    accentColor: "#f59e0b",
+    highlightItems: [
+      { name: "Lotus Golden Touch Up", price: "₹42/- only" },
+      { name: "Lotus Diya Urli", price: "₹22/- only" },
+      { name: "Hammered Ball Urli", price: "₹47/- only" },
+      { name: "Royal Elephant Diya Urli", price: "₹75/- only" },
+    ],
+    impressionCount: 14820,
+    clickCount: 1940,
+  },
+  {
+    id: 2,
+    title: "NEXT-GEN GAN CHARGING & AUDIO WHOLESALE LOTS",
+    subtitle: "Master Carton Factory Rates for Super-Stockists & Retail Chains | Transparent MOQs",
+    badge: "Direct Factory Lots • MOQ 20 pcs • Rapid Dispatch",
+    division: "Consumer Electronics",
+    ctaText: "View Electronics Catalogue",
+    ctaLink: "/products?category=electronics",
+    position: "Hero Main",
+    status: "active",
+    bgColor: "from-[#082220] via-[#0d3431] to-[#051615]",
+    accentColor: "#10b981",
+    highlightItems: [
+      { name: "GaN Turbo 65W Hub", price: "₹220/- only" },
+      { name: "TWS Earbuds 5.3", price: "₹180/- only" },
+      { name: "10,000mAh Power Bank", price: "₹410/- only" },
+      { name: "Portable Juicer Blender", price: "₹340/- only" },
+    ],
+    impressionCount: 9420,
+    clickCount: 1420,
+  },
+  {
+    id: 3,
+    title: "180 GSM BIO-WASHED COMBED COTTON APPAREL",
+    subtitle: "Export Quality Pre-Shrunk Single Jersey Knits | Ready Dispatch Across India",
+    badge: "Premium Combed Cotton • From ₹140/- Only",
+    division: "Clothing & Apparel",
+    ctaText: "Explore Apparel Lots",
+    ctaLink: "/products?category=clothing",
+    position: "Hero Main",
+    status: "active",
+    bgColor: "from-[#141b26] via-[#1c2738] to-[#0c121c]",
+    accentColor: "#38bdf8",
+    highlightItems: [
+      { name: "Bio-Washed Tees", price: "₹145/- only" },
+      { name: "Kids Nightwear Sets", price: "₹180/- only" },
+      { name: "Combed Boxers 3-Pack", price: "₹190/- only" },
+      { name: "Winter Fleece Hoodies", price: "₹390/- only" },
+    ],
+    impressionCount: 8120,
+    clickCount: 980,
+  },
+];
+
+export function getStoredBanners(): StoredBanner[] {
+  ensureDir();
+  const filePath = path.join(DATA_DIR, "banners.json");
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, JSON.stringify(DEFAULT_BANNERS, null, 2), "utf-8");
+    return DEFAULT_BANNERS;
+  }
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    return JSON.parse(raw);
+  } catch (err) {
+    return DEFAULT_BANNERS;
+  }
+}
+
+export function saveStoredBanners(banners: StoredBanner[]): void {
+  ensureDir();
+  const filePath = path.join(DATA_DIR, "banners.json");
+  fs.writeFileSync(filePath, JSON.stringify(banners, null, 2), "utf-8");
+}
+
+export function updateBannerStatus(id: number, status: "active" | "inactive"): StoredBanner[] {
+  const banners = getStoredBanners();
+  const updated = banners.map((b) => (b.id === id ? { ...b, status } : b));
+  saveStoredBanners(updated);
+  return updated;
+}
+
+export function saveBanner(banner: Omit<StoredBanner, "id" | "impressionCount" | "clickCount"> & { id?: number }): StoredBanner[] {
+  const banners = getStoredBanners();
+  if (banner.id) {
+    const updated = banners.map((b) => (b.id === banner.id ? { ...b, ...banner } : b));
+    saveStoredBanners(updated);
+    return updated;
+  } else {
+    const nextId = banners.length > 0 ? Math.max(...banners.map((b) => b.id)) + 1 : 1;
+    const newBanner: StoredBanner = {
+      ...banner,
+      id: nextId,
+      impressionCount: 0,
+      clickCount: 0,
+    };
+    const updated = [...banners, newBanner];
+    saveStoredBanners(updated);
+    return updated;
+  }
+}
+
+export function deleteBanner(id: number): StoredBanner[] {
+  const banners = getStoredBanners();
+  const updated = banners.filter((b) => b.id !== id);
+  saveStoredBanners(updated);
+  return updated;
+}

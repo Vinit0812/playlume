@@ -1,56 +1,43 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { products, categories, productImages } from "@/lib/db/schema";
-import { PRODUCTS_PER_PAGE } from "@/lib/constants";
-import { eq, like, and, desc } from "drizzle-orm";
+import { MASTER_PRODUCTS } from "@/lib/products-data";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const categorySlug = searchParams.get("category");
-    const q = searchParams.get("q");
-    const page = parseInt(searchParams.get("page") || "1");
-    const offset = (page - 1) * PRODUCTS_PER_PAGE;
+    const q = searchParams.get("q") || searchParams.get("search");
 
-    // Build where conditions
-    const conditions = [eq(products.status, "published")];
-    if (q) {
-      conditions.push(like(products.name, `%${q}%`));
+    let results = [...MASTER_PRODUCTS];
+
+    if (categorySlug && categorySlug !== "all") {
+      results = results.filter(
+        (p) =>
+          p.categorySlug === categorySlug ||
+          p.category.toLowerCase().includes(categorySlug.toLowerCase())
+      );
     }
 
-    const allProducts = await db.query.products.findMany({
-      where: and(...conditions),
-      with: {
-        category: true,
-        images: {
-          where: eq(productImages.isPrimary, true),
-          limit: 1,
-        },
-      },
-      orderBy: [desc(products.createdAt)],
-      limit: PRODUCTS_PER_PAGE,
-      offset,
+    if (q && q.trim()) {
+      const term = q.toLowerCase().trim();
+      results = results.filter(
+        (p) =>
+          p.name.toLowerCase().includes(term) ||
+          p.sku.toLowerCase().includes(term) ||
+          p.category.toLowerCase().includes(term) ||
+          p.description.toLowerCase().includes(term) ||
+          p.tags.some((t) => t.toLowerCase().includes(term))
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: results,
+      total: results.length,
     });
-
-    return NextResponse.json({ data: allProducts, page, perPage: PRODUCTS_PER_PAGE });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
-  }
-}
-
-export async function POST(request: NextRequest) {
-  // Admin only - will be protected by middleware
-  try {
-    const body = await request.json();
-    const { slug, ...rest } = body;
-
-    const inserted = await db.insert(products).values({
-      ...rest,
-      slug: slug || body.name.toLowerCase().replace(/\s+/g, "-"),
-    });
-
-    return NextResponse.json({ success: true, data: inserted }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: "Failed to create product" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Failed to fetch products" },
+      { status: 500 }
+    );
   }
 }

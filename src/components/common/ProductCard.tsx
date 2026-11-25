@@ -7,6 +7,7 @@ import { Plus, Check, Eye, Package, ShieldCheck, ArrowRight } from "lucide-react
 
 export interface ProductProps {
   id: string;
+  slug?: string;
   sku: string;
   name: string;
   category: string;
@@ -34,6 +35,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
       name: product.name,
       sku: product.sku,
       category: product.category,
+      categoryTone: product.categoryTone,
       price: product.price,
       moq: product.moq,
       mrp: product.mrp,
@@ -43,12 +45,13 @@ export default function ProductCard({ product }: { product: ProductProps }) {
   };
 
   const toneClass = `tone-${product.categoryTone || "toys"}`;
+  const productHref = `/product/${product.slug || product.id}`;
 
   return (
     <article className="bg-surface border border-line rounded-xl overflow-hidden flex flex-col hover:border-line-strong hover:shadow-md transition">
       {/* Product Image / Icon Tile */}
       <Link
-        href={`/product/${product.id}`}
+        href={productHref}
         className={`relative aspect-4/3 flex items-center justify-center ${toneClass} p-6 group`}
       >
         <Package className="w-14 h-14 opacity-80 group-hover:scale-105 transition" />
@@ -83,7 +86,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
             {product.category}
           </span>
           <h3 className="text-xs sm:text-sm font-bold text-neutral-text line-clamp-2 mt-0.5">
-            <Link href={`/product/${product.id}`} className="hover:text-brand-700 transition">
+            <Link href={productHref} className="hover:text-brand-700 transition">
               {product.name}
             </Link>
           </h3>

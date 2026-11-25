@@ -18,8 +18,11 @@ import {
   ExternalLink,
   Tag,
   Sparkles,
+  Flame,
+  Package,
 } from "lucide-react";
 import { useQuoteBasket } from "@/context/QuoteBasketContext";
+import { MASTER_PRODUCTS, MasterProduct } from "@/lib/products-data";
 
 interface CategoryNav {
   id: string;
@@ -118,6 +121,7 @@ export default function Header() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -129,8 +133,24 @@ export default function Header() {
   const [loginFeedback, setLoginFeedback] = useState<string | null>(null);
 
   const categoryDropdownRef = useRef<HTMLDivElement>(null);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  // Close category select dropdown on outside click
+  // Live autocomplete results
+  const autocompleteResults = searchQuery.trim()
+    ? MASTER_PRODUCTS.filter((p) => {
+        const matchesCategory =
+          selectedCategory === "all" || p.categorySlug === selectedCategory;
+        const q = searchQuery.toLowerCase().trim();
+        const matchesText =
+          p.name.toLowerCase().includes(q) ||
+          p.sku.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.tags.some((t) => t.toLowerCase().includes(q));
+        return matchesCategory && matchesText;
+      }).slice(0, 5)
+    : [];
+
+  // Close category select dropdown & search autocomplete on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -139,6 +159,12 @@ export default function Header() {
       ) {
         setIsCategoryDropdownOpen(false);
       }
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setShowSearchDropdown(false);
+      }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -146,6 +172,7 @@ export default function Header() {
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setShowSearchDropdown(false);
     const params = new URLSearchParams();
     if (searchQuery.trim()) {
       params.set("search", searchQuery.trim());
@@ -206,7 +233,7 @@ export default function Header() {
           </Link>
 
           {/* 2. Integrated Search Bar with "All categories ▾" + Input + Search CTA */}
-          <div className="flex-1 max-w-2xl hidden md:block">
+          <div className="flex-1 max-w-2xl hidden md:block relative" ref={searchContainerRef}>
             <form onSubmit={handleSearchSubmit} className="relative flex items-center">
               <div className="flex w-full items-stretch rounded-md overflow-hidden bg-white shadow-sm border border-neutral-300 focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500/20">
                 
@@ -262,7 +289,11 @@ export default function Header() {
                 <input
                   type="text"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => setShowSearchDropdown(true)}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowSearchDropdown(true);
+                  }}
                   placeholder="What are you looking for?"
                   className="w-full px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 bg-transparent focus:outline-none"
                 />
@@ -277,6 +308,71 @@ export default function Header() {
                 </button>
               </div>
             </form>
+
+            {/* Live Autocomplete Results Dropdown */}
+            {showSearchDropdown && searchQuery.trim().length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-xl shadow-2xl border border-neutral-200 overflow-hidden z-50 text-neutral-900 animate-in fade-in duration-100">
+                <div className="p-2 bg-neutral-50 border-b border-neutral-200 flex items-center justify-between text-[11px] font-bold text-neutral-500 uppercase tracking-wider">
+                  <span>Wholesale Lots Matching &ldquo;{searchQuery}&rdquo;</span>
+                  <span className="text-amber-600 font-black">{autocompleteResults.length} found</span>
+                </div>
+
+                {autocompleteResults.length > 0 ? (
+                  <div className="divide-y divide-neutral-100 max-h-80 overflow-y-auto">
+                    {autocompleteResults.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={`/product/${item.slug}`}
+                        onClick={() => setShowSearchDropdown(false)}
+                        className="p-3 hover:bg-amber-50/60 transition flex items-center justify-between gap-3 group"
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-10 h-10 rounded-lg bg-neutral-100 border border-neutral-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">
+                            <Flame className="w-5 h-5 text-amber-600" />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-xs font-bold text-neutral-900 group-hover:text-amber-700 truncate">
+                              {item.name}
+                            </p>
+                            <div className="flex items-center gap-2 text-[10px] text-neutral-500 mt-0.5">
+                              <span className="font-mono font-semibold">{item.sku}</span>
+                              <span>•</span>
+                              <span>{item.category}</span>
+                              <span>•</span>
+                              <span className="text-neutral-700 font-bold">MOQ: {item.moq} pcs</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-right shrink-0">
+                          <span className="text-xs font-black text-[#e03a3a] block">
+                            Rs. {item.price.toFixed(2)}
+                          </span>
+                          <span className="text-[10px] text-neutral-400 line-through">
+                            Rs. {item.mrp.toFixed(2)}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+
+                    <div className="p-2.5 bg-neutral-50 text-center">
+                      <button
+                        type="button"
+                        onClick={handleSearchSubmit}
+                        className="text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline"
+                      >
+                        View all results in wholesale catalogue →
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-6 text-center text-xs text-neutral-500">
+                    <p className="font-bold text-neutral-700">No matching wholesale lots found</p>
+                    <p className="text-[11px] mt-1">Try searching by keyword like &ldquo;urli&rdquo;, &ldquo;cotton&rdquo;, &ldquo;charger&rdquo;, or &ldquo;watch&rdquo;</p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* 3. Right Section: New Arrival Ticker, Login & Quote Basket */}

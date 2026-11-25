@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useQuoteBasket } from "@/context/QuoteBasketContext";
+import { MasterProduct } from "@/lib/products-data";
 import {
   Package,
   ShieldCheck,
@@ -13,46 +14,42 @@ import {
   MessageSquare,
   ClipboardList,
   ArrowRight,
-  FileText,
-  Boxes,
+  Share2,
+  Share,
+  MapPin,
+  Clock,
+  Sparkles,
+  Layers,
+  Flame,
 } from "lucide-react";
 
 export interface ProductDetailProps {
-  id: string;
-  sku: string;
-  name: string;
-  category: string;
-  categorySlug: string;
-  categoryTone?: "toys" | "clothing" | "watches" | "electronics" | "home" | "stationery";
-  moq: number;
-  price: number;
-  mrp: number;
-  status: "in_stock" | "limited" | "enquiry";
-  description: string;
-  specs: Record<string, string>;
-  packaging: {
-    unitsPerCarton: number;
-    cartonDimensions: string;
-    grossWeight: string;
-  };
+  product: MasterProduct;
+  relatedProducts: MasterProduct[];
 }
 
-export default function ProductDetailView({ product }: { product: ProductDetailProps }) {
-  const { addItem, items } = useQuoteBasket();
+export default function ProductDetailView({
+  product,
+  relatedProducts,
+}: ProductDetailProps) {
+  const { addItem, setIsOpen } = useQuoteBasket();
+
+  // Wholesale quantity starting at product MOQ
   const [quantity, setQuantity] = useState(product.moq);
   const [added, setAdded] = useState(false);
+  const [activeTab, setActiveTab] = useState<"desc" | "specs" | "packaging">("desc");
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // 3 Volume Tiers
+  // Volume pricing calculation
   const tier1Qty = product.moq;
   const tier1Price = product.price;
 
   const tier2Qty = product.moq * 4;
-  const tier2Price = Math.round(product.price * 0.96); // 4% off
+  const tier2Price = Math.round(product.price * 0.92); // 8% off
 
   const tier3Qty = product.moq * 10;
-  const tier3Price = Math.round(product.price * 0.92); // 8% off
+  const tier3Price = Math.round(product.price * 0.85); // 15% off
 
-  // Current effective price based on quantity selected
   let currentUnitPrice = tier1Price;
   if (quantity >= tier3Qty) {
     currentUnitPrice = tier3Price;
@@ -61,15 +58,25 @@ export default function ProductDetailView({ product }: { product: ProductDetailP
   }
 
   const lineTotal = currentUnitPrice * quantity;
-  const marginPct = Math.round(((product.mrp - currentUnitPrice) / product.mrp) * 100);
+  const discountPercent = Math.round(((product.mrp - currentUnitPrice) / product.mrp) * 100);
 
-  const handleAddToBasket = () => {
+  const handleStep = (direction: "up" | "down") => {
+    const step = Math.max(10, Math.floor(product.moq / 5));
+    if (direction === "up") {
+      setQuantity((q) => q + step);
+    } else {
+      setQuantity((q) => Math.max(product.moq, q - step));
+    }
+  };
+
+  const handleAddToQuoteBasket = () => {
     addItem(
       {
         id: product.id,
         name: product.name,
         sku: product.sku,
         category: product.category,
+        categoryTone: product.categoryTone,
         price: currentUnitPrice,
         moq: product.moq,
         mrp: product.mrp,
@@ -77,258 +84,480 @@ export default function ProductDetailView({ product }: { product: ProductDetailP
       quantity
     );
     setAdded(true);
-    setTimeout(() => setAdded(false), 2500);
+    setTimeout(() => {
+      setAdded(false);
+      setIsOpen(true); // Open drawer so buyer sees lot added
+    }, 700);
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello PLAYLUME Trade Desk, I would like to place a wholesale inquiry for:\n\nProduct: ${product.name}\nSKU: ${product.sku}\nQuantity: ${quantity} pcs\nEffective Rate: ₹${currentUnitPrice}/pc\nEstimated Subtotal: ₹${lineTotal.toLocaleString()}\n\nPlease share official proforma quotation with GST and freight lead times.`
+    `Hello PLAYLUME Trade Desk, I would like to inquire about wholesale order:\n\nProduct: ${product.name}\nSKU: ${product.sku}\nQuantity: ${quantity} pcs\nIndicative Rate: ₹${currentUnitPrice}/pc\nSubtotal: ₹${lineTotal.toLocaleString()}\n\nPlease send formal proforma invoice with GST and freight terms.`
   );
-
-  const toneClass = `tone-${product.categoryTone || "toys"}`;
 
   return (
     <div className="space-y-12">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-xs text-neutral-muted">
-        <Link href="/" className="hover:text-brand-700">Home</Link>
-        <span>/</span>
-        <Link href="/products" className="hover:text-brand-700">Catalogue</Link>
-        <span>/</span>
-        <span className="text-neutral-text font-bold">{product.name}</span>
+      {/* =========================================================
+          1. BREADCRUMBS
+          ========================================================= */}
+      <nav className="flex items-center gap-2 text-xs text-neutral-500 font-medium">
+        <Link href="/" className="hover:text-amber-600 transition">
+          Home
+        </Link>
+        <span>&gt;</span>
+        <Link
+          href={`/products?category=${product.categorySlug}`}
+          className="hover:text-amber-600 transition"
+        >
+          {product.category}
+        </Link>
+        <span>&gt;</span>
+        <span className="text-neutral-900 font-semibold truncate max-w-md">
+          {product.name}
+        </span>
       </nav>
 
-      {/* Main Product Showcase Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        {/* Left: Product Image / Thumbnail Tile */}
-        <div className={`rounded-3xl border border-line ${toneClass} p-12 aspect-square flex flex-col items-center justify-center relative shadow-sm`}>
-          <Package className="w-32 h-32 opacity-75" />
-          
-          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-neutral-text border border-line">
-            SKU: {product.sku}
+      {/* =========================================================
+          2. MAIN PRODUCT HERO SHOWCASE (Matches Candlemould Image 1)
+          ========================================================= */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        
+        {/* LEFT COLUMN: PRODUCT IMAGE GALLERY (7 Cols) */}
+        <div className="lg:col-span-6 space-y-4">
+          <div className="relative rounded-2xl border border-neutral-200 bg-white p-6 sm:p-10 aspect-4/3 flex flex-col items-center justify-center overflow-hidden shadow-sm">
+            {/* Direct Factory Tag */}
+            <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 text-[11px] font-black uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              <span>Direct Factory Lot</span>
+            </div>
+
+            {/* In Stock Badge */}
+            <div className="absolute top-4 right-4 z-10">
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-50 text-emerald-800 border border-emerald-300">
+                Ready for Dispatch
+              </span>
+            </div>
+
+            {/* Simulated High-Res Urli / Product Artwork */}
+            <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-br from-amber-100 via-amber-200 to-amber-400 border-4 border-amber-500/40 shadow-xl flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-300">
+              <Flame className="w-16 h-16 sm:w-20 sm:h-20 text-amber-600 drop-shadow-[0_0_12px_rgba(217,119,6,0.6)] animate-pulse" />
+              <div className="text-xs sm:text-sm font-serif font-black text-amber-950 uppercase tracking-widest mt-2">
+                {product.name.split(" ")[0]} {product.name.split(" ")[1] || "Wholesale"}
+              </div>
+              <div className="text-[10px] font-mono text-amber-800 font-bold mt-0.5">
+                Itemcode : {product.sku}
+              </div>
+            </div>
+
+            {/* Watermark / Brand Credential */}
+            <div className="absolute bottom-3 inset-x-0 text-center text-[10px] text-neutral-400 font-medium">
+              Verified Wholesale Sourcing by PLAYLUME Enterprise
+            </div>
           </div>
 
-          <div className="absolute top-4 right-4">
-            <span
-              className={`px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide border shadow-xs ${
-                product.status === "in_stock"
-                  ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                  : "bg-amber-50 text-amber-800 border-amber-300"
-              }`}
-            >
-              {product.status === "in_stock" ? "In Stock • Ready Dispatch" : "Limited Master Cartons"}
-            </span>
-          </div>
-
-          <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xs p-3 rounded-2xl border border-line text-xs text-center text-neutral-muted">
-            Export-Grade Reinforced 5-Ply Master Carton Packaging
+          {/* Gallery Thumbnails */}
+          <div className="grid grid-cols-3 gap-3">
+            {[0, 1, 2].map((idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setSelectedImageIndex(idx)}
+                className={`p-3 rounded-xl border text-center transition flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                  selectedImageIndex === idx
+                    ? "border-amber-500 bg-amber-50/60 ring-2 ring-amber-500/20"
+                    : "border-neutral-200 bg-white hover:bg-neutral-50"
+                }`}
+              >
+                <Package className="w-5 h-5 text-neutral-600" />
+                <span className="text-[10.5px] font-bold text-neutral-700">
+                  {idx === 0 ? "Lot View" : idx === 1 ? "Water Display" : "Master Carton"}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Right: Commercial Lot Metrics & Actions */}
-        <div className="bg-white border border-line rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+        {/* RIGHT COLUMN: PRICING & WHOLESALE ACTIONS (5 Cols) */}
+        <div className="lg:col-span-6 space-y-6">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-wider text-brand-600 block mb-1">
-              {product.category}
-            </span>
-            <h1 className="text-xl sm:text-2xl font-black text-brand-950 tracking-tight leading-snug">
+            <h1 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight leading-snug">
               {product.name}
             </h1>
-            <p className="text-xs sm:text-sm text-neutral-muted mt-2 leading-relaxed">
-              {product.description}
+            <p className="text-xs font-mono font-bold text-neutral-500 mt-1 uppercase">
+              SKU: {product.sku}
             </p>
           </div>
 
-          {/* Pricing & Margin Banner */}
-          <div className="bg-surface-2 border border-line rounded-2xl p-5 space-y-3">
-            <div className="flex items-baseline justify-between">
-              <div>
-                <span className="text-xs text-neutral-muted block">Wholesale Rate:</span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-brand-900">₹{currentUnitPrice}</span>
-                  <span className="text-xs text-neutral-muted">/pc (ex-warehouse)</span>
-                </div>
-              </div>
-              <div className="text-right">
-                <span className="text-xs text-neutral-muted block">Suggested Retail:</span>
-                <span className="text-sm font-bold text-neutral-text line-through">₹{product.mrp}</span>
-                <span className="ml-1 text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  {marginPct}% Margin
-                </span>
-              </div>
-            </div>
-
-            {/* Tier Slabs Table */}
-            <div className="pt-3 border-t border-line">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-muted block mb-2">
-                Tiered Wholesale Price Slabs:
+          {/* Pricing Row (Exact Candlemould Style: Save XX% + Strikethrough + Big Red Price) */}
+          <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2">
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 rounded bg-[#e03a3a] text-white text-xs font-black tracking-wider uppercase">
+                Save {discountPercent}%
               </span>
-              <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                <div
-                  className={`p-2.5 rounded-xl border ${
-                    quantity < tier2Qty
-                      ? "bg-brand-50 border-brand-500 font-bold text-brand-900"
-                      : "bg-white border-line text-neutral-muted"
-                  }`}
-                >
-                  <span className="block text-[11px]">MOQ Tier</span>
-                  <strong className="block text-sm">₹{tier1Price}</strong>
-                  <span className="text-[10px]">{tier1Qty}+ pcs</span>
-                </div>
-
-                <div
-                  className={`p-2.5 rounded-xl border ${
-                    quantity >= tier2Qty && quantity < tier3Qty
-                      ? "bg-brand-50 border-brand-500 font-bold text-brand-900"
-                      : "bg-white border-line text-neutral-muted"
-                  }`}
-                >
-                  <span className="block text-[11px]">Mid Volume (-4%)</span>
-                  <strong className="block text-sm">₹{tier2Price}</strong>
-                  <span className="text-[10px]">{tier2Qty}+ pcs</span>
-                </div>
-
-                <div
-                  className={`p-2.5 rounded-xl border ${
-                    quantity >= tier3Qty
-                      ? "bg-brand-50 border-brand-500 font-bold text-brand-900"
-                      : "bg-white border-line text-neutral-muted"
-                  }`}
-                >
-                  <span className="block text-[11px]">Super Volume (-8%)</span>
-                  <strong className="block text-sm">₹{tier3Price}</strong>
-                  <span className="text-[10px]">{tier3Qty}+ pcs</span>
-                </div>
-              </div>
+              <span className="text-base text-neutral-400 line-through font-semibold">
+                Rs. {product.mrp.toFixed(2)}
+              </span>
+              <span className="text-2xl sm:text-3xl font-black text-[#e03a3a] tracking-tight">
+                Rs. {currentUnitPrice.toFixed(2)}
+              </span>
+              <span className="text-xs font-bold text-neutral-500">/ piece</span>
             </div>
+            <p className="text-[11.5px] text-neutral-500">
+              * Minimum wholesale order: <strong>{product.moq} pcs</strong>. Price reduces automatically with volume tiers below.
+            </p>
           </div>
 
-          {/* Quantity Selector */}
+          {/* Wholesale Quantity Stepper (Wholesale focused, not retail cart) */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-bold text-neutral-text">
-              <span>Order Quantity (Units):</span>
-              <span className="text-neutral-muted">Minimum Order: {product.moq} pcs</span>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border border-line-strong rounded-xl bg-surface-2 overflow-hidden h-12">
+            <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider">
+              Wholesale Order Quantity (Pcs)
+            </label>
+            <div className="flex items-stretch gap-3">
+              <div className="flex items-center border border-neutral-300 rounded-xl overflow-hidden bg-white shadow-xs">
                 <button
-                  onClick={() => setQuantity(Math.max(product.moq, quantity - product.moq))}
-                  disabled={quantity <= product.moq}
-                  className="w-12 h-full flex items-center justify-center hover:bg-slate-200 text-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                  type="button"
+                  onClick={() => handleStep("down")}
+                  className="px-4 py-3 hover:bg-neutral-100 text-neutral-600 transition"
+                  aria-label="Decrease quantity"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
                 <input
                   type="number"
                   min={product.moq}
-                  step={product.moq}
                   value={quantity}
-                  onChange={(e) => setQuantity(Math.max(product.moq, parseInt(e.target.value) || product.moq))}
-                  className="w-20 text-center font-black text-sm bg-transparent border-0 focus:outline-none"
+                  onChange={(e) =>
+                    setQuantity(Math.max(product.moq, parseInt(e.target.value) || product.moq))
+                  }
+                  className="w-20 text-center font-black text-sm text-neutral-900 focus:outline-none"
                 />
                 <button
-                  onClick={() => setQuantity(quantity + product.moq)}
-                  className="w-12 h-full flex items-center justify-center hover:bg-slate-200 text-slate-700"
+                  type="button"
+                  onClick={() => handleStep("up")}
+                  className="px-4 py-3 hover:bg-neutral-100 text-neutral-600 transition"
+                  aria-label="Increase quantity"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="flex-1 text-right">
-                <span className="text-xs text-neutral-muted block">Estimated Line Total:</span>
-                <span className="text-xl font-black text-brand-950">₹{lineTotal.toLocaleString()}</span>
+              {/* Subtotal Pill */}
+              <div className="flex-1 bg-white border border-neutral-200 rounded-xl px-4 py-2 flex flex-col justify-center">
+                <span className="text-[10px] font-bold text-neutral-500 uppercase">
+                  Estimated Lot Value
+                </span>
+                <span className="text-base font-black text-neutral-900">
+                  ₹{lineTotal.toLocaleString()}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Action CTAs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          {/* Preferential Volume Price Slabs */}
+          <div className="rounded-xl border border-neutral-200 overflow-hidden bg-white text-xs">
+            <div className="bg-neutral-100 px-3.5 py-2 font-bold text-neutral-700 border-b border-neutral-200 flex justify-between">
+              <span>Volume Slab</span>
+              <span>Wholesale Rate</span>
+            </div>
+            <div className="divide-y divide-neutral-100">
+              <div
+                className={`px-3.5 py-2 flex justify-between items-center ${
+                  quantity < tier2Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""
+                }`}
+              >
+                <span>{tier1Qty} – {tier2Qty - 1} pcs (Base MOQ)</span>
+                <span className="font-black">₹{tier1Price}/pc</span>
+              </div>
+              <div
+                className={`px-3.5 py-2 flex justify-between items-center ${
+                  quantity >= tier2Qty && quantity < tier3Qty
+                    ? "bg-amber-50/70 font-bold text-amber-900"
+                    : ""
+                }`}
+              >
+                <span>{tier2Qty} – {tier3Qty - 1} pcs (Master Carton)</span>
+                <span className="font-black text-emerald-700">₹{tier2Price}/pc (8% Off)</span>
+              </div>
+              <div
+                className={`px-3.5 py-2 flex justify-between items-center ${
+                  quantity >= tier3Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""
+                }`}
+              >
+                <span>{tier3Qty}+ pcs (Container / Pallet)</span>
+                <span className="font-black text-emerald-700">₹{tier3Price}/pc (15% Off)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Wholesale Action Buttons */}
+          <div className="space-y-3 pt-2">
+            {/* Outline Button: Add to Wholesale Quote Basket */}
             <button
-              onClick={handleAddToBasket}
-              className={`inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl font-bold text-xs uppercase tracking-wider transition shadow-sm ${
+              type="button"
+              onClick={handleAddToQuoteBasket}
+              className={`w-full py-3.5 px-4 rounded-xl border-2 text-sm font-black tracking-wide uppercase transition flex items-center justify-center gap-2 shadow-xs cursor-pointer ${
                 added
-                  ? "bg-emerald-600 text-white"
-                  : "bg-brand-700 hover:bg-brand-800 text-white"
+                  ? "bg-emerald-600 border-emerald-600 text-white"
+                  : "bg-white border-[#e03a3a] text-[#e03a3a] hover:bg-rose-50"
               }`}
             >
-              {added ? (
-                <>
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Added to Quote Basket!</span>
-                </>
-              ) : (
-                <>
-                  <ClipboardList className="w-4 h-4 text-accent-300" />
-                  <span>Add to Quote Basket</span>
-                </>
-              )}
+              <ClipboardList className="w-4 h-4" />
+              <span>{added ? "Added to Quote Basket ✓" : "Add to Wholesale Quote Basket"}</span>
             </button>
 
+            {/* Primary Coral/Red Button: Buy Wholesale Lot Now */}
+            <Link
+              href={`/enquiry?product=${encodeURIComponent(product.name)}&qty=${quantity}`}
+              className="w-full py-3.5 px-4 rounded-xl bg-[#e03a3a] hover:bg-[#c92f2f] text-white text-sm font-black tracking-wide uppercase transition flex items-center justify-center gap-2 shadow-md cursor-pointer"
+            >
+              <span>Buy Wholesale Lot (Instant Proforma)</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            {/* WhatsApp Wholesale Desk Button */}
             <a
               href={`https://wa.me/919876543210?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs transition"
+              className="w-full py-3 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-emerald-600" />
-              <span>Inquire via WhatsApp</span>
+              <span>Inquire on WhatsApp Desk (Instant Rate Negotiation)</span>
             </a>
           </div>
 
-          {/* Reassurance Features */}
-          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-[11px] text-neutral-muted">
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-brand-600" />
-              <span>Input Tax Credit (GST 18%)</span>
+          {/* Pickup & Commercial Logistics Details (Exact Candlemould Style) */}
+          <div className="pt-4 border-t border-neutral-200 space-y-2 text-xs text-neutral-600">
+            <div className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div>
+                <span>
+                  Pickup available at{" "}
+                  <strong className="text-neutral-900">
+                    {product.pickupHub || "Niral Industries, Mulund (W), Mumbai"}
+                  </strong>
+                </span>
+                <p className="text-neutral-500 text-[11px] mt-0.5">
+                  Usually ready in 2-4 days. Verified GST Invoice and E-Way Bills provided.
+                </p>
+                <Link
+                  href="/policies/shipping"
+                  className="text-amber-600 font-bold hover:underline text-[11px]"
+                >
+                  View store information &amp; logistics policy
+                </Link>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Truck className="w-3.5 h-3.5 text-brand-600" />
-              <span>Pan-India Commercial Freight</span>
+          </div>
+
+          {/* Social Share Bar */}
+          <div className="pt-4 border-t border-neutral-200 flex items-center gap-3 text-xs text-neutral-500">
+            <span className="font-bold text-neutral-700">Share this:</span>
+            <div className="flex items-center gap-2">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                  typeof window !== "undefined" ? window.location.href : ""
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center hover:opacity-90 transition text-[11px] font-bold"
+                title="Share on Facebook"
+              >
+                f
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                  product.name
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center hover:opacity-90 transition text-[11px] font-bold"
+                title="Share on X"
+              >
+                𝕏
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                  typeof window !== "undefined" ? window.location.href : ""
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-blue-700 text-white flex items-center justify-center hover:opacity-90 transition text-[11px] font-bold"
+                title="Share on LinkedIn"
+              >
+                in
+              </a>
+              <a
+                href={`https://pinterest.com/pin/create/button/?description=${encodeURIComponent(
+                  product.name
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center hover:opacity-90 transition text-[11px] font-bold"
+                title="Share on Pinterest"
+              >
+                P
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Specifications & Packaging Tabs */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Technical Specifications */}
-        <div className="bg-white border border-line rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
-          <h3 className="font-extrabold text-sm text-brand-950 flex items-center gap-2 border-b border-line pb-3">
-            <FileText className="w-4 h-4 text-brand-700" /> Product Specifications
-          </h3>
-          <div className="divide-y divide-slate-100 text-xs">
+      {/* =========================================================
+          3. PRODUCT SPECIFICATIONS & DESCRIPTION TABS
+          ========================================================= */}
+      <div className="bg-white rounded-2xl border border-neutral-200 p-6 sm:p-8 shadow-xs space-y-6">
+        <div className="flex items-center gap-4 border-b border-neutral-200 text-sm font-bold">
+          <button
+            type="button"
+            onClick={() => setActiveTab("desc")}
+            className={`pb-3 border-b-2 transition ${
+              activeTab === "desc"
+                ? "border-amber-500 text-amber-600"
+                : "border-transparent text-neutral-500 hover:text-neutral-800"
+            }`}
+          >
+            Product Description
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("specs")}
+            className={`pb-3 border-b-2 transition ${
+              activeTab === "specs"
+                ? "border-amber-500 text-amber-600"
+                : "border-transparent text-neutral-500 hover:text-neutral-800"
+            }`}
+          >
+            Technical Specifications
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("packaging")}
+            className={`pb-3 border-b-2 transition ${
+              activeTab === "packaging"
+                ? "border-amber-500 text-amber-600"
+                : "border-transparent text-neutral-500 hover:text-neutral-800"
+            }`}
+          >
+            Master Carton &amp; Logistics
+          </button>
+        </div>
+
+        {activeTab === "desc" && (
+          <div className="space-y-4 text-sm text-neutral-700 leading-relaxed max-w-4xl">
+            <p>{product.detailedDescription || product.description}</p>
+            <p>
+              All lots are manufactured under rigorous QA standards, inspected for finish consistency, and packed in heavy-duty export master cartons to withstand interstate transit across India.
+            </p>
+          </div>
+        )}
+
+        {activeTab === "specs" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             {Object.entries(product.specs).map(([key, val]) => (
-              <div key={key} className="py-2.5 flex justify-between gap-4">
-                <span className="font-semibold text-neutral-muted">{key}</span>
-                <span className="font-bold text-neutral-text text-right">{val}</span>
+              <div
+                key={key}
+                className="p-3 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between"
+              >
+                <span className="font-bold text-neutral-600">{key}:</span>
+                <span className="font-semibold text-neutral-900">{val}</span>
               </div>
             ))}
           </div>
-        </div>
+        )}
 
-        {/* Master Carton Packaging */}
-        <div className="bg-white border border-line rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
-          <h3 className="font-extrabold text-sm text-brand-950 flex items-center gap-2 border-b border-line pb-3">
-            <Boxes className="w-4 h-4 text-brand-700" /> Master Carton Specifications
-          </h3>
-          <div className="divide-y divide-slate-100 text-xs">
-            <div className="py-2.5 flex justify-between">
-              <span className="font-semibold text-neutral-muted">Units per Master Carton:</span>
-              <strong className="text-neutral-text">{product.packaging.unitsPerCarton} pieces</strong>
+        {activeTab === "packaging" && (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 space-y-1">
+              <span className="text-neutral-500 font-bold block">Units per Master Carton</span>
+              <span className="text-xl font-black text-neutral-900">
+                {product.packaging.unitsPerCarton} Pcs
+              </span>
             </div>
-            <div className="py-2.5 flex justify-between">
-              <span className="font-semibold text-neutral-muted">Carton Dimensions:</span>
-              <strong className="text-neutral-text">{product.packaging.cartonDimensions}</strong>
+            <div className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 space-y-1">
+              <span className="text-neutral-500 font-bold block">Carton Dimensions</span>
+              <span className="text-base font-black text-neutral-900">
+                {product.packaging.cartonDimensions}
+              </span>
             </div>
-            <div className="py-2.5 flex justify-between">
-              <span className="font-semibold text-neutral-muted">Gross Carton Weight:</span>
-              <strong className="text-neutral-text">{product.packaging.grossWeight}</strong>
-            </div>
-            <div className="py-2.5 flex justify-between">
-              <span className="font-semibold text-neutral-muted">Damage Protection:</span>
-              <strong className="text-emerald-700 font-bold">5-Ply Corrugated + Strapping</strong>
+            <div className="p-4 bg-neutral-50 rounded-xl border border-neutral-200 space-y-1">
+              <span className="text-neutral-500 font-bold block">Gross Master Weight</span>
+              <span className="text-xl font-black text-neutral-900">
+                {product.packaging.grossWeight}
+              </span>
             </div>
           </div>
+        )}
+      </div>
+
+      {/* =========================================================
+          4. "YOU MAY ALSO LIKE" SECTION (Exact Match Candlemould Image 2)
+          ========================================================= */}
+      <div className="pt-8 space-y-6">
+        <div className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight">
+            You may also like
+          </h2>
+          <p className="text-xs text-neutral-500 mt-1">
+            Complementary factory lots with shared freight dispatch
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {relatedProducts.map((rel) => {
+            const relDiscount = Math.round(((rel.mrp - rel.price) / rel.mrp) * 100);
+
+            return (
+              <div
+                key={rel.id}
+                className="bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-xs hover:border-amber-400 hover:shadow-md transition flex flex-col justify-between group"
+              >
+                {/* Visual Thumbnail */}
+                <Link
+                  href={`/product/${rel.slug}`}
+                  className="relative aspect-square bg-gradient-to-br from-amber-50 to-neutral-100 p-4 flex flex-col items-center justify-center overflow-hidden"
+                >
+                  <div className="w-20 h-20 rounded-full bg-amber-400/30 border border-amber-400/50 flex items-center justify-center group-hover:scale-110 transition duration-300">
+                    <Flame className="w-8 h-8 text-amber-600" />
+                  </div>
+
+                  {/* Save XX% Badge */}
+                  <div className="absolute top-2 left-2">
+                    <span className="px-2 py-0.5 rounded bg-[#e03a3a] text-white text-[10px] font-black uppercase tracking-wider">
+                      Save {relDiscount}%
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Details */}
+                <div className="p-3 space-y-1.5 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="text-[11px] text-neutral-400 line-through">
+                      Rs. {rel.mrp.toFixed(2)}
+                    </div>
+                    <div className="text-base font-black text-[#e03a3a]">
+                      Rs. {rel.price.toFixed(2)}
+                    </div>
+                    <Link
+                      href={`/product/${rel.slug}`}
+                      className="text-xs font-bold text-neutral-800 line-clamp-2 hover:text-amber-600 transition leading-snug mt-1"
+                    >
+                      {rel.name}
+                    </Link>
+                    <span className="text-[10px] font-mono text-neutral-400 block mt-0.5">
+                      {rel.sku}
+                    </span>
+                  </div>
+
+                  <Link
+                    href={`/product/${rel.slug}`}
+                    className="w-full mt-2 py-1.5 rounded-lg bg-neutral-100 hover:bg-amber-500 hover:text-stone-950 text-neutral-700 text-xs font-bold text-center transition block"
+                  >
+                    View Wholesale Lot
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
