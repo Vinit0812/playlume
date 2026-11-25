@@ -132,7 +132,9 @@ export default function Header() {
           p.name.toLowerCase().includes(q) ||
           p.sku.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
-          p.tags.some((t) => t.toLowerCase().includes(q));
+          p.tags.some((t) => t.toLowerCase().includes(q)) ||
+          (p.variantItems && p.variantItems.some((v) => v.label.toLowerCase().includes(q) || Object.values(v.attributes).some((attr) => attr.toLowerCase().includes(q)))) ||
+          (p.variants && p.variants.some((v) => v.value.toLowerCase().includes(q)));
         return matchesCategory && matchesText;
       }).slice(0, 5)
     : [];

@@ -10,22 +10,7 @@ import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import { Search, Filter, Layers, ArrowRight, Package, CheckCircle2 } from "lucide-react";
 import { MASTER_PRODUCTS } from "@/lib/products-data";
 
-const ALL_PRODUCTS: ProductProps[] = MASTER_PRODUCTS.map((p) => ({
-  id: p.id,
-  slug: p.slug,
-  sku: p.sku,
-  name: p.name,
-  category: p.category,
-  categorySlug: p.categorySlug,
-  categoryTone: p.categoryTone,
-  image: p.image,
-  moq: p.moq,
-  price: p.price,
-  mrp: p.mrp,
-  status: p.status,
-  description: p.description,
-  specs: p.specs,
-}));
+const ALL_PRODUCTS = MASTER_PRODUCTS;
 
 function CatalogueContent() {
   const searchParams = useSearchParams();
@@ -98,6 +83,9 @@ function CatalogueContent() {
       p.name.toLowerCase().includes(q) ||
       p.sku.toLowerCase().includes(q) ||
       p.category.toLowerCase().includes(q) ||
+      (p.tags && p.tags.some((t) => t.toLowerCase().includes(q))) ||
+      (p.variantItems && p.variantItems.some((v) => v.label.toLowerCase().includes(q) || Object.values(v.attributes).some((attr) => attr.toLowerCase().includes(q)))) ||
+      (p.variants && p.variants.some((v) => v.value.toLowerCase().includes(q))) ||
       (p.description && p.description.toLowerCase().includes(q));
     return matchesCategory && matchesStatus && matchesSearch;
   }).sort((a, b) => {
