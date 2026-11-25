@@ -1,101 +1,50 @@
 [
   {
     "id": 1,
+    "title": "NIRAL INDUSTRIES • TRENDING CHRISTMAS COLLECTION",
+    "subtitle": "Original Collection Designs | Festive Candle Moulds & Decor | Direct Factory Sourcing",
+    "badge": "Festive Wholesale Sourcing • Rapid Dispatch",
+    "division": "Home & Festive Decor",
+    "ctaText": "Shop Festive Moulds",
+    "ctaLink": "/products?category=home",
+    "position": "Hero Main",
+    "status": "active",
+    "imageUrl": "/banners/christmas-banner.jpg",
+    "bgColor": "from-[#141414] via-[#1c1712] to-[#141414]",
+    "accentColor": "#f59e0b",
+    "impressionCount": 16820,
+    "clickCount": 2340
+  },
+  {
+    "id": 2,
     "title": "NIRAL INDUSTRIES • ELEGANT URLI & FESTIVE COLLECTION",
-    "subtitle": "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing with Pan-India Dispatch",
+    "subtitle": "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing",
     "badge": "Festive Wholesale Lots • From ₹22/- Only",
     "division": "Home & Festive Decor",
     "ctaText": "Explore Urli Collection",
     "ctaLink": "/products?category=home",
     "position": "Hero Main",
     "status": "active",
+    "imageUrl": "/banners/urli-collection-banner.jpg",
     "bgColor": "from-[#141414] via-[#1c1712] to-[#141414]",
     "accentColor": "#f59e0b",
-    "highlightItems": [
-      {
-        "name": "Lotus Golden Touch Up",
-        "price": "₹42/- only"
-      },
-      {
-        "name": "Lotus Diya Urli with Stand",
-        "price": "₹22/- only"
-      },
-      {
-        "name": "Hammered Ball Type Urli",
-        "price": "₹47/- only"
-      },
-      {
-        "name": "Royal Elephant Diya Urli",
-        "price": "₹75/- only"
-      }
-    ],
     "impressionCount": 14820,
     "clickCount": 1940
   },
   {
-    "id": 2,
-    "title": "NEXT-GEN GAN 65W FAST CHARGING & AUDIO WHOLESALE",
-    "subtitle": "Master Carton Factory Rates for Super-Stockists & Retail Electronics Chains | Full Warranty & BIS Certified",
+    "id": 3,
+    "title": "NEXT-GEN GAN 65W FAST CHARGING & ELECTRONICS WHOLESALE",
+    "subtitle": "Master Carton Factory Rates for Super-Stockists & Retail Chains | BIS Certified",
     "badge": "Direct Factory Lots • MOQ 20 pcs • Rapid Dispatch",
     "division": "Consumer Electronics",
     "ctaText": "View Electronics Catalogue",
     "ctaLink": "/products?category=electronics",
     "position": "Hero Main",
     "status": "active",
+    "imageUrl": "/banners/electronics-wholesale-banner.jpg",
     "bgColor": "from-[#141414] via-[#121922] to-[#141414]",
     "accentColor": "#38bdf8",
-    "highlightItems": [
-      {
-        "name": "GaN Turbo 65W Hub",
-        "price": "₹220/- only"
-      },
-      {
-        "name": "TWS Wireless Earbuds 5.3",
-        "price": "₹180/- only"
-      },
-      {
-        "name": "10,000mAh Magnetic Bank",
-        "price": "₹410/- only"
-      },
-      {
-        "name": "Portable USB-C Juicer",
-        "price": "₹340/- only"
-      }
-    ],
-    "impressionCount": 9420,
-    "clickCount": 1420
-  },
-  {
-    "id": 3,
-    "title": "180 GSM BIO-WASHED COMBED COTTON APPAREL",
-    "subtitle": "Export Quality Pre-Shrunk Single Jersey Knits | Ready Dispatch Across India | Ideal for Screen Printing & Retail",
-    "badge": "Premium Combed Cotton • From ₹140/- Only",
-    "division": "Clothing & Apparel",
-    "ctaText": "Explore Apparel Lots",
-    "ctaLink": "/products?category=clothing",
-    "position": "Hero Main",
-    "status": "active",
-    "bgColor": "from-[#141414] via-[#191520] to-[#141414]",
-    "accentColor": "#f43f5e",
-    "highlightItems": [
-      {
-        "name": "Bio-Washed Plain Tees",
-        "price": "₹145/- only"
-      },
-      {
-        "name": "Kids Nightwear Sets",
-        "price": "₹180/- only"
-      },
-      {
-        "name": "Combed Cotton Boxers",
-        "price": "₹190/- only"
-      },
-      {
-        "name": "Winter Fleece Hoodies",
-        "price": "₹390/- only"
-      }
-    ],
-    "impressionCount": 8120,
-    "clickCount": 980
+    "impressionCount": 11420,
+    "clickCount": 1720
   }
 ]
