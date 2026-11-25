@@ -11,6 +11,9 @@ import {
   CheckCircle2,
   Package,
   Layers,
+  Flame,
+  Cpu,
+  Shirt,
 } from "lucide-react";
 import { StoredBanner } from "@/lib/local-storage";
 
@@ -26,7 +29,7 @@ const FALLBACK_BANNERS: StoredBanner[] = [
     ctaLink: "/products?category=home",
     position: "Hero Main",
     status: "active",
-    bgColor: "from-[#1a120c] via-[#26180f] to-[#120a05]",
+    bgColor: "from-[#141414] via-[#1c1712] to-[#141414]",
     accentColor: "#f59e0b",
     highlightItems: [
       { name: "Lotus Golden Touch Up", price: "₹42/- only" },
@@ -48,8 +51,8 @@ const FALLBACK_BANNERS: StoredBanner[] = [
     ctaLink: "/products?category=electronics",
     position: "Hero Main",
     status: "active",
-    bgColor: "from-[#082220] via-[#0d3431] to-[#051615]",
-    accentColor: "#10b981",
+    bgColor: "from-[#141414] via-[#121922] to-[#141414]",
+    accentColor: "#38bdf8",
     highlightItems: [
       { name: "GaN Turbo 65W Hub", price: "₹220/- only" },
       { name: "TWS Wireless Earbuds 5.3", price: "₹180/- only" },
@@ -70,8 +73,8 @@ const FALLBACK_BANNERS: StoredBanner[] = [
     ctaLink: "/products?category=clothing",
     position: "Hero Main",
     status: "active",
-    bgColor: "from-[#141b26] via-[#1c2738] to-[#0c121c]",
-    accentColor: "#38bdf8",
+    bgColor: "from-[#141414] via-[#191520] to-[#141414]",
+    accentColor: "#f43f5e",
     highlightItems: [
       { name: "Bio-Washed Plain Tees", price: "₹145/- only" },
       { name: "Kids Nightwear Sets", price: "₹180/- only" },
@@ -103,7 +106,7 @@ export default function DynamicHeroSlider() {
           }
         }
       } catch (e) {
-        // Fallback already initialized
+        // Fallback already loaded
       }
     }
     fetchBanners();
@@ -133,36 +136,36 @@ export default function DynamicHeroSlider() {
 
   return (
     <section
-      className="relative w-full overflow-hidden text-white border-b border-neutral-800 shadow-xl select-none"
+      className="relative w-full overflow-hidden bg-[#141414] text-white border-b border-neutral-800 shadow-2xl select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Gradient with Subtle Ambient Glow */}
+      {/* Background Gradient with Smooth Color Transition */}
       <div
-        className={`absolute inset-0 bg-gradient-to-r ${activeBanner.bgColor} transition-colors duration-700 ease-in-out`}
+        className={`absolute inset-0 bg-gradient-to-r ${activeBanner.bgColor} transition-all duration-700 ease-in-out opacity-90`}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-black/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-black/60 pointer-events-none" />
 
       {/* Decorative Gold Top & Bottom Hairline */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14 lg:py-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* =========================================================
               LEFT COLUMN: HERO HEADLINE, BADGES, AND CTAS
               ========================================================= */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
+          <div className="lg:col-span-7 space-y-5 text-left">
             
             {/* Promotional Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-black tracking-wide text-amber-300">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-xs font-black tracking-wide text-amber-300 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
               <span>{activeBanner.badge || "Verified Wholesale Offer"}</span>
             </div>
 
-            {/* Headline Title */}
-            <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.18] text-white">
+            {/* Headline Title with Rich Luxury Gradient */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[46px] font-black tracking-tight leading-[1.12] text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-amber-200 drop-shadow-sm">
               {activeBanner.title}
             </h1>
 
@@ -172,17 +175,17 @@ export default function DynamicHeroSlider() {
             </p>
 
             {/* Wholesale Trade Guarantees */}
-            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/10 text-[11px] sm:text-xs text-neutral-300">
-              <div className="flex items-center gap-1.5 font-bold">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-xs text-neutral-300">
+              <div className="flex items-center gap-2 font-bold">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Verified MOQs</span>
               </div>
-              <div className="flex items-center gap-1.5 font-bold">
+              <div className="flex items-center gap-2 font-bold">
                 <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>GST Invoicing</span>
               </div>
-              <div className="flex items-center gap-1.5 font-bold">
-                <Package className="w-4 h-4 text-sky-400 shrink-0" />
+              <div className="flex items-center gap-2 font-bold">
+                <Package className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Pan-India Dispatch</span>
               </div>
             </div>
@@ -191,7 +194,7 @@ export default function DynamicHeroSlider() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href={activeBanner.ctaLink}
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-black text-xs uppercase tracking-wider transition shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 cursor-pointer"
+                className="inline-flex items-center gap-2 px-7 sm:px-9 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-stone-950 font-black text-xs uppercase tracking-wider transition shadow-lg hover:shadow-amber-500/30 hover:-translate-y-0.5 cursor-pointer"
               >
                 <span>{activeBanner.ctaText}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -199,7 +202,7 @@ export default function DynamicHeroSlider() {
 
               <Link
                 href="/enquiry"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/25 transition backdrop-blur-xs cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/25 transition backdrop-blur-xs cursor-pointer"
               >
                 <span>Request Custom Lot Quote</span>
               </Link>
@@ -210,13 +213,16 @@ export default function DynamicHeroSlider() {
               RIGHT COLUMN: FEATURED LOT PREVIEW TILES (4 Grid Cards)
               ========================================================= */}
           <div className="lg:col-span-5">
-            <div className="bg-black/35 backdrop-blur-md rounded-2xl border border-white/15 p-4 sm:p-5 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
-                <span className="text-xs font-black tracking-wider uppercase text-amber-400">
-                  {activeBanner.division}
-                </span>
+            <div className="bg-neutral-900/80 backdrop-blur-md rounded-2xl border border-neutral-700/60 p-4 sm:p-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-neutral-800 pb-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span className="text-xs font-black tracking-wider uppercase text-amber-400">
+                    {activeBanner.division}
+                  </span>
+                </div>
                 <span className="text-[10px] text-neutral-400 font-semibold">
-                  Featured Sourcing Lots
+                  Featured Wholesale Lots
                 </span>
               </div>
 
@@ -232,13 +238,18 @@ export default function DynamicHeroSlider() {
                   <Link
                     key={idx}
                     href={activeBanner.ctaLink}
-                    className="p-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-amber-400/60 transition group flex flex-col justify-between h-24"
+                    className="p-3 rounded-xl bg-neutral-800/60 hover:bg-neutral-800 border border-neutral-700/50 hover:border-amber-400/60 transition group flex flex-col justify-between h-28"
                   >
-                    <span className="text-xs font-bold text-neutral-200 group-hover:text-white line-clamp-2 leading-snug">
-                      {item.name}
-                    </span>
+                    <div className="flex items-start justify-between gap-1">
+                      <span className="text-xs font-bold text-neutral-200 group-hover:text-white line-clamp-2 leading-snug">
+                        {item.name}
+                      </span>
+                      <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+                        <Flame className="w-3.5 h-3.5 text-amber-400" />
+                      </div>
+                    </div>
                     <div className="flex items-center justify-between pt-1">
-                      <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-400 text-stone-950">
+                      <span className="text-[10.5px] font-black px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-stone-950 shadow-xs">
                         {item.price}
                       </span>
                       <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-amber-400 group-hover:translate-x-0.5 transition" />
@@ -247,13 +258,14 @@ export default function DynamicHeroSlider() {
                 ))}
               </div>
 
-              <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-neutral-300 font-medium">
+              <div className="mt-3 pt-3 border-t border-neutral-800 flex items-center justify-between text-[11px] text-neutral-400 font-medium">
                 <span>Configurable in Admin Dashboard</span>
                 <Link
                   href="/admin/banners"
-                  className="text-amber-400 hover:underline font-bold text-[10.5px]"
+                  className="text-amber-400 hover:text-amber-300 font-bold text-[10.5px] flex items-center gap-1"
                 >
-                  Manage Banners ↗
+                  <span>Manage Banners</span>
+                  <span>↗</span>
                 </Link>
               </div>
             </div>
@@ -270,10 +282,10 @@ export default function DynamicHeroSlider() {
               <button
                 key={b.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   currentIndex === idx
-                    ? "w-8 bg-amber-400 shadow-sm"
-                    : "w-2 bg-white/30 hover:bg-white/50"
+                    ? "w-8 bg-amber-400 shadow-md shadow-amber-500/40"
+                    : "w-2.5 bg-white/30 hover:bg-white/50"
                 }`}
                 aria-label={`Jump to slide ${idx + 1}`}
               />
@@ -284,14 +296,14 @@ export default function DynamicHeroSlider() {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrev}
-              className="w-9 h-9 rounded-lg bg-black/40 hover:bg-black/70 text-white border border-white/20 flex items-center justify-center transition cursor-pointer"
+              className="w-9 h-9 rounded-lg bg-neutral-900/70 hover:bg-neutral-800 text-white border border-neutral-700 flex items-center justify-center transition cursor-pointer"
               aria-label="Previous banner"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="w-9 h-9 rounded-lg bg-black/40 hover:bg-black/70 text-white border border-white/20 flex items-center justify-center transition cursor-pointer"
+              className="w-9 h-9 rounded-lg bg-neutral-900/70 hover:bg-neutral-800 text-white border border-neutral-700 flex items-center justify-center transition cursor-pointer"
               aria-label="Next banner"
             >
               <ChevronRight className="w-5 h-5" />

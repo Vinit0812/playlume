@@ -2,14 +2,14 @@
   {
     "id": 1,
     "title": "NIRAL INDUSTRIES • ELEGANT URLI & FESTIVE COLLECTION",
-    "subtitle": "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing",
+    "subtitle": "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing with Pan-India Dispatch",
     "badge": "Festive Wholesale Lots • From ₹22/- Only",
     "division": "Home & Festive Decor",
-    "ctaText": "Explore Full Collection",
+    "ctaText": "Explore Urli Collection",
     "ctaLink": "/products?category=home",
     "position": "Hero Main",
     "status": "active",
-    "bgColor": "from-[#1a120c] via-[#26180f] to-[#120a05]",
+    "bgColor": "from-[#141414] via-[#1c1712] to-[#141414]",
     "accentColor": "#f59e0b",
     "highlightItems": [
       {
@@ -17,11 +17,11 @@
         "price": "₹42/- only"
       },
       {
-        "name": "Lotus Diya Urli",
+        "name": "Lotus Diya Urli with Stand",
         "price": "₹22/- only"
       },
       {
-        "name": "Hammered Ball Urli",
+        "name": "Hammered Ball Type Urli",
         "price": "₹47/- only"
       },
       {
@@ -34,31 +34,31 @@
   },
   {
     "id": 2,
-    "title": "NEXT-GEN GAN CHARGING & AUDIO WHOLESALE LOTS",
-    "subtitle": "Master Carton Factory Rates for Super-Stockists & Retail Chains | Transparent MOQs",
+    "title": "NEXT-GEN GAN 65W FAST CHARGING & AUDIO WHOLESALE",
+    "subtitle": "Master Carton Factory Rates for Super-Stockists & Retail Electronics Chains | Full Warranty & BIS Certified",
     "badge": "Direct Factory Lots • MOQ 20 pcs • Rapid Dispatch",
     "division": "Consumer Electronics",
     "ctaText": "View Electronics Catalogue",
     "ctaLink": "/products?category=electronics",
     "position": "Hero Main",
     "status": "active",
-    "bgColor": "from-[#082220] via-[#0d3431] to-[#051615]",
-    "accentColor": "#10b981",
+    "bgColor": "from-[#141414] via-[#121922] to-[#141414]",
+    "accentColor": "#38bdf8",
     "highlightItems": [
       {
         "name": "GaN Turbo 65W Hub",
         "price": "₹220/- only"
       },
       {
-        "name": "TWS Earbuds 5.3",
+        "name": "TWS Wireless Earbuds 5.3",
         "price": "₹180/- only"
       },
       {
-        "name": "10,000mAh Power Bank",
+        "name": "10,000mAh Magnetic Bank",
         "price": "₹410/- only"
       },
       {
-        "name": "Portable Juicer Blender",
+        "name": "Portable USB-C Juicer",
         "price": "₹340/- only"
       }
     ],
@@ -68,18 +68,18 @@
   {
     "id": 3,
     "title": "180 GSM BIO-WASHED COMBED COTTON APPAREL",
-    "subtitle": "Export Quality Pre-Shrunk Single Jersey Knits | Ready Dispatch Across India",
+    "subtitle": "Export Quality Pre-Shrunk Single Jersey Knits | Ready Dispatch Across India | Ideal for Screen Printing & Retail",
     "badge": "Premium Combed Cotton • From ₹140/- Only",
     "division": "Clothing & Apparel",
     "ctaText": "Explore Apparel Lots",
     "ctaLink": "/products?category=clothing",
     "position": "Hero Main",
     "status": "active",
-    "bgColor": "from-[#141b26] via-[#1c2738] to-[#0c121c]",
-    "accentColor": "#38bdf8",
+    "bgColor": "from-[#141414] via-[#191520] to-[#141414]",
+    "accentColor": "#f43f5e",
     "highlightItems": [
       {
-        "name": "Bio-Washed Tees",
+        "name": "Bio-Washed Plain Tees",
         "price": "₹145/- only"
       },
       {
@@ -87,7 +87,7 @@
         "price": "₹180/- only"
       },
       {
-        "name": "Combed Boxers 3-Pack",
+        "name": "Combed Cotton Boxers",
         "price": "₹190/- only"
       },
       {

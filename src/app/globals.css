@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand (Deep Teal - trust, institutional trade) */
-  --brand-50: #eef6f5;
-  --brand-100: #d5e9e6;
-  --brand-200: #a9d2cd;
-  --brand-300: #78b7b0;
-  --brand-500: #1f7f78;
-  --brand-600: #176a65;
-  --brand-700: #0f5450;
-  --brand-800: #0c4240;
-  --brand-900: #0a3231;
-  --brand-950: #062221;
+  /* Brand (Executive Dark Slate & Obsidian) */
+  --brand-50: #f8fafc;
+  --brand-100: #f1f5f9;
+  --brand-200: #e2e8f0;
+  --brand-300: #cbd5e1;
+  --brand-500: #334155;
+  --brand-600: #252e3d;
+  --brand-700: #1e293b;
+  --brand-800: #181818;
+  --brand-900: #141414;
+  --brand-950: #0a0a0a;
 
   /* Accent (Warm Saffron Gold) */
-  --accent-100: #fcefd3;
-  --accent-300: #f6cc7a;
-  --accent-400: #f2b33d;
-  --accent-500: #e39b14;
-  --accent-600: #c7820b;
-  --accent-700: #8f5d08;
+  --accent-100: #fef3c7;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
 
   /* Neutrals (Warm Stone) */
   --bg: #f7f6f3;
@@ -114,16 +114,16 @@ body {
 .text-neutral-muted { color: var(--muted); }
 .text-neutral-subtle { color: var(--subtle); }
 
-/* Hero Matrix Pattern */
+/* Hero Matrix Pattern (Sleek Dark Slate) */
 .hero-matrix {
   position: relative;
-  background-color: var(--brand-900);
+  background-color: #141414;
 }
 .hero-matrix::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
-  background-size: 22px 22px;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
   pointer-events: none;
 }

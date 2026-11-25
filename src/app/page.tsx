@@ -195,99 +195,49 @@ export default function HomePage() {
         {/* Dynamic Homepage Hero Slider (Configurable from Admin Console) */}
         <DynamicHeroSlider />
 
-        {/* 1. Hero Section (Deep Teal with Dot Matrix) */}
-        <section className="hero-matrix py-16 lg:py-24 text-white overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border border-white/20 bg-white/5 text-brand-200 mb-6">
-                <span className="w-2 h-2 rounded-full bg-accent-400"></span>
-                Multi-Category Wholesale Trading Enterprise
-              </div>
-
-              <h1 className="text-3xl sm:text-5xl lg:text-[44px] font-black tracking-tight leading-[1.15]">
-                Connecting manufacturers,{" "}
-                <em className="not-italic text-accent-400">retailers &amp; distributors.</em>
-              </h1>
-
-              <p className="mt-5 text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
-                One consolidated supplier for toys, clothing, watches, electronics, home &amp; kitchen, and stationery. Direct bulk sourcing for B2B buyers with transparent MOQs and fast dispatch.
-              </p>
-
-              <div className="flex flex-wrap gap-3 mt-8">
-                <Link
-                  href="/products"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-accent-400 hover:bg-accent-300 text-brand-950 font-extrabold text-xs uppercase tracking-wider transition shadow-lg"
-                >
-                  <span>Explore Catalogue</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/enquiry"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/25 transition"
-                >
-                  <span>Request a Quote</span>
-                </Link>
-              </div>
-
-              {/* 3 Hero Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 mt-10 border-t border-white/15 text-left">
-                <div>
-                  <strong className="block text-xl sm:text-2xl font-black text-white">6 Categories</strong>
-                  <span className="text-xs text-brand-200">Unified Sourcing</span>
-                </div>
-                <div>
-                  <strong className="block text-xl sm:text-2xl font-black text-white">MOQ from 20 pcs</strong>
-                  <span className="text-xs text-brand-200">Low Entry Quantities</span>
-                </div>
-                <div>
-                  <strong className="block text-xl sm:text-2xl font-black text-white">Pan-India</strong>
-                  <span className="text-xs text-brand-200">Logistics Network</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Quick Quote Form Card */}
-            <div className="w-full">
-              <HeroQuickQuote />
-            </div>
-          </div>
-        </section>
-
-        {/* 2. Trust Indicators Strip */}
-        <section className="bg-white border-b border-line py-6">
+        {/* 1. Executive Trust Indicators Strip */}
+        <section className="bg-white border-b border-line py-7 shadow-xs relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-3">
-              <Factory className="w-8 h-8 text-brand-600 shrink-0" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+                <Factory className="w-5 h-5 text-amber-600" />
+              </div>
               <div>
-                <h4 className="font-extrabold text-xs text-neutral-text">Direct Sourcing</h4>
-                <p className="text-[11px] text-neutral-muted">Verified factory pricing</p>
+                <h4 className="font-extrabold text-xs text-neutral-900">Direct Factory Sourcing</h4>
+                <p className="text-[11px] text-neutral-500">Zero broker markups</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Tag className="w-8 h-8 text-brand-600 shrink-0" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+                <Tag className="w-5 h-5 text-amber-600" />
+              </div>
               <div>
-                <h4 className="font-extrabold text-xs text-neutral-text">Tiered Wholesale Rates</h4>
-                <p className="text-[11px] text-neutral-muted">Higher quantity, lower rate</p>
+                <h4 className="font-extrabold text-xs text-neutral-900">Tiered Wholesale Rates</h4>
+                <p className="text-[11px] text-neutral-500">Higher volume, lower unit rate</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <ShieldCheck className="w-8 h-8 text-brand-600 shrink-0" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-amber-600" />
+              </div>
               <div>
-                <h4 className="font-extrabold text-xs text-neutral-text">Quality Checked</h4>
-                <p className="text-[11px] text-neutral-muted">Batch QC before dispatch</p>
+                <h4 className="font-extrabold text-xs text-neutral-900">100% Quality Checked</h4>
+                <p className="text-[11px] text-neutral-500">Master batch QC before transit</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Headset className="w-8 h-8 text-brand-600 shrink-0" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
+                <Headset className="w-5 h-5 text-amber-600" />
+              </div>
               <div>
-                <h4 className="font-extrabold text-xs text-neutral-text">Dedicated B2B Desk</h4>
-                <p className="text-[11px] text-neutral-muted">Fast quotes on WhatsApp</p>
+                <h4 className="font-extrabold text-xs text-neutral-900">Dedicated B2B Desk</h4>
+                <p className="text-[11px] text-neutral-500">Fast quotes &amp; dispatch on WhatsApp</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 3. Merchandise Division Tiles */}
+        {/* 2. Merchandise Division Tiles */}
         <section className="py-16 px-4 bg-surface-2 border-b border-line">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -371,7 +321,47 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. 5-Step Ordering Workflow */}
+        {/* 5. Executive Wholesale Quotation & RFQ Desk */}
+        <section className="py-16 px-4 bg-[#141414] text-white border-y border-neutral-800 shadow-xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent pointer-events-none" />
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+            <div className="lg:col-span-6 space-y-5 text-left">
+              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                Pan-India Commercial Logistics
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white leading-tight">
+                Direct Manufacturer Wholesale Sourcing &amp; RFQ Desk
+              </h2>
+              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                Connect directly with our corporate trading desk. Submit your required lot quantities, target city, and GST details to receive an official proforma invoice with volume price slabs within 2 hours.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-neutral-800 text-xs text-neutral-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>GST Invoicing &amp; E-Way Bills</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Verified Factory Lead Times</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Master Carton Packaging</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Direct WhatsApp Sourcing Support</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 w-full">
+              <HeroQuickQuote />
+            </div>
+          </div>
+        </section>
+
+        {/* 6. 5-Step Ordering Workflow */}
         <section className="py-16 px-4 bg-surface-2 border-b border-line">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-xl mx-auto mb-12">
