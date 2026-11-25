@@ -9,16 +9,8 @@ import HeroQuickQuote from "@/components/home/HeroQuickQuote";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import {
   ArrowRight,
-  ShieldCheck,
-  Tag,
-  Headset,
-  Factory,
   CheckCircle2,
   TrendingUp,
-  FileText,
-  Truck,
-  Building2,
-  Sparkles,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -182,92 +174,48 @@ export default function HomePage() {
         {/* Dynamic Homepage Hero Slider (Configurable from Admin Console) */}
         <DynamicHeroSlider />
 
-        {/* 1. Executive Trust Indicators Strip */}
-        <section className="bg-white border-b border-slate-200/80 py-6 sm:py-7 shadow-2xs relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                <Factory className="w-5 h-5 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-xs text-neutral-900">Direct Factory Sourcing</h4>
-                <p className="text-[11px] text-neutral-500">Zero intermediary markups</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                <Tag className="w-5 h-5 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-xs text-neutral-900">Tiered Wholesale Rates</h4>
-                <p className="text-[11px] text-neutral-500">Higher volume, lower unit rate</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-5 h-5 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-xs text-neutral-900">100% Quality Checked</h4>
-                <p className="text-[11px] text-neutral-500">Master batch QC before transit</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0">
-                <Headset className="w-5 h-5 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-xs text-neutral-900">Dedicated B2B Desk</h4>
-                <p className="text-[11px] text-neutral-500">Fast quotes &amp; dispatch on WhatsApp</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 2. Top Wholesale Categories Carousel (Matching User Reference Image) */}
+        {/* 1. Top Wholesale Categories Carousel (Centered Header, Clean Layout) */}
         <CategoryCarousel />
 
-        {/* 3. Trending Wholesale Deals (Candlemould style with Save XX% badges) */}
-        <section className="py-14 sm:py-18 px-4 bg-white border-b border-slate-200/80">
+        {/* 2. Trending Wholesale Deals (Centered Header, Save XX% Badges) */}
+        <section className="py-16 sm:py-20 px-4 bg-white border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10.5px] font-extrabold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 mb-2">
-                  <TrendingUp className="w-3.5 h-3.5 text-amber-600" />
-                  <span>High Demand Commercial Lots • Up to 67% Retail Margins</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight">
-                  Trending Wholesale Deals
-                </h2>
-                <p className="text-xs text-neutral-500 mt-1 max-w-xl">
-                  Fast-moving commercial inventory curated for verified retail showrooms, stockists, and wholesale distributors across India.
-                </p>
-              </div>
-              <Link
-                href="/products"
-                className="text-xs font-bold text-amber-700 hover:text-amber-800 transition flex items-center gap-1 group shrink-0"
-              >
-                <span>Browse Full Wholesale Catalogue</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition" />
-              </Link>
+            {/* Centered Section Header */}
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
+                Trending Wholesale Deals
+              </h2>
+              <div className="w-12 h-1 bg-amber-500 mx-auto mt-2.5 mb-3 rounded-full" />
+              <p className="text-xs sm:text-sm text-neutral-500">
+                Fast-moving commercial lots our retailers and distributors reorder most often.
+              </p>
             </div>
 
+            {/* Product Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
             </div>
+
+            {/* Centered Browse CTA */}
+            <div className="mt-12 text-center">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-xs uppercase tracking-wider transition shadow-sm hover:shadow cursor-pointer"
+              >
+                <span>Browse Full Wholesale Catalogue</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* 4. Executive Wholesale Quotation & RFQ Desk */}
+        {/* 3. Executive Wholesale Quotation & RFQ Desk */}
         <section className="py-16 px-4 bg-[#141414] text-white border-y border-neutral-800 shadow-xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
             <div className="lg:col-span-6 space-y-5 text-left">
-              <span className="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                Pan-India Commercial Logistics
-              </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white leading-tight">
                 Direct Manufacturer Wholesale Sourcing &amp; RFQ Desk
               </h2>
@@ -300,7 +248,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. 5-Step Ordering Workflow */}
+        {/* 4. 5-Step Ordering Workflow */}
         <section className="py-16 px-4 bg-slate-50 border-b border-slate-200">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-xl mx-auto mb-12">
@@ -336,7 +284,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. Registered Buyer CTA Band */}
+        {/* 5. Registered Buyer CTA Band */}
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto bg-[#141414] rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl border border-neutral-800 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
