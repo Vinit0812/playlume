@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
+import CandleStyleHeroBanner from "@/components/home/CandleStyleHeroBanner";
 import HeroQuickQuote from "@/components/home/HeroQuickQuote";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import {
@@ -191,6 +192,9 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
+        {/* Candlemould-Style High-Impact Hero Showcase Banner */}
+        <CandleStyleHeroBanner />
+
         {/* 1. Hero Section (Deep Teal with Dot Matrix) */}
         <section className="hero-matrix py-16 lg:py-24 text-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center relative z-10">

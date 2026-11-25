@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
@@ -239,6 +240,58 @@ const ALL_PRODUCTS: ProductProps[] = [
     status: "in_stock",
     description: "Gas and induction compatible, 3-layer granite coating.",
   },
+  {
+    id: "p031",
+    sku: "URL-101",
+    name: "Golden Touch Lotus Urli (CD11801)",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 50,
+    price: 42,
+    mrp: 120,
+    status: "in_stock",
+    description: "Brass finish decorative lotus urli for floating flowers and tea lights.",
+  },
+  {
+    id: "p032",
+    sku: "URL-103",
+    name: "Hammered Round Small Urli",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 50,
+    price: 43,
+    mrp: 110,
+    status: "in_stock",
+    description: "Hand-hammered brass finish metal urli for festive events and institutional decor.",
+  },
+  {
+    id: "p033",
+    sku: "URL-107",
+    name: "Lotus Diya Urli with Center Well",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 100,
+    price: 22,
+    mrp: 65,
+    status: "in_stock",
+    description: "Traditional diya urli for floating candles and oil lamps.",
+  },
+  {
+    id: "p034",
+    sku: "URL-108",
+    name: "Royal Elephant Diya Urli Stand",
+    category: "Home & Kitchen",
+    categorySlug: "home",
+    categoryTone: "home",
+    moq: 25,
+    price: 75,
+    mrp: 220,
+    status: "in_stock",
+    description: "Intricately cast brass elephant stand with multi-tier floating bowl.",
+  },
 
   // Office & Stationery
   {
@@ -282,11 +335,25 @@ const ALL_PRODUCTS: ProductProps[] = [
   },
 ];
 
-export default function CataloguePage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedStatus, setSelectedStatus] = useState("all");
-  const [search, setSearch] = useState("");
+function CatalogueContent() {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get("category") || "all";
+  const initialSearch = searchParams.get("search") || "";
+  const initialStatus = searchParams.get("status") || "all";
+
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [selectedStatus, setSelectedStatus] = useState(initialStatus);
+  const [search, setSearch] = useState(initialSearch);
   const [sortBy, setSortBy] = useState("featured");
+
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    const q = searchParams.get("search");
+    const st = searchParams.get("status");
+    if (cat) setSelectedCategory(cat);
+    if (q) setSearch(q);
+    if (st) setSelectedStatus(st);
+  }, [searchParams]);
 
   const categoriesList = [
     { id: "all", name: "All Merchandise Lines", count: ALL_PRODUCTS.length },
@@ -294,7 +361,7 @@ export default function CataloguePage() {
     { id: "clothing", name: "Clothing & Apparel", count: 4 },
     { id: "watches", name: "Watches & Horology", count: 3 },
     { id: "electronics", name: "Consumer Electronics", count: 3 },
-    { id: "home", name: "Home & Kitchen", count: 3 },
+    { id: "home", name: "Home & Kitchen", count: 7 },
     { id: "stationery", name: "Office & Stationery", count: 3 },
   ];
 
@@ -459,5 +526,22 @@ export default function CataloguePage() {
       <Footer />
       <WhatsAppButton />
     </div>
+  );
+}
+
+export default function CataloguePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-surface-2 flex items-center justify-center p-8">
+          <div className="text-center space-y-2">
+            <div className="w-8 h-8 border-2 border-brand-700 border-t-transparent rounded-full animate-spin mx-auto" />
+            <p className="text-xs font-bold text-neutral-600">Loading wholesale catalogue...</p>
+          </div>
+        </div>
+      }
+    >
+      <CatalogueContent />
+    </Suspense>
   );
 }
