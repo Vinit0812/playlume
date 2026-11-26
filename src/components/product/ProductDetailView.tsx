@@ -39,7 +39,16 @@ export default function ProductDetailView({
   // Multi-variant attribute selection (Amazon / Flipkart style)
   const initialAttributes: Record<string, string> = {};
   if (product.variantOptions && product.variantOptions.length > 0) {
-    if (product.variantItems && product.variantItems.length > 0) {
+    // If this unrolled product represents a specific variant, match its attributes
+    const currentVariantMatch = product.variantItems?.find(
+      (item) =>
+        item.sku === product.sku ||
+        `${product.id}`.endsWith(item.id) ||
+        product.name.endsWith(`– ${item.label}`)
+    );
+    if (currentVariantMatch) {
+      Object.assign(initialAttributes, currentVariantMatch.attributes);
+    } else if (product.variantItems && product.variantItems.length > 0) {
       Object.assign(initialAttributes, product.variantItems[0].attributes);
     } else {
       product.variantOptions.forEach((opt) => {

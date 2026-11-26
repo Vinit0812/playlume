@@ -57,7 +57,7 @@ export interface MasterProduct {
   priority?: "high" | "medium" | "normal";
 }
 
-export const MASTER_PRODUCTS: MasterProduct[] = [
+const RAW_MASTER_PRODUCTS: MasterProduct[] = [
 
   // TOYS & GAMES
   // =====================================================================
@@ -6477,6 +6477,130 @@ export const MASTER_PRODUCTS: MasterProduct[] = [
   },
 ];
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
+
+function calculateVariantPricing(
+  parentPrice: number,
+  parentMrp: number,
+  label: string,
+  attrs: Record<string, string>,
+  existingPrice?: number,
+  existingMrp?: number
+) {
+  let price = existingPrice || parentPrice;
+  let mrp = existingMrp || parentMrp;
+
+  const combinedText = (label + " " + Object.values(attrs).join(" ")).toLowerCase();
+  let diff = 0;
+
+  // High demand color adjustment: Black / White / Navy / Stealth
+  const isHighDemandColor =
+    combinedText.includes("black") ||
+    combinedText.includes("white") ||
+    combinedText.includes("stealth") ||
+    combinedText.includes("midnight");
+
+  if (isHighDemandColor && !combinedText.includes("white border") && !combinedText.includes("pack_of_2")) {
+    if (price < 100) diff += 4;
+    else if (price < 250) diff += 10;
+    else diff += 15;
+  }
+
+  // Size increment adjustment
+  if (combinedText.includes("xxl") || combinedText.includes("3xl") || combinedText.includes("38") || combinedText.includes("44")) {
+    diff += 15;
+  } else if (combinedText.includes("xl") || combinedText.includes("36") || combinedText.includes("42")) {
+    diff += 10;
+  } else if (combinedText.includes("large") && !combinedText.includes("small")) {
+    diff += 15;
+  }
+
+  price += diff;
+  mrp += diff * 3;
+
+  return { price, mrp };
+}
+
+function generateUnrolledCatalog(baseProducts: MasterProduct[]): MasterProduct[] {
+  const result: MasterProduct[] = [];
+
+  for (const p of baseProducts) {
+    if (!p.variantItems || p.variantItems.length === 0) {
+      result.push(p);
+      continue;
+    }
+
+    p.variantItems.forEach((v, idx) => {
+      const { price, mrp } = calculateVariantPricing(
+        p.price,
+        p.mrp,
+        v.label,
+        v.attributes,
+        v.price,
+        v.mrp
+      );
+
+      const baseName = p.name.includes(" – ") ? p.name.split(" – ")[0] : p.name;
+      const unrolledName = `${baseName} – ${v.label}`;
+      const unrolledSlug = slugify(`${baseName}-${v.label}`);
+      const unrolledId = `${p.id}-${v.id}`;
+      const unrolledSku = v.sku || `${p.sku}-${v.id.toUpperCase()}`;
+
+      // Backward compatibility aliases: first variant retains parent slug & aliases so old links never 404
+      const aliases: string[] = [];
+      if (idx === 0) {
+        aliases.push(p.slug);
+        aliases.push(p.id);
+        if (p.aliases) {
+          aliases.push(...p.aliases);
+        }
+      }
+      if (v.id) aliases.push(v.id);
+      aliases.push(`${p.id}-${v.id}`);
+
+      // Gallery: prioritize variant's own studio gallery, fallback to parent
+      const gallery = v.gallery && v.gallery.length > 0 ? v.gallery : (p.gallery || []);
+      const image = v.image || p.image || gallery[0]?.url;
+
+      const newProd: MasterProduct = {
+        ...p,
+        id: unrolledId,
+        slug: unrolledSlug,
+        aliases: Array.from(new Set(aliases)),
+        sku: unrolledSku,
+        name: unrolledName,
+        price,
+        mrp,
+        moq: v.moq || p.moq,
+        image,
+        gallery,
+        variantItems: p.variantItems,
+        variantOptions: p.variantOptions,
+        tags: Array.from(
+          new Set([
+            ...p.tags,
+            ...v.label.toLowerCase().split(/\s+/),
+            ...Object.values(v.attributes).map((a) => a.toLowerCase()),
+          ])
+        ),
+      };
+
+      result.push(newProd);
+    });
+  }
+
+  return result;
+}
+
+export const MASTER_PRODUCTS: MasterProduct[] = generateUnrolledCatalog(RAW_MASTER_PRODUCTS);
+
 // Helper: get unique categories
 export function getCategories(): string[] {
   return [...new Set(MASTER_PRODUCTS.map((p) => p.category))];
@@ -6600,7 +6724,7 @@ export const CATEGORY_META = [
       { name: "Bangles, Bracelets & Rings", slug: "bangles-bracelets-rings" },
     ],
     moq: "30 pcs",
-    from: "₹39",
+    from: "₹25",
     href: "/category/artificial-jewellery",
   },
   {
