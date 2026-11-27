@@ -27,8 +27,8 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "Trending",
     tagColor: "bg-blue-50 text-blue-700 border-blue-200",
     bottomTag: "Best for Bazaars",
-    count: "13 products",
-    moq: "20 pcs",
+    count: "50+ Products",
+    moq: "10 pcs",
     from: "₹75",
     href: "/category/toys-games",
   },
@@ -40,9 +40,9 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "High Margin",
     tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
     bottomTag: "Retail Essential",
-    count: "9 products",
-    moq: "20 pcs",
-    from: "₹75",
+    count: "40+ Products",
+    moq: "25 pcs",
+    from: "₹95",
     href: "/category/clothing-apparel",
   },
   {
@@ -53,9 +53,9 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "New Collection",
     tagColor: "bg-purple-50 text-purple-700 border-purple-200",
     bottomTag: "Festive High Demand",
-    count: "8 products",
+    count: "45+ Products",
     moq: "30 pcs",
-    from: "₹49",
+    from: "₹25",
     href: "/category/artificial-jewellery",
   },
   {
@@ -66,9 +66,9 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "Fast Selling",
     tagColor: "bg-sky-50 text-sky-700 border-sky-200",
     bottomTag: "Daily Fast Moving",
-    count: "9 products",
+    count: "23 Products",
     moq: "20 pcs",
-    from: "₹49",
+    from: "₹15",
     href: "/category/consumer-electronics",
   },
   {
@@ -79,9 +79,9 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "Direct Factory",
     tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
     bottomTag: "Kitchen Essentials",
-    count: "7 products",
+    count: "24 Products",
     moq: "20 pcs",
-    from: "₹99",
+    from: "₹45",
     href: "/category/home-kitchen",
   },
   {
@@ -92,9 +92,9 @@ const CATEGORIES: CategoryCardData[] = [
     tag: "Top Rated",
     tagColor: "bg-amber-50 text-amber-700 border-amber-200",
     bottomTag: "Lifestyle Trend",
-    count: "6 products",
+    count: "38 Products",
     moq: "30 pcs",
-    from: "₹49",
+    from: "₹22",
     href: "/category/fashion-accessories",
   },
 ];
@@ -111,12 +111,34 @@ export default function CategoryCarousel() {
   return (
     <section className="py-14 sm:py-18 px-4 bg-slate-50/70 border-b border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto">
-        {/* Centered Professional Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
-            Top Wholesale Categories
-          </h2>
-          <div className="w-12 h-1 bg-amber-500 mx-auto mt-2.5 rounded-full" />
+        {/* Header with Centered Title & Right View All */}
+        <div className="relative flex items-center justify-center mb-10 sm:mb-12">
+          <div className="text-center relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
+              Top Wholesale Categories
+            </h2>
+            {/* Elegant Hand-Drawn Curved Amber Underline */}
+            <svg
+              className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-48 sm:w-56 h-3.5 text-amber-500 pointer-events-none"
+              viewBox="0 0 200 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 8.5C48 2.5 152 2.5 196 8.5"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <Link
+            href="/products"
+            className="absolute right-0 text-xs sm:text-sm font-bold text-neutral-500 hover:text-amber-600 transition flex items-center gap-1"
+          >
+            <span>View All</span>
+          </Link>
         </div>
 
         {/* Carousel Container with Floating Controls */}
@@ -125,18 +147,18 @@ export default function CategoryCarousel() {
           <button
             onClick={() => scroll("left")}
             aria-label="Previous categories"
-            className="hidden sm:flex absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-800 hover:text-amber-600 hover:border-amber-400 items-center justify-center transition shadow-md hover:shadow-lg hover:scale-105 cursor-pointer"
+            className="hidden sm:flex absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-slate-200 text-slate-800 hover:text-amber-600 hover:border-amber-400 items-center justify-center transition shadow-md hover:shadow-lg hover:scale-105 cursor-pointer"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Right Arrow Button */}
           <button
             onClick={() => scroll("right")}
             aria-label="Next categories"
-            className="hidden sm:flex absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-800 hover:text-amber-600 hover:border-amber-400 items-center justify-center transition shadow-md hover:shadow-lg hover:scale-105 cursor-pointer"
+            className="hidden sm:flex absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white border border-slate-200 text-slate-800 hover:text-amber-600 hover:border-amber-400 items-center justify-center transition shadow-md hover:shadow-lg hover:scale-105 cursor-pointer"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Cards Row */}
@@ -153,7 +175,7 @@ export default function CategoryCarousel() {
               >
                 {/* Card Top: Photography Cluster Artwork */}
                 <div>
-                  <div className="w-full h-24 sm:h-28 rounded-xl bg-slate-50/80 p-2 flex items-center justify-center mb-3 overflow-hidden border border-slate-100 group-hover:bg-amber-50/40 transition">
+                  <div className="w-full h-28 sm:h-32 rounded-xl bg-slate-50/80 p-2.5 flex items-center justify-center mb-3.5 overflow-hidden border border-slate-100 group-hover:bg-amber-50/40 transition">
                     <img
                       src={c.image}
                       alt={c.name}
@@ -164,7 +186,7 @@ export default function CategoryCarousel() {
                   {/* Tag Pill (Trending, High Margin, etc.) */}
                   <div className="mb-2">
                     <span
-                      className={`inline-block px-2 py-0.5 rounded-md text-[10.5px] font-bold border tracking-wide shadow-2xs ${
+                      className={`inline-block px-2.5 py-0.5 rounded-md text-[10.5px] font-bold border tracking-wide shadow-2xs ${
                         c.tagColor || "bg-blue-50 text-blue-700 border-blue-200"
                       }`}
                     >
@@ -185,22 +207,26 @@ export default function CategoryCarousel() {
                   {/* Bottom Tag Badge (Best for Bazaars, Retail Essential, etc.) */}
                   {c.bottomTag && (
                     <div className="mt-2.5">
-                      <span className="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
+                      <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">
                         {c.bottomTag}
                       </span>
                     </div>
                   )}
                 </div>
 
-                {/* Bottom Row: Price & Action Arrow Button */}
+                {/* Bottom Row: Price & Distinct Orange Circular Arrow Button */}
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-neutral-400 block uppercase font-medium">Starting</span>
-                    <span className="font-black text-sm text-neutral-900">{c.from}</span>
+                    <span className="text-[10px] text-neutral-400 block uppercase font-bold tracking-wider">
+                      STARTING
+                    </span>
+                    <span className="font-black text-base sm:text-lg text-neutral-900">
+                      {c.from}
+                    </span>
                   </div>
 
-                  <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 group-hover:bg-amber-500 group-hover:text-stone-950 flex items-center justify-center transition shadow-2xs group-hover:scale-110">
-                    <ArrowRight className="w-4 h-4" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#f97316] text-white flex items-center justify-center shadow-md group-hover:bg-[#ea580c] group-hover:scale-110 transition shrink-0">
+                    <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </div>
                 </div>
               </Link>

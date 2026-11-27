@@ -6,8 +6,69 @@ import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import { CATEGORIES_FEATURED } from "@/lib/constants";
 import { CATEGORY_META, MASTER_PRODUCTS } from "@/lib/products-data";
-import { ArrowRight, Layers, Package, Tag, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Package, TrendingUp, Percent, Truck, ShieldCheck, Building2, Sparkles, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
+
+// Map category slug → banner image path
+const CATEGORY_BANNER_MAP: Record<string, string> = {
+  "toys-games": "/category-banners/banner-toys.png",
+  "clothing-apparel": "/category-banners/banner-clothing.png",
+  "artificial-jewellery": "/category-banners/banner-jewellery.png",
+  "consumer-electronics": "/category-banners/banner-electronics.png",
+  "home-kitchen": "/category-banners/banner-home.png",
+  "fashion-accessories": "/category-banners/banner-fashion.png",
+};
+
+// Trust badges per category (using Lucide icons, no emojis)
+const CATEGORY_TRUST: Record<string, { type: "shield" | "building" | "truck" | "package" | "sparkles" | "check"; text: string }[]> = {
+  "toys-games": [
+    { type: "shield", text: "BIS / CE Certified" },
+    { type: "building", text: "Direct Factory Rates" },
+    { type: "truck", text: "Pan-India Dispatch" },
+  ],
+  "clothing-apparel": [
+    { type: "check", text: "Bio-Wash Quality" },
+    { type: "package", text: "Bulk Carton Packing" },
+    { type: "truck", text: "Pan-India Dispatch" },
+  ],
+  "artificial-jewellery": [
+    { type: "sparkles", text: "Anti-Tarnish Coated" },
+    { type: "building", text: "Direct Factory Lots" },
+    { type: "package", text: "Gift-Ready Packaging" },
+  ],
+  "consumer-electronics": [
+    { type: "shield", text: "BIS Tested" },
+    { type: "package", text: "Master Carton Pack" },
+    { type: "truck", text: "Same-Day Dispatch" },
+  ],
+  "home-kitchen": [
+    { type: "check", text: "Food-Grade Material" },
+    { type: "building", text: "Factory Direct Lots" },
+    { type: "truck", text: "Pan-India Dispatch" },
+  ],
+  "fashion-accessories": [
+    { type: "sparkles", text: "Vegan Leather" },
+    { type: "check", text: "Premium Finish" },
+    { type: "truck", text: "Pan-India Dispatch" },
+  ],
+};
+
+function renderTrustIcon(type: string) {
+  switch (type) {
+    case "shield":
+      return <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />;
+    case "building":
+      return <Building2 className="w-3.5 h-3.5 text-blue-600" />;
+    case "truck":
+      return <Truck className="w-3.5 h-3.5 text-emerald-600" />;
+    case "package":
+      return <Package className="w-3.5 h-3.5 text-purple-600" />;
+    case "sparkles":
+      return <Sparkles className="w-3.5 h-3.5 text-amber-500" />;
+    default:
+      return <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />;
+  }
+}
 
 export async function generateMetadata({
   params,
@@ -56,18 +117,21 @@ export default async function CategoryLandingPage({
     ? subCategories.find((s) => s.slug === sub)?.name || sub
     : null;
 
+  const categoryBanner = CATEGORY_BANNER_MAP[categorySlug];
+  const trustBadges = CATEGORY_TRUST[categorySlug] || [];
+
   return (
-    <div className="min-h-screen flex flex-col bg-surface text-neutral-text antialiased">
+    <div className="min-h-screen flex flex-col bg-[#faf9f6] text-neutral-900 antialiased">
       <Header />
 
-      <main className="flex-1 py-10 px-4 max-w-7xl mx-auto w-full">
+      <main className="flex-1 pb-12 px-4 max-w-7xl mx-auto w-full">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-neutral-500 mb-6 font-medium">
-          <Link href="/" className="hover:text-amber-600">Home</Link>
+        <nav className="flex items-center gap-1.5 text-xs text-neutral-500 py-5 font-medium">
+          <Link href="/" className="hover:text-amber-600 transition">Home</Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-amber-600">Catalogue</Link>
+          <Link href="/products" className="hover:text-amber-600 transition">Catalogue</Link>
           <span>/</span>
-          <Link href={`/category/${categorySlug}`} className="hover:text-amber-600">
+          <Link href={`/category/${categorySlug}`} className="hover:text-amber-600 transition font-semibold">
             {categoryName}
           </Link>
           {activeSubCategoryName && (
@@ -78,37 +142,67 @@ export default async function CategoryLandingPage({
           )}
         </nav>
 
-        {/* Category Header Hero */}
-        <div className="bg-[#141414] text-white rounded-3xl p-8 sm:p-12 mb-8 border border-neutral-800 relative overflow-hidden shadow-xl">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
-          <div className="relative z-10 max-w-2xl space-y-3">
-            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-neutral-800/80 px-3 py-1 rounded-full border border-neutral-700">
-              Commercial Merchandise Division
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              {categoryName}
-            </h1>
-            <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-              {categoryMeta?.description || featured?.subhead || "Wholesale commercial lots"}. Direct factory wholesale rates with pan-India distribution and verified MOQs.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-3 text-xs">
-              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
-                Starting Rate: <strong className="text-amber-400">{categoryMeta?.from || featured?.startingPrice || "₹49+"}</strong>
+        {/* ─── Category Hero Banner ─── */}
+        {categoryBanner ? (
+          <div className="mb-6 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/70">
+            <img
+              src={categoryBanner}
+              alt={`${categoryName} wholesale category`}
+              className="w-full object-cover"
+              style={{ maxHeight: "300px", objectPosition: "center" }}
+            />
+          </div>
+        ) : (
+          /* Fallback gradient hero for categories without a banner image */
+          <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 text-neutral-900 rounded-2xl px-8 py-10 mb-6 border border-amber-200/60 relative overflow-hidden shadow-sm">
+            <div className="absolute inset-0 opacity-20 pointer-events-none"
+              style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #fbbf24 0%, transparent 60%)" }} />
+            <div className="relative z-10 max-w-xl space-y-3">
+              <span className="inline-block text-[11px] font-black uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">
+                Commercial Merchandise Division
               </span>
-              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
-                Standard MOQ: <strong className="text-white">{categoryMeta?.moq || featured?.moq || "20 pcs"}</strong>
-              </span>
-              <span className="bg-neutral-800 px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-300">
-                Available Lots: <strong className="text-white">{allCategoryProducts.length}</strong>
-              </span>
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">{categoryName}</h1>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                {categoryMeta?.description || "Wholesale commercial lots"}. Direct factory wholesale rates with pan-India distribution and verified MOQs.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2 text-xs">
+                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
+                  Starting Rate: <strong className="text-amber-600">{categoryMeta?.from || "₹49+"}</strong>
+                </span>
+                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
+                  Standard MOQ: <strong>{categoryMeta?.moq || "20 pcs"}</strong>
+                </span>
+                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
+                  Available Lots: <strong>{allCategoryProducts.length}</strong>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Sub-Category Navigation Pills */}
+        {/* ─── Trust Badges Strip ─── */}
+        {trustBadges.length > 0 && (
+          <div className="flex flex-wrap gap-3 mb-6">
+            {trustBadges.map((b, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-white border border-neutral-200 text-neutral-700 shadow-xs"
+              >
+                {renderTrustIcon(b.type)}
+                <span>{b.text}</span>
+              </span>
+            ))}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-white border border-neutral-200 text-neutral-700 shadow-xs">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
+              <span>{allCategoryProducts.length} Products Available</span>
+            </span>
+          </div>
+        )}
+
+        {/* ─── Sub-Category Navigation Pills ─── */}
         {subCategories.length > 0 && (
           <div className="mb-8 bg-white border border-neutral-200 rounded-2xl p-4 shadow-xs">
-            <div className="text-xs font-bold text-neutral-600 uppercase tracking-wider mb-3">
+            <div className="text-[11px] font-black text-neutral-500 uppercase tracking-widest mb-3">
               Browse Sub-Categories
             </div>
             <div className="flex flex-wrap gap-2">
@@ -143,12 +237,12 @@ export default async function CategoryLandingPage({
           </div>
         )}
 
-        {/* Product Cards Grid */}
+        {/* ─── Products Grid ─── */}
         <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-5">
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
-                {activeSubCategoryName || `All ${categoryName} Lots`}
+                {activeSubCategoryName ? `${activeSubCategoryName} Lots` : `All ${categoryName} Lots`}
               </h2>
               <p className="text-xs text-neutral-500 mt-0.5">
                 Showing {displayedProducts.length} wholesale ready products
@@ -156,7 +250,7 @@ export default async function CategoryLandingPage({
             </div>
             <Link
               href="/become-a-buyer"
-              className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1"
+              className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1 transition"
             >
               <span>Get Wholesale Account</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -164,7 +258,7 @@ export default async function CategoryLandingPage({
           </div>
 
           {displayedProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {displayedProducts.map((p) => {
                 const productProps: ProductProps = {
                   id: p.id,
@@ -202,9 +296,9 @@ export default async function CategoryLandingPage({
           )}
         </div>
 
-        {/* Other Merchandise Divisions */}
+        {/* ─── Other Wholesale Divisions ─── */}
         <div className="pt-8 border-t border-neutral-200">
-          <h3 className="text-xs font-bold text-neutral-600 uppercase tracking-wider mb-4">
+          <h3 className="text-xs font-black text-neutral-500 uppercase tracking-widest mb-4">
             Other Wholesale Divisions
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">

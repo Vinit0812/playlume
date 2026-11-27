@@ -28,7 +28,9 @@ interface CategoryNav {
   id: string;
   name: string;
   slug: string;
-  items: { name: string; slug: string }[];
+  accent: string;
+  bannerImage?: string;
+  items: { name: string; slug: string; image?: string }[];
 }
 
 const CATEGORY_DATA: CategoryNav[] = [
@@ -36,65 +38,77 @@ const CATEGORY_DATA: CategoryNav[] = [
     id: "toys-games",
     name: "Toys & Games",
     slug: "toys-games",
+    accent: "text-orange-400",
+    bannerImage: "/category-banners/banner-toys.png",
     items: [
-      { name: "Educational & Learning Toys", slug: "educational-learning-toys" },
-      { name: "Soft Toys & Plush", slug: "soft-toys-plush" },
-      { name: "Outdoor & Ride-on Toys", slug: "outdoor-ride-on-toys" },
-      { name: "RC & Remote Control Toys", slug: "rc-remote-control-toys" },
-      { name: "Baby & Toddler Toys", slug: "baby-toddler-toys" },
+      { name: "Educational & Learning Toys", slug: "educational-learning-toys", image: "/products/toys/lcd-tablet/blue-front.png" },
+      { name: "Soft Toys & Plush", slug: "soft-toys-plush", image: "/products/toys/plush-unicorn/pink-30cm-front.png" },
+      { name: "Outdoor & Ride-on Toys", slug: "outdoor-ride-on-toys", image: "/products/toys/kick-scooter/blue-front.png" },
+      { name: "RC & Remote Control Toys", slug: "rc-remote-control-toys", image: "/products/toys/rc-drift-car/black/01_black_front_without_packaging.png" },
+      { name: "Baby & Toddler Toys", slug: "baby-toddler-toys", image: "/products/toys/baby-rattles/blue/01_blue_front_set_without_packaging.png" },
     ],
   },
   {
     id: "clothing-apparel",
     name: "Clothing & Apparel",
     slug: "clothing-apparel",
+    accent: "text-blue-400",
+    bannerImage: "/category-banners/banner-clothing.png",
     items: [
-      { name: "Men's Clothing", slug: "mens-clothing" },
-      { name: "Women's Clothing", slug: "womens-clothing" },
-      { name: "Kids Clothing", slug: "kids-clothing" },
+      { name: "Men's Clothing", slug: "mens-clothing", image: "/products/clothing/polo-tshirts/blue/01_blue_front_without_packaging.png" },
+      { name: "Women's Clothing", slug: "womens-clothing", image: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png" },
+      { name: "Kids Clothing", slug: "kids-clothing", image: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png" },
     ],
   },
   {
     id: "artificial-jewellery",
     name: "Artificial Jewellery",
     slug: "artificial-jewellery",
+    accent: "text-purple-400",
+    bannerImage: "/category-banners/banner-jewellery.png",
     items: [
-      { name: "Earrings", slug: "earrings" },
-      { name: "Necklace Sets", slug: "necklace-sets" },
-      { name: "Jewellery Sets (Combo)", slug: "jewellery-sets-combo" },
-      { name: "Bangles, Bracelets & Rings", slug: "bangles-bracelets-rings" },
+      { name: "Earrings", slug: "earrings", image: "/products/jewellery/jhumka-earrings/blue/01_blue_front_without_packaging.png" },
+      { name: "Necklace Sets", slug: "necklace-sets", image: "/products/jewellery/oxidised-necklace/blue/01_blue_front_display_without_packaging.png" },
+      { name: "Jewellery Sets (Combo)", slug: "jewellery-sets-combo", image: "/products/jewellery/necklace-earrings-combo/blue/01_blue_bust_display_without_packaging.png" },
+      { name: "Bangles, Bracelets & Rings", slug: "bangles-bracelets-rings", image: "/products/jewellery/bangles-kadas/blue/01_blue_front_display_without_packaging.png" },
     ],
   },
   {
     id: "consumer-electronics",
     name: "Consumer Electronics",
     slug: "consumer-electronics",
+    accent: "text-cyan-400",
+    bannerImage: "/category-banners/banner-electronics.png",
     items: [
-      { name: "Mobile Accessories", slug: "mobile-accessories" },
-      { name: "Audio", slug: "audio" },
-      { name: "Power & Charging", slug: "power-charging" },
+      { name: "Mobile Accessories", slug: "mobile-accessories", image: "/products/electronics/phone-stands/desktop-holder/01_front_without_packaging.png" },
+      { name: "Audio", slug: "audio", image: "/products/electronics/wireless-earbuds/black/01_black_front_without_packaging.png" },
+      { name: "Power & Charging", slug: "power-charging", image: "/products/electronics/power-banks-10000/black/01_front_without_packaging.png" },
     ],
   },
   {
     id: "home-kitchen",
     name: "Home & Kitchen",
     slug: "home-kitchen",
+    accent: "text-red-400",
+    bannerImage: "/category-banners/banner-home.png",
     items: [
-      { name: "Kitchen Tools & Gadgets", slug: "kitchen-tools-gadgets" },
-      { name: "Storage & Organisation", slug: "storage-organisation" },
-      { name: "Drinkware", slug: "drinkware" },
-      { name: "Home Decor", slug: "home-decor" },
+      { name: "Kitchen Tools & Gadgets", slug: "kitchen-tools-gadgets", image: "/products/home/choppers-cutters/manual-chopper/01_front_without_packaging.png" },
+      { name: "Storage & Organisation", slug: "storage-organisation", image: "/products/home/storage-containers/set-of-3/01_set_3_front_without_packaging.png" },
+      { name: "Drinkware", slug: "drinkware", image: "/products/home/steel-bottles/500ml/01_500ml_front_without_packaging.png" },
+      { name: "Home Decor", slug: "home-decor", image: "/products/home/led-lights/fairy-lights/01_fairy_lights_front_without_packaging.png" },
     ],
   },
   {
     id: "fashion-accessories",
     name: "Fashion Accessories",
     slug: "fashion-accessories",
+    accent: "text-pink-400",
+    bannerImage: "/category-banners/banner-fashion.png",
     items: [
-      { name: "Bags & Handbags", slug: "bags-handbags" },
-      { name: "Wallets & Belts", slug: "wallets-belts" },
-      { name: "Hair Accessories", slug: "hair-accessories" },
-      { name: "Other Accessories", slug: "other-accessories" },
+      { name: "Bags & Handbags", slug: "bags-handbags", image: "/products/fashion/sling-bags/black-quilted/01_front_without_packaging.png" },
+      { name: "Wallets & Belts", slug: "wallets-belts", image: "/products/fashion/womens-wallets/black/01_front_without_packaging.png" },
+      { name: "Hair Accessories", slug: "hair-accessories", image: "/products/fashion/hair-clips/pearl-bow/01_front_without_packaging.png" },
+      { name: "Other Accessories", slug: "other-accessories", image: "/products/fashion/sunglasses/black-wayfarer/01_black_wayfarer_front_without_packaging.png" },
     ],
   },
 ];
@@ -461,31 +475,36 @@ export default function Header() {
 
                   {/* Mega Dropdown Menu */}
                   {activeMegaMenu === cat.id && (
-                    <div className="absolute left-0 top-full pt-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                      <div className="bg-[#242424] rounded-lg border border-neutral-700 shadow-2xl p-3 text-neutral-200">
-                        <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider border-b border-neutral-700 pb-2 mb-2 flex items-center justify-between">
+                    <div className="absolute left-0 top-full pt-1.5 w-72 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <div className="bg-[#1c1c1c]/95 backdrop-blur-md rounded-xl border border-neutral-700/80 shadow-2xl p-3 text-neutral-200">
+                        <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider border-b border-neutral-700/60 pb-2 mb-2 flex items-center justify-between">
                           <span>{cat.name}</span>
-                          <span className="text-[10px] text-neutral-400 lowercase">lots</span>
+                          <span className="text-[10px] text-neutral-400 font-normal lowercase">lots</span>
                         </div>
-                        <ul className="space-y-1.5">
+                        <ul className="space-y-1">
                           {cat.items.map((item, idx) => (
                             <li key={idx}>
                               <Link
                                 href={`/category/${cat.slug}?sub=${item.slug}`}
-                                className="block px-2 py-1 rounded text-neutral-300 hover:text-white hover:bg-neutral-700/60 transition text-[11.5px]"
+                                className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-white hover:bg-neutral-800 transition text-[12px] group/item"
                               >
-                                {item.name}
+                                <span className="font-medium group-hover/item:text-amber-300 transition-colors">{item.name}</span>
+                                {item.image && (
+                                  <div className="w-7 h-7 rounded-md bg-neutral-900 border border-neutral-700/60 overflow-hidden shrink-0 ml-2 p-0.5 flex items-center justify-center">
+                                    <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                                  </div>
+                                )}
                               </Link>
                             </li>
                           ))}
                         </ul>
-                        <div className="mt-3 pt-2 border-t border-neutral-700">
+                        <div className="mt-2.5 pt-2 border-t border-neutral-700/60">
                           <Link
                             href={`/category/${cat.slug}`}
-                            className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-400 hover:text-amber-300"
+                            className="flex items-center justify-between w-full text-[11.5px] font-bold text-amber-400 hover:text-amber-300 px-1 py-0.5 group/explore"
                           >
                             <span>Explore all {cat.name}</span>
-                            <ArrowRight className="w-3 h-3" />
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/explore:translate-x-0.5 transition-transform" />
                           </Link>
                         </div>
                       </div>
