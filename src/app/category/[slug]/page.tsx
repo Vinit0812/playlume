@@ -1,14 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
 import CategoryStudioBanner from "@/components/category/CategoryStudioBanner";
-import { CATEGORIES_FEATURED } from "@/lib/constants";
+import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
 import { CATEGORY_META, MASTER_PRODUCTS } from "@/lib/products-data";
-import { ArrowRight, Package, TrendingUp, Percent, Truck, ShieldCheck, Building2, Sparkles, CheckCircle2 } from "lucide-react";
-import { notFound } from "next/navigation";
+import { CATEGORY_GUIDES } from "@/lib/category-guides";
+import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
+import {
+  ArrowRight,
+  Package,
+  TrendingUp,
+  Percent,
+  Truck,
+  ShieldCheck,
+  Building2,
+  Sparkles,
+  CheckCircle2,
+  HelpCircle,
+  BookOpen,
+  Check,
+} from "lucide-react";
 
 // Map category slug → banner image path
 const CATEGORY_BANNER_MAP: Record<string, string> = {
@@ -21,7 +36,10 @@ const CATEGORY_BANNER_MAP: Record<string, string> = {
 };
 
 // Trust badges per category (using Lucide icons, no emojis)
-const CATEGORY_TRUST: Record<string, { type: "shield" | "building" | "truck" | "package" | "sparkles" | "check"; text: string }[]> = {
+const CATEGORY_TRUST: Record<
+  string,
+  { type: "shield" | "building" | "truck" | "package" | "sparkles" | "check"; text: string }[]
+> = {
   "toys-games": [
     { type: "shield", text: "BIS / CE Certified" },
     { type: "building", text: "Direct Factory Rates" },
@@ -80,10 +98,59 @@ export async function generateMetadata({
   const category =
     CATEGORY_META.find((c) => c.slug === slug || c.id === slug) ||
     CATEGORIES_FEATURED.find((c) => c.slug === slug);
-  if (!category) return { title: "Category Not Found — V&A Global Sourcing" };
+
+  if (!category) {
+    return {
+      title: "Wholesale Category Not Found | V&A Global Sourcing",
+      description: "Category not found in our commercial wholesale catalogue.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const title = `Wholesale ${category.name} Supplier India | Bulk Sourcing`;
+  const startingRate = "from" in category ? category.from : category.startingPrice;
+  const description = `Direct factory wholesale supplier for ${category.name}. Verified MOQs from ${category.moq || '20 pcs'}, starting wholesale prices from ${startingRate || '₹49'}, GST invoices, and pan-India distribution from Gujarat.`;
+  const canonicalUrl = `/category/${category.slug}`;
+  const bannerImage = CATEGORY_BANNER_MAP[category.slug] || "/banners/toys-games-banner.png";
+
   return {
-    title: `${category.name} Wholesale Sourcing & Distribution — V&A Global Sourcing`,
-    description: `Direct factory wholesale pricing and verified MOQs for ${category.name}. Sourced for Indian retailers and commercial distributors.`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_IN",
+      url: `${SITE_CONFIG.url}${canonicalUrl}`,
+      title,
+      description,
+      siteName: SITE_CONFIG.name,
+      images: [
+        {
+          url: bannerImage,
+          width: 1200,
+          height: 400,
+          alt: `${category.name} Wholesale Division`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [bannerImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 
@@ -118,11 +185,22 @@ export default async function CategoryLandingPage({
     ? subCategories.find((s) => s.slug === sub)?.name || sub
     : null;
 
-  const categoryBanner = CATEGORY_BANNER_MAP[categorySlug];
   const trustBadges = CATEGORY_TRUST[categorySlug] || [];
+  const guide = CATEGORY_GUIDES[categorySlug];
+
+  const breadcrumbItems = [
+    { name: "Home", url: "/" },
+    { name: "Wholesale Catalogue", url: "/products" },
+    { name: categoryName, url: `/category/${categorySlug}` },
+    ...(activeSubCategoryName
+      ? [{ name: activeSubCategoryName, url: `/category/${categorySlug}?sub=${sub}` }]
+      : []),
+  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f6] text-neutral-900 antialiased">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      {guide && <FaqJsonLd items={guide.faqs} />}
       <Header />
 
       <main className="flex-1 pb-12 px-4 max-w-7xl mx-auto w-full">
@@ -268,6 +346,106 @@ export default async function CategoryLandingPage({
             </div>
           )}
         </div>
+
+        {/* ─── B2B Buying Guide & Commercial Insights (SEO Content Section) ─── */}
+        {guide && (
+          <section className="mb-14 bg-white border border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-xs">
+            <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-amber-600 mb-2">
+              <BookOpen className="w-4 h-4" />
+              <span>B2B Commercial Sourcing Guide</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight mb-2">
+              {guide.title}
+            </h2>
+            <p className="text-sm font-medium text-neutral-500 mb-6">
+              {guide.subtitle}
+            </p>
+
+            <div className="prose prose-sm max-w-none text-neutral-700 leading-relaxed mb-8">
+              <p>{guide.overview}</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {/* Sourcing Considerations */}
+              <div className="bg-neutral-50 rounded-2xl p-5 border border-neutral-100">
+                <h3 className="text-sm font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-amber-600" />
+                  <span>Wholesale Sourcing Considerations</span>
+                </h3>
+                <ul className="space-y-2 text-xs text-neutral-600">
+                  {guide.sourcingConsiderations.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Profit Margins & Turnover */}
+              <div className="bg-amber-50/60 rounded-2xl p-5 border border-amber-100">
+                <h3 className="text-sm font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-amber-600" />
+                  <span>Retailer Margin & Turnover Velocity</span>
+                </h3>
+                <div className="space-y-2.5 text-xs">
+                  <div className="flex items-center justify-between pb-2 border-b border-amber-100">
+                    <span className="text-neutral-600">Average Retail Gross Margin:</span>
+                    <span className="font-black text-emerald-700">{guide.retailerMargins.averageMargin}</span>
+                  </div>
+                  <div className="flex items-center justify-between pb-2 border-b border-amber-100">
+                    <span className="text-neutral-600">Restock Turnover Velocity:</span>
+                    <span className="font-bold text-neutral-900">{guide.retailerMargins.turnoverVelocity}</span>
+                  </div>
+                  <p className="text-amber-900 font-medium pt-1 italic">
+                    Tip: {guide.retailerMargins.tip}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Packaging & Quality Standards */}
+            <div className="border-t border-neutral-100 pt-6 mb-8">
+              <h3 className="text-sm font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                <Package className="w-4 h-4 text-blue-600" />
+                <span>Export-Grade Master Packaging & Quality Control</span>
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {guide.qualityAndPackaging.map((spec, idx) => (
+                  <div key={idx} className="bg-neutral-50 rounded-xl p-3 border border-neutral-100 text-xs text-neutral-600">
+                    {spec}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Trade FAQs */}
+            <div className="border-t border-neutral-100 pt-6">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                <HelpCircle className="w-4 h-4 text-amber-600" />
+                <span>Trade Buyer Frequently Asked Questions</span>
+              </div>
+              <h3 className="text-lg font-bold text-neutral-900 mb-4">
+                Wholesale FAQs for {categoryName}
+              </h3>
+              <div className="space-y-3">
+                {guide.faqs.map((faq, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-neutral-50 rounded-xl p-4 border border-neutral-100"
+                  >
+                    <h4 className="text-xs font-bold text-neutral-900 mb-1.5">
+                      {faq.question}
+                    </h4>
+                    <p className="text-xs text-neutral-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ─── Other Wholesale Divisions ─── */}
         <div className="pt-8 border-t border-neutral-200">

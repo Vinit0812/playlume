@@ -59,6 +59,7 @@ export default function Footer() {
             <li><Link href="/how-it-works" className="hover:text-white transition">How Ordering Works</Link></li>
             <li><Link href="/become-a-buyer" className="hover:text-white transition">Register as a Buyer</Link></li>
             <li><Link href="/products" className="hover:text-white transition">Full Product Catalogue</Link></li>
+            <li><Link href="/blog" className="hover:text-white transition">B2B Sourcing Guides</Link></li>
             <li><Link href="/about" className="hover:text-white transition">About Our Sourcing</Link></li>
             <li><Link href="/admin/login" className="hover:text-white transition">Staff Management Portal</Link></li>
           </ul>

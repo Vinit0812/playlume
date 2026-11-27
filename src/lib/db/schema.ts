@@ -23,6 +23,14 @@ export const categories = mysqlTable("categories", {
   imageUrl: varchar("image_url", { length: 500 }),
   status: mysqlEnum("status", ["active", "inactive"]).default("active").notNull(),
   sortOrder: int("sort_order").default(0),
+  // SEO & Buying Guide fields
+  metaTitle: varchar("meta_title", { length: 200 }),
+  metaDescription: varchar("meta_description", { length: 500 }),
+  primaryKeyword: varchar("primary_keyword", { length: 150 }),
+  secondaryKeywords: json("secondary_keywords"),
+  buyingGuide: text("buying_guide"),
+  faqs: json("faqs"),
+  canonicalUrl: varchar("canonical_url", { length: 300 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
 });
@@ -202,6 +210,29 @@ export const banners = mysqlTable("banners", {
   sortOrder: int("sort_order").default(0),
   startDate: timestamp("start_date"),
   endDate: timestamp("end_date"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+// ============================================================
+// BLOG POSTS & B2B SOURCING GUIDES
+// ============================================================
+export const blogPosts = mysqlTable("blog_posts", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 250 }).notNull(),
+  slug: varchar("slug", { length: 250 }).notNull().unique(),
+  excerpt: text("excerpt").notNull(),
+  content: text("content").notNull(),
+  featuredImage: varchar("featured_image", { length: 500 }),
+  author: varchar("author", { length: 100 }).default("V&A Global Sourcing Research Desk").notNull(),
+  primaryKeyword: varchar("primary_keyword", { length: 150 }),
+  secondaryKeywords: json("secondary_keywords"),
+  metaTitle: varchar("meta_title", { length: 200 }),
+  metaDescription: varchar("meta_description", { length: 500 }),
+  categorySlug: varchar("category_slug", { length: 100 }),
+  readTime: varchar("read_time", { length: 50 }).default("5 min read"),
+  status: mysqlEnum("status", ["published", "draft", "archived"]).default("published").notNull(),
+  publishedAt: timestamp("published_at").defaultNow().notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
 });

@@ -20,6 +20,7 @@ import {
   Sparkles,
   Flame,
   Package,
+  BookOpen,
 } from "lucide-react";
 import { useQuoteBasket } from "@/context/QuoteBasketContext";
 import { MASTER_PRODUCTS, MasterProduct } from "@/lib/products-data";
@@ -527,6 +528,17 @@ export default function Header() {
                 </Link>
               </li>
 
+              {/* Sourcing Guides / Blog */}
+              <li>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-neutral-300 hover:text-white hover:bg-neutral-800 transition font-semibold"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Sourcing Guides</span>
+                </Link>
+              </li>
+
               {/* Wholesale - Bulk Buy */}
               <li className="ml-auto">
                 <Link
@@ -564,6 +576,13 @@ export default function Header() {
                 className="py-1.5 px-2 rounded hover:bg-neutral-800 text-amber-400 font-bold"
               >
                 Clearance Offer
+              </Link>
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1.5 px-2 rounded hover:bg-neutral-800 text-neutral-200 font-semibold"
+              >
+                Sourcing Guides
               </Link>
               <Link
                 href="/become-a-buyer"
