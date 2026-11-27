@@ -1714,50 +1714,120 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     description: "Breathable cotton-linen blend short and mid-length ethnic kurtas with mandarin collar, wooden buttons, and side pockets.",
     detailedDescription: "Available in versatile solids and subtle handcrafted prints. Ideal for festive, casual Friday, and everyday ethnic retail. High-density weave offers wrinkle resistance and effortless comfort.",
     pickupHub: "V&A Global Sourcing Jaipur Textile Hub / Bhiwandi Central, Mumbai",
-    image: "/products/kurta-men.jpg",
+    image: "/products/clothing/kurtas/cotton-black-front.png",
     gallery: [
-      { label: "Solid Cotton Kurta", url: "/products/kurta-men.jpg" },
+      { label: "Cotton Black Solid Front", url: "/products/clothing/kurtas/cotton-black-front.png" },
+      { label: "Cotton Blue Solid Front", url: "/products/clothing/kurtas/cotton-blue-front.png" },
+      { label: "Linen Cream Printed Front", url: "/products/clothing/kurtas/linen-cream-front.png" },
     ],
     variantOptions: [
-      { name: "Pattern & Fabric", values: ["Solid Pastel Cotton", "Textured Linen Blend", "Sanganeri Handblock Print"] },
+      { name: "Style & Fabric", values: ["Cotton Black Solid", "Cotton Blue Solid", "Cotton Pink Solid", "Cotton White Solid", "Linen Cream Printed", "Linen Maroon Printed", "Linen Navy Printed", "Linen Olive Printed"] },
       { name: "Size", values: ["M (38)", "L (40)", "XL (42)", "XXL (44)"] },
     ],
     variantItems: [
       {
-        id: "solid-cotton",
-        label: "Solid Pastel Cotton",
-        sku: "APP-MEN-002-SOL",
+        id: "cotton-black",
+        label: "Cotton Black Solid",
+        sku: "APP-MEN-002-BLK",
         price: 189,
         mrp: 699,
-        image: "/products/kurta-men.jpg",
+        image: "/products/clothing/kurtas/cotton-black-front.png",
         gallery: [
-          { label: "Solid Cotton Kurta", url: "/products/kurta-men.jpg" },
+          { label: "Front View", url: "/products/clothing/kurtas/cotton-black-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/cotton-black-detail.png" },
         ],
-        attributes: { "Pattern & Fabric": "Solid Pastel Cotton", Size: "L (40)" },
+        attributes: { "Style & Fabric": "Cotton Black Solid", Size: "L (40)" },
       },
       {
-        id: "textured-linen",
-        label: "Textured Linen Blend",
-        sku: "APP-MEN-002-LIN",
+        id: "cotton-blue",
+        label: "Cotton Blue Solid",
+        sku: "APP-MEN-002-BLU",
+        price: 189,
+        mrp: 699,
+        image: "/products/clothing/kurtas/cotton-blue-front.png",
+        gallery: [
+          { label: "Front View", url: "/products/clothing/kurtas/cotton-blue-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/cotton-blue-detail.png" },
+        ],
+        attributes: { "Style & Fabric": "Cotton Blue Solid", Size: "L (40)" },
+      },
+      {
+        id: "cotton-pink",
+        label: "Cotton Pink Solid",
+        sku: "APP-MEN-002-PNK",
+        price: 189,
+        mrp: 699,
+        image: "/products/clothing/kurtas/cotton-pink-front.png",
+        gallery: [
+          { label: "Front View", url: "/products/clothing/kurtas/cotton-pink-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/cotton-pink-detail.png" },
+        ],
+        attributes: { "Style & Fabric": "Cotton Pink Solid", Size: "L (40)" },
+      },
+      {
+        id: "cotton-white",
+        label: "Cotton White Solid",
+        sku: "APP-MEN-002-WHT",
+        price: 189,
+        mrp: 699,
+        image: "/products/clothing/kurtas/cotton-white-front.png",
+        gallery: [
+          { label: "Front View", url: "/products/clothing/kurtas/cotton-white-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/cotton-white-detail.png" },
+        ],
+        attributes: { "Style & Fabric": "Cotton White Solid", Size: "L (40)" },
+      },
+      {
+        id: "linen-cream",
+        label: "Linen Cream Printed",
+        sku: "APP-MEN-002-CRM",
         price: 219,
         mrp: 799,
-        image: "/products/kurta-men.jpg",
+        image: "/products/clothing/kurtas/linen-cream-front.png",
         gallery: [
-          { label: "Linen Blend Kurta", url: "/products/kurta-men.jpg" },
+          { label: "Front View", url: "/products/clothing/kurtas/linen-cream-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/linen-cream-detail.png" },
         ],
-        attributes: { "Pattern & Fabric": "Textured Linen Blend", Size: "L (40)" },
+        attributes: { "Style & Fabric": "Linen Cream Printed", Size: "L (40)" },
       },
       {
-        id: "printed-cotton",
-        label: "Sanganeri Handblock Print",
-        sku: "APP-MEN-002-PRT",
-        price: 199,
-        mrp: 749,
-        image: "/products/kurta-men.jpg",
+        id: "linen-maroon",
+        label: "Linen Maroon Printed",
+        sku: "APP-MEN-002-MAR",
+        price: 219,
+        mrp: 799,
+        image: "/products/clothing/kurtas/linen-maroon-front.png",
         gallery: [
-          { label: "Handblock Print Kurta", url: "/products/kurta-men.jpg" },
+          { label: "Front View", url: "/products/clothing/kurtas/linen-maroon-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/linen-maroon-detail.png" },
         ],
-        attributes: { "Pattern & Fabric": "Sanganeri Handblock Print", Size: "L (40)" },
+        attributes: { "Style & Fabric": "Linen Maroon Printed", Size: "L (40)" },
+      },
+      {
+        id: "linen-navy",
+        label: "Linen Navy Printed",
+        sku: "APP-MEN-002-NVY",
+        price: 219,
+        mrp: 799,
+        image: "/products/clothing/kurtas/linen-navy-front.png",
+        gallery: [
+          { label: "Front View", url: "/products/clothing/kurtas/linen-navy-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/linen-navy-detail.png" },
+        ],
+        attributes: { "Style & Fabric": "Linen Navy Printed", Size: "L (40)" },
+      },
+      {
+        id: "linen-olive",
+        label: "Linen Olive Printed",
+        sku: "APP-MEN-002-OLV",
+        price: 219,
+        mrp: 799,
+        image: "/products/clothing/kurtas/linen-olive-front.png",
+        gallery: [
+          { label: "Front View", url: "/products/clothing/kurtas/linen-olive-front.png" },
+          { label: "Fabric Detail", url: "/products/clothing/kurtas/linen-olive-detail.png" },
+        ],
+        attributes: { "Style & Fabric": "Linen Olive Printed", Size: "L (40)" },
       },
     ],
     variants: [
@@ -1794,9 +1864,10 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     description: "320 GSM cotton-poly brushed fleece zipper hoodie with kangaroo pockets, metal YKK zipper, double-layered hood, and matching drawstrings.",
     detailedDescription: "Warm brushed interior fleece retains body heat. Anti-pilling treatment keeps outer shell smooth after repeated machine washes. Ribbed waist and cuffs provide snug wind protection.",
     pickupHub: "V&A Global Sourcing Ludhiana Textile Hub / Bhiwandi Central, Mumbai",
-    image: "/products/hoodie-men-black.jpg",
+    image: "/products/clothing/hoodies/hoodie-black-front.png",
     gallery: [
-      { label: "Black Zipper Hoodie", url: "/products/hoodie-men-black.jpg" },
+      { label: "Black Zipper Hoodie", url: "/products/clothing/hoodies/hoodie-black-front.png" },
+      { label: "Grey Zipper Hoodie", url: "/products/clothing/hoodies/hoodie-grey-front.png" },
     ],
     variantOptions: [
       { name: "Color", values: ["Charcoal Black", "Heather Grey", "Navy Blue", "Deep Maroon"] },
@@ -1809,9 +1880,10 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-MEN-003-BLK",
         price: 269,
         mrp: 899,
-        image: "/products/hoodie-men-black.jpg",
+        image: "/products/clothing/hoodies/hoodie-black-front.png",
         gallery: [
-          { label: "Charcoal Black Hoodie", url: "/products/hoodie-men-black.jpg" },
+          { label: "Charcoal Black Front", url: "/products/clothing/hoodies/hoodie-black-front.png" },
+          { label: "Angle View", url: "/products/clothing/hoodies/hoodie-black-angle.png" },
         ],
         attributes: { Color: "Charcoal Black", Size: "L" },
       },
@@ -1821,9 +1893,10 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-MEN-003-GRY",
         price: 269,
         mrp: 899,
-        image: "/products/hoodie-men-black.jpg",
+        image: "/products/clothing/hoodies/hoodie-grey-front.png",
         gallery: [
-          { label: "Heather Grey Hoodie", url: "/products/hoodie-men-black.jpg" },
+          { label: "Heather Grey Front", url: "/products/clothing/hoodies/hoodie-grey-front.png" },
+          { label: "Angle View", url: "/products/clothing/hoodies/hoodie-grey-angle.png" },
         ],
         attributes: { Color: "Heather Grey", Size: "L" },
       },
@@ -1833,9 +1906,10 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-MEN-003-NVY",
         price: 269,
         mrp: 899,
-        image: "/products/hoodie-men-black.jpg",
+        image: "/products/clothing/hoodies/hoodie-navy-front.png",
         gallery: [
-          { label: "Navy Blue Hoodie", url: "/products/hoodie-men-black.jpg" },
+          { label: "Navy Blue Front", url: "/products/clothing/hoodies/hoodie-navy-front.png" },
+          { label: "Angle View", url: "/products/clothing/hoodies/hoodie-navy-angle.png" },
         ],
         attributes: { Color: "Navy Blue", Size: "L" },
       },
@@ -1845,9 +1919,10 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-MEN-003-MAR",
         price: 269,
         mrp: 899,
-        image: "/products/hoodie-men-black.jpg",
+        image: "/products/clothing/hoodies/hoodie-maroon-front.png",
         gallery: [
-          { label: "Deep Maroon Hoodie", url: "/products/hoodie-men-black.jpg" },
+          { label: "Deep Maroon Front", url: "/products/clothing/hoodies/hoodie-maroon-front.png" },
+          { label: "Angle View", url: "/products/clothing/hoodies/hoodie-maroon-angle.png" },
         ],
         attributes: { Color: "Deep Maroon", Size: "L" },
       },
@@ -2297,11 +2372,11 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     description: "Premium multipacks of crew-neck sports and graphic t-shirts for boys. 100% skin-safe combed cotton with durable non-toxic prints.",
     detailedDescription: "Bio-washed fabric engineered for active boys. Resists seam twisting and pilling after harsh machine wash. Available in fast-moving pack-of-2 and pack-of-3 retail assortments.",
     pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
-    image: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png",
+    image: "/products/clothing/boys-tshirt-packs/pack-of-2/01_front_product_view.png",
     gallery: [
-      { label: "Front Product View (No Packaging)", url: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png" },
-      { label: "Alternative Detail View (No Packaging)", url: "/products/clothing/boys-tshirts/pack-of-2/02_alternative_detail_view.png" },
-      { label: "Retail Packaging View", url: "/products/clothing/boys-tshirts/pack-of-2/03_product_with_packaging.png" },
+      { label: "Front Product View (No Packaging)", url: "/products/clothing/boys-tshirt-packs/pack-of-2/01_front_product_view.png" },
+      { label: "Alternative Detail View (No Packaging)", url: "/products/clothing/boys-tshirt-packs/pack-of-2/02_alternative_detail_view.png" },
+      { label: "Retail Packaging View", url: "/products/clothing/boys-tshirt-packs/pack-of-2/03_product_with_packaging.png" },
     ],
     variantOptions: [
       { name: "Pack Combo", values: ["Pack of 2 (Navy & Grey Sports)", "Pack of 3 (Blue, White & Red Sports)"] },
@@ -2314,11 +2389,11 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-KID-001-P2",
         price: 149,
         mrp: 549,
-        image: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png",
+        image: "/products/clothing/boys-tshirt-packs/pack-of-2/01_front_product_view.png",
         gallery: [
-          { label: "Pack of 2 Front", url: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png" },
-          { label: "Detail View", url: "/products/clothing/boys-tshirts/pack-of-2/02_alternative_detail_view.png" },
-          { label: "Packaging View", url: "/products/clothing/boys-tshirts/pack-of-2/03_product_with_packaging.png" },
+          { label: "Pack of 2 Front", url: "/products/clothing/boys-tshirt-packs/pack-of-2/01_front_product_view.png" },
+          { label: "Detail View", url: "/products/clothing/boys-tshirt-packs/pack-of-2/02_alternative_detail_view.png" },
+          { label: "Packaging View", url: "/products/clothing/boys-tshirt-packs/pack-of-2/03_product_with_packaging.png" },
         ],
         attributes: { "Pack Combo": "Pack of 2 (Navy & Grey Sports)", "Age Group": "6-8 Years" },
       },
@@ -2328,11 +2403,11 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "APP-KID-001-P3",
         price: 199,
         mrp: 749,
-        image: "/products/clothing/boys-tshirts/pack-of-3/01_front_product_view.png",
+        image: "/products/clothing/boys-tshirt-packs/pack-of-3/01_front_product_view.png",
         gallery: [
-          { label: "Pack of 3 Front", url: "/products/clothing/boys-tshirts/pack-of-3/01_front_product_view.png" },
-          { label: "Detail View", url: "/products/clothing/boys-tshirts/pack-of-3/02_alternative_detail_view.png" },
-          { label: "Packaging View", url: "/products/clothing/boys-tshirts/pack-of-3/03_product_with_packaging.png" },
+          { label: "Pack of 3 Front", url: "/products/clothing/boys-tshirt-packs/pack-of-3/01_front_product_view.png" },
+          { label: "Detail View", url: "/products/clothing/boys-tshirt-packs/pack-of-3/02_alternative_detail_view.png" },
+          { label: "Packaging View", url: "/products/clothing/boys-tshirt-packs/pack-of-3/03_product_with_packaging.png" },
         ],
         attributes: { "Pack Combo": "Pack of 3 (Blue, White & Red Sports)", "Age Group": "6-8 Years" },
       },
@@ -3923,49 +3998,40 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     description: "Crystal clear anti-yellowing TPU shockproof mobile covers with reinforced air-cushion corner bumpers and camera lip protection.",
     detailedDescription: "High wholesale turnover staple. Available for all top-selling smartphone models (iPhone 13-16 series, Samsung Galaxy A/S series, Redmi Note series, Realme, and Vivo). Micro-dot interior prevents watermarking.",
     pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
-    image: "/categories/cat-electronics.png",
+    image: "/products/electronics/mobile-cases/case-smoke-front.png",
     gallery: [
-      { label: "Transparent Anti-Yellowing Case", url: "/categories/cat-electronics.png" },
+      { label: "Matte Smoke Bumper Case", url: "/products/electronics/mobile-cases/case-smoke-front.png" },
+      { label: "Clear Silicone Case", url: "/products/electronics/mobile-cases/case-clear-front.png" },
     ],
     variantOptions: [
-      { name: "Case Style", values: ["Ultra-Clear Anti-Yellowing Silicone", "Matte Smoke Bumper TPU", "Magnetic Shockproof Armor"] },
+      { name: "Case Style", values: ["Matte Smoke Bumper TPU", "Ultra-Clear Anti-Yellowing Silicone"] },
     ],
     variantItems: [
-      {
-        id: "ultra-clear",
-        label: "Ultra-Clear Anti-Yellowing Silicone",
-        sku: "ELE-ACC-001-CLR",
-        price: 22,
-        mrp: 99,
-        image: "/categories/cat-electronics.png",
-        gallery: [
-          { label: "Ultra-Clear Anti-Yellowing Case", url: "/categories/cat-electronics.png" },
-        ],
-        attributes: { "Case Style": "Ultra-Clear Anti-Yellowing Silicone" },
-      },
       {
         id: "matte-smoke",
         label: "Matte Smoke Bumper TPU",
         sku: "ELE-ACC-001-SMK",
         price: 28,
         mrp: 119,
-        image: "/categories/cat-electronics.png",
+        image: "/products/electronics/mobile-cases/case-smoke-front.png",
         gallery: [
-          { label: "Matte Smoke Bumper Case", url: "/categories/cat-electronics.png" },
+          { label: "Matte Smoke Bumper Case", url: "/products/electronics/mobile-cases/case-smoke-front.png" },
+          { label: "Angle View", url: "/products/electronics/mobile-cases/case-smoke-angle.png" },
         ],
         attributes: { "Case Style": "Matte Smoke Bumper TPU" },
       },
       {
-        id: "magnetic-armor",
-        label: "Magnetic Shockproof Armor",
-        sku: "ELE-ACC-001-MAG",
-        price: 45,
-        mrp: 179,
-        image: "/categories/cat-electronics.png",
+        id: "ultra-clear",
+        label: "Ultra-Clear Anti-Yellowing Silicone",
+        sku: "ELE-ACC-001-CLR",
+        price: 22,
+        mrp: 99,
+        image: "/products/electronics/mobile-cases/case-clear-front.png",
         gallery: [
-          { label: "Magnetic Shockproof Armor Case", url: "/categories/cat-electronics.png" },
+          { label: "Ultra-Clear Anti-Yellowing Case", url: "/products/electronics/mobile-cases/case-clear-front.png" },
+          { label: "Angle View", url: "/products/electronics/mobile-cases/case-clear-angle.png" },
         ],
-        attributes: { "Case Style": "Magnetic Shockproof Armor" },
+        attributes: { "Case Style": "Ultra-Clear Anti-Yellowing Silicone" },
       },
     ],
     variants: [
@@ -4921,11 +4987,11 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     description: "Insulated multi-compartment bento tiffin boxes with silicone leak-proof divider seals, cutlery slot with spoon/fork, and sturdy 4-sided clips.",
     detailedDescription: "High-volume school and office essential. Keeps food warm and separated without flavor mixing. Microwave safe inner tray and drop-proof outer bumper.",
     pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
-    image: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png",
+    image: "/products/home/lunch-boxes/adults-3-comp-black-front.png",
     gallery: [
-      { label: "Front Product View (No Packaging)", url: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png" },
-      { label: "Compartment Angle (No Packaging)", url: "/products/home/lunch-boxes/adults-3-compartment/02_adults_3_angle_without_packaging.png" },
-      { label: "Retail Packaging View", url: "/products/home/lunch-boxes/adults-3-compartment/03_adults_3_with_generic_packaging.png" },
+      { label: "Adults 3-Comp Bento (Black)", url: "/products/home/lunch-boxes/adults-3-comp-black-front.png" },
+      { label: "Adults 4-Comp Bento (Black)", url: "/products/home/lunch-boxes/adults-4-comp-black-front.png" },
+      { label: "Kids School Tiffin (Blue)", url: "/products/home/lunch-boxes/kids-tiffin-blue-front.png" },
     ],
     variantOptions: [
       { name: "Compartment Style", values: ["Adults 3-Compartment Office Bento (1000ml)", "Adults 4-Compartment Large Bento (1200ml)", "Kids Multi-Compartment School Tiffin (800ml)"] },
@@ -4937,11 +5003,9 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "HOM-ORG-002-A3",
         price: 95,
         mrp: 399,
-        image: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png",
+        image: "/products/home/lunch-boxes/adults-3-comp-black-front.png",
         gallery: [
-          { label: "Adults 3-Comp Front", url: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png" },
-          { label: "Compartments Open", url: "/products/home/lunch-boxes/adults-3-compartment/02_adults_3_angle_without_packaging.png" },
-          { label: "Packaging View", url: "/products/home/lunch-boxes/adults-3-compartment/03_adults_3_with_generic_packaging.png" },
+          { label: "Adults 3-Comp Front", url: "/products/home/lunch-boxes/adults-3-comp-black-front.png" },
         ],
         attributes: { "Compartment Style": "Adults 3-Compartment Office Bento (1000ml)" },
       },
@@ -4951,11 +5015,9 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "HOM-ORG-002-A4",
         price: 115,
         mrp: 449,
-        image: "/products/home/lunch-boxes/adults-4-compartment/01_adults_4_front_without_packaging.png",
+        image: "/products/home/lunch-boxes/adults-4-comp-black-front.png",
         gallery: [
-          { label: "Adults 4-Comp Front", url: "/products/home/lunch-boxes/adults-4-compartment/01_adults_4_front_without_packaging.png" },
-          { label: "Compartments Open", url: "/products/home/lunch-boxes/adults-4-compartment/02_adults_4_angle_without_packaging.png" },
-          { label: "Packaging View", url: "/products/home/lunch-boxes/adults-4-compartment/03_adults_4_with_generic_packaging.png" },
+          { label: "Adults 4-Comp Front", url: "/products/home/lunch-boxes/adults-4-comp-black-front.png" },
         ],
         attributes: { "Compartment Style": "Adults 4-Compartment Large Bento (1200ml)" },
       },
@@ -4965,11 +5027,9 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
         sku: "HOM-ORG-002-KID",
         price: 89,
         mrp: 379,
-        image: "/products/home/lunch-boxes/kids-multi-compartment/01_kids_front_without_packaging.png",
+        image: "/products/home/lunch-boxes/kids-tiffin-blue-front.png",
         gallery: [
-          { label: "Kids Tiffin Front", url: "/products/home/lunch-boxes/kids-multi-compartment/01_kids_front_without_packaging.png" },
-          { label: "Compartments Open", url: "/products/home/lunch-boxes/kids-multi-compartment/02_kids_angle_without_packaging.png" },
-          { label: "Packaging View", url: "/products/home/lunch-boxes/kids-multi-compartment/03_kids_with_generic_packaging.png" },
+          { label: "Kids Tiffin Front", url: "/products/home/lunch-boxes/kids-tiffin-blue-front.png" },
         ],
         attributes: { "Compartment Style": "Kids Multi-Compartment School Tiffin (800ml)" },
       },
@@ -6529,15 +6589,28 @@ function calculateVariantPricing(
 }
 
 function generateUnrolledCatalog(baseProducts: MasterProduct[]): MasterProduct[] {
-  const result: MasterProduct[] = [];
+  // 1. Group variants by parent product
+  const productVariantGroups: MasterProduct[][] = [];
 
   for (const p of baseProducts) {
     if (!p.variantItems || p.variantItems.length === 0) {
-      result.push(p);
+      if (p.image && p.image.trim() !== "" && !p.image.endsWith(".jpg")) {
+        productVariantGroups.push([p]);
+      }
       continue;
     }
 
+    const unrolledForP: MasterProduct[] = [];
     p.variantItems.forEach((v, idx) => {
+      // Gallery & Image: prioritize variant image, then parent image
+      const gallery = v.gallery && v.gallery.length > 0 ? v.gallery : (p.gallery || []);
+      const image = v.image || p.image || gallery[0]?.url;
+
+      // Filter out any variant that does not have a valid real photo
+      if (!image || image.trim() === "" || image.endsWith(".jpg")) {
+        return;
+      }
+
       const { price, mrp } = calculateVariantPricing(
         p.price,
         p.mrp,
@@ -6565,10 +6638,6 @@ function generateUnrolledCatalog(baseProducts: MasterProduct[]): MasterProduct[]
       if (v.id) aliases.push(v.id);
       aliases.push(`${p.id}-${v.id}`);
 
-      // Gallery: prioritize variant's own studio gallery, fallback to parent
-      const gallery = v.gallery && v.gallery.length > 0 ? v.gallery : (p.gallery || []);
-      const image = v.image || p.image || gallery[0]?.url;
-
       const newProd: MasterProduct = {
         ...p,
         id: unrolledId,
@@ -6592,8 +6661,37 @@ function generateUnrolledCatalog(baseProducts: MasterProduct[]): MasterProduct[]
         ),
       };
 
-      result.push(newProd);
+      unrolledForP.push(newProd);
     });
+
+    if (unrolledForP.length > 0) {
+      productVariantGroups.push(unrolledForP);
+    }
+  }
+
+  // 2. JUGGLE / INTERLEAVE VARIANTS SO SAME PRODUCT VARIANTS DO NOT APPEAR IN SEQUENCE
+  const byCategory = new Map<string, MasterProduct[][]>();
+  for (const group of productVariantGroups) {
+    const cat = group[0].categorySlug || "other";
+    if (!byCategory.has(cat)) byCategory.set(cat, []);
+    byCategory.get(cat)!.push(group);
+  }
+
+  const result: MasterProduct[] = [];
+  for (const [_, groups] of byCategory.entries()) {
+    let maxLen = 0;
+    for (const g of groups) {
+      if (g.length > maxLen) maxLen = g.length;
+    }
+
+    // Interleave round-robin: pick variant i across all products
+    for (let i = 0; i < maxLen; i++) {
+      for (const g of groups) {
+        if (i < g.length) {
+          result.push(g[i]);
+        }
+      }
+    }
   }
 
   return result;

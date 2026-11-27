@@ -4,6 +4,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ProductCard, { ProductProps } from "@/components/common/ProductCard";
+import CategoryStudioBanner from "@/components/category/CategoryStudioBanner";
 import { CATEGORIES_FEATURED } from "@/lib/constants";
 import { CATEGORY_META, MASTER_PRODUCTS } from "@/lib/products-data";
 import { ArrowRight, Package, TrendingUp, Percent, Truck, ShieldCheck, Building2, Sparkles, CheckCircle2 } from "lucide-react";
@@ -142,43 +143,15 @@ export default async function CategoryLandingPage({
           )}
         </nav>
 
-        {/* ─── Category Hero Banner ─── */}
-        {categoryBanner ? (
-          <div className="mb-6 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/70 bg-[#faf6f0]">
-            <img
-              src={categoryBanner}
-              alt={`${categoryName} wholesale category`}
-              className="w-full h-auto object-contain block"
-              style={{ aspectRatio: "1024 / 222" }}
-            />
-          </div>
-        ) : (
-          /* Fallback gradient hero for categories without a banner image */
-          <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 text-neutral-900 rounded-2xl px-8 py-10 mb-6 border border-amber-200/60 relative overflow-hidden shadow-sm">
-            <div className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #fbbf24 0%, transparent 60%)" }} />
-            <div className="relative z-10 max-w-xl space-y-3">
-              <span className="inline-block text-[11px] font-black uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">
-                Commercial Merchandise Division
-              </span>
-              <h1 className="text-3xl sm:text-4xl font-black tracking-tight">{categoryName}</h1>
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                {categoryMeta?.description || "Wholesale commercial lots"}. Direct factory wholesale rates with pan-India distribution and verified MOQs.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2 text-xs">
-                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
-                  Starting Rate: <strong className="text-amber-600">{categoryMeta?.from || "₹49+"}</strong>
-                </span>
-                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
-                  Standard MOQ: <strong>{categoryMeta?.moq || "20 pcs"}</strong>
-                </span>
-                <span className="bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200 text-neutral-700 font-semibold shadow-xs">
-                  Available Lots: <strong>{allCategoryProducts.length}</strong>
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* ─── Category Hero Studio Banner (Crisp Vector HTML/CSS) ─── */}
+        <CategoryStudioBanner
+          categorySlug={categorySlug}
+          categoryName={categoryName}
+          description={categoryMeta?.description}
+          startingRate={categoryMeta?.from}
+          standardMoq={categoryMeta?.moq}
+          availableLots={allCategoryProducts.length}
+        />
 
         {/* ─── Trust Badges Strip ─── */}
         {trustBadges.length > 0 && (
