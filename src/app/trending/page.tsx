@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { ArrowRight, Flame, MessageSquare, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Trending Wholesale Deals & Fast-Moving Lots — PLAYLUME",
+  title: "Trending Wholesale Deals & Fast-Moving Lots — V&A Global Sourcing",
   description: "High-demand wholesale lots with verified margins for Indian retailers and distributors.",
 };
 
@@ -110,7 +110,7 @@ export default function TrendingPage() {
                 </Link>
                 <a
                   href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(
-                    `Hello PLAYLUME, I want to confirm price and allocation for trending deal: ${item.title} (${item.sku}).`
+                    `Hello V&A Global Sourcing, I want to confirm price and allocation for trending deal: ${item.title} (${item.sku}).`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

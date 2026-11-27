@@ -46,7 +46,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               P
             </div>
             <div>
-              <span className="text-base font-extrabold text-white tracking-tight block">PLAYLUME</span>
+              <span className="text-base font-extrabold text-white tracking-tight block">V&A Global Sourcing</span>
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block -mt-0.5">Management Console</span>
             </div>
           </Link>

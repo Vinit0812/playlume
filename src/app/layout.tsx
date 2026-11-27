@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "wholesale stationery",
     "home kitchen wholesale",
     "bulk enquiry India",
-    "PLAYLUME wholesale",
+    "V&A Global Sourcing wholesale",
   ],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,

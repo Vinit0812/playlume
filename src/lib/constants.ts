@@ -1,13 +1,13 @@
-// Application-wide constants for PLAYLUME B2B Wholesale Platform
+// Application-wide constants for V&A Global Sourcing B2B Wholesale Platform
 // Executive Wholesale & Global Supply Chain Standards
 
 export const SITE_CONFIG = {
-  name: "PLAYLUME",
+  name: "V&A Global Sourcing",
   tagline: "B2B Wholesale Trading & Distribution Enterprise",
   description:
-    "PLAYLUME is a multi-category wholesale trading and distribution company connecting verified manufacturers with retailers, commercial wholesalers, and distributors across India.",
-  url: process.env.NEXT_PUBLIC_APP_URL || "https://playlume.in",
-  email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "corporate@playlume.in",
+    "V&A Global Sourcing is a multi-category wholesale trading and distribution company connecting verified manufacturers with retailers, commercial wholesalers, and distributors across India.",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://vaglobalsourcing.com",
+  email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "trade@vaglobalsourcing.com",
   phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+91 98765 43210",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "91XXXXXXXXXX",
   address: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS || "Trade Tower, Commercial District, India",

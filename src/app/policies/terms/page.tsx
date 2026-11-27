@@ -2,7 +2,7 @@ import { FileCheck, AlertTriangle, Truck, Receipt, CheckCircle2 } from "lucide-r
 import Link from "next/link";
 
 export const metadata = {
-  title: "Wholesale Terms of Supply | PLAYLUME Trading & Distribution",
+  title: "Wholesale Terms of Supply | V&A Global Sourcing Trading & Distribution",
   description: "Commercial wholesale agreement, MOQ thresholds, proforma terms, and billing specifications.",
 };
 
@@ -30,7 +30,7 @@ export default function TermsOfSupplyPage() {
               <Receipt className="w-5 h-5 text-blue-400" /> 1. Commercial Nature of Transactions
             </h2>
             <p>
-              PLAYLUME deals strictly in wholesale bulk supply, institutional lots, and commercial distribution contracts. All orders must meet designated Minimum Order Quantities (MOQ) as declared per SKU or master carton tier. Single-piece consumer retail transactions are expressly outside the scope of our distribution operations.
+              V&A Global Sourcing deals strictly in wholesale bulk supply, institutional lots, and commercial distribution contracts. All orders must meet designated Minimum Order Quantities (MOQ) as declared per SKU or master carton tier. Single-piece consumer retail transactions are expressly outside the scope of our distribution operations.
             </p>
           </section>
 
@@ -74,7 +74,7 @@ export default function TermsOfSupplyPage() {
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-white">4. Inspection & Claim Protocol</h2>
             <p>
-              Upon delivery at the destination warehouse, the recipient enterprise must inspect outer carton seals before signing the logistics consignment note (Lorry Receipt / POD). Any seal breaches or transit discrepancies must be recorded on the POD and reported to PLAYLUME within 48 hours accompanied by unboxing video documentation.
+              Upon delivery at the destination warehouse, the recipient enterprise must inspect outer carton seals before signing the logistics consignment note (Lorry Receipt / POD). Any seal breaches or transit discrepancies must be recorded on the POD and reported to V&A Global Sourcing within 48 hours accompanied by unboxing video documentation.
             </p>
           </section>
 

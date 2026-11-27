@@ -199,7 +199,7 @@ export default function Header() {
       router.push("/admin/buyers");
       setLoginModalOpen(false);
     } else {
-      setLoginFeedback("Authentication successful! Welcome to PLAYLUME Commercial Portal.");
+      setLoginFeedback("Authentication successful! Welcome to V&A Global Sourcing Portal.");
       setTimeout(() => {
         setLoginModalOpen(false);
         router.push("/products");
@@ -220,54 +220,54 @@ export default function Header() {
       <header className="bg-[#181818] text-white border-b border-neutral-800 sticky top-0 z-40 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
           
-          {/* 1. Brand Logo (Candle Mould style: Bold Name + Tagline) */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition transform">
-              P
+          {/* 1. Brand Logo (V&A Global Sourcing) */}
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-stone-950 font-black text-sm tracking-tighter shadow-md group-hover:scale-105 transition transform">
+              V&amp;A
             </div>
             <div className="leading-tight">
-              <span className="font-black text-xl sm:text-2xl text-white tracking-tight block">
-                PLAYLUME
+              <span className="font-black text-lg sm:text-xl text-white tracking-tight block">
+                V&amp;A GLOBAL SOURCING
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-neutral-400 uppercase tracking-widest block -mt-0.5">
+              <span className="text-[9px] sm:text-[10px] font-bold text-neutral-400 uppercase tracking-widest block -mt-0.5">
                 Wholesale &amp; Trade
               </span>
             </div>
           </Link>
 
-          {/* 2. Integrated Search Bar with "All categories ▾" + Input + Search CTA */}
+          {/* 2. Integrated Search Bar with "All categories ▾" + Input + Search CTA (Dark Pill matching reference) */}
           <div className="flex-1 max-w-2xl hidden md:block relative" ref={searchContainerRef}>
             <form onSubmit={handleSearchSubmit} className="relative flex items-center">
-              <div className="flex w-full items-stretch rounded-md overflow-hidden bg-white shadow-sm border border-neutral-300 focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500/20">
+              <div className="flex w-full items-center rounded-full overflow-hidden bg-[#242424]/90 shadow-inner border border-neutral-700/80 focus-within:border-amber-500/80 focus-within:ring-2 focus-within:ring-amber-500/20 px-2 py-1">
                 
                 {/* Category Dropdown Pill */}
-                <div className="relative" ref={categoryDropdownRef}>
+                <div className="relative shrink-0" ref={categoryDropdownRef}>
                   <button
                     type="button"
                     onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-                    className="h-full px-3.5 bg-neutral-50 hover:bg-neutral-100 text-neutral-700 text-xs font-semibold flex items-center gap-1.5 border-r border-neutral-300 transition shrink-0 select-none cursor-pointer"
+                    className="h-8 px-3 text-neutral-300 hover:text-white text-xs font-medium flex items-center gap-1.5 transition select-none cursor-pointer"
                   >
                     <span className="truncate max-w-[125px]">{selectedCategoryLabel}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 text-neutral-500 transition-transform ${isCategoryDropdownOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-3.5 h-3.5 text-neutral-400 transition-transform ${isCategoryDropdownOpen ? "rotate-180" : ""}`} />
                   </button>
 
                   {/* Dropdown Options Menu */}
                   {isCategoryDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-md shadow-xl border border-neutral-200 py-1.5 z-50 text-neutral-800 text-xs">
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#1f1f1f] rounded-xl shadow-2xl border border-neutral-700 py-1.5 z-50 text-neutral-200 text-xs">
                       <button
                         type="button"
                         onClick={() => {
                           setSelectedCategory("all");
                           setIsCategoryDropdownOpen(false);
                         }}
-                        className={`w-full text-left px-4 py-2 hover:bg-neutral-100 font-semibold flex items-center justify-between ${
-                          selectedCategory === "all" ? "text-amber-600 bg-amber-50" : ""
+                        className={`w-full text-left px-4 py-2 hover:bg-neutral-800 font-semibold flex items-center justify-between ${
+                          selectedCategory === "all" ? "text-amber-400 bg-neutral-800/60" : ""
                         }`}
                       >
                         <span>All categories</span>
                         {selectedCategory === "all" && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
-                      <div className="h-px bg-neutral-200 my-1" />
+                      <div className="h-px bg-neutral-700 my-1" />
                       {CATEGORY_DATA.map((cat) => (
                         <button
                           key={cat.id}
@@ -276,8 +276,8 @@ export default function Header() {
                             setSelectedCategory(cat.id);
                             setIsCategoryDropdownOpen(false);
                           }}
-                          className={`w-full text-left px-4 py-2 hover:bg-neutral-100 flex items-center justify-between ${
-                            selectedCategory === cat.id ? "text-amber-600 font-bold bg-amber-50" : ""
+                          className={`w-full text-left px-4 py-2 hover:bg-neutral-800 flex items-center justify-between ${
+                            selectedCategory === cat.id ? "text-amber-400 font-bold bg-neutral-800/60" : ""
                           }`}
                         >
                           <span>{cat.name}</span>
@@ -287,6 +287,9 @@ export default function Header() {
                     </div>
                   )}
                 </div>
+
+                {/* Vertical Divider */}
+                <div className="h-4 w-px bg-neutral-700 shrink-0 mx-1" />
 
                 {/* Input Text Box */}
                 <input
@@ -298,16 +301,16 @@ export default function Header() {
                     setShowSearchDropdown(true);
                   }}
                   placeholder="What are you looking for?"
-                  className="w-full px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 bg-transparent focus:outline-none"
+                  className="w-full px-3 py-1.5 text-xs sm:text-sm text-neutral-100 placeholder:text-neutral-500 bg-transparent focus:outline-none"
                 />
 
-                {/* Submit Button (Coral/Red Accent like candlemould.in) */}
+                {/* Submit Button (Amber/Bronze Circular Button matching reference) */}
                 <button
                   type="submit"
-                  className="px-5 bg-[#e03a3a] hover:bg-[#c92f2f] text-white flex items-center justify-center transition cursor-pointer shrink-0"
+                  className="w-9 h-9 rounded-full bg-gradient-to-br from-[#94743c] to-[#604822] hover:from-[#aa8749] hover:to-[#73572a] text-amber-100 flex items-center justify-center transition cursor-pointer shrink-0 shadow-md"
                   aria-label="Search catalogue"
                 >
-                  <Search className="w-5 h-5" />
+                  <Search className="w-4 h-4" />
                 </button>
               </div>
             </form>
@@ -430,22 +433,22 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Search Bar (under header for small devices) */}
+        {/* Mobile Search Bar (under header for small devices - Dark Pill matching reference) */}
         <div className="md:hidden px-4 pb-3">
-          <form onSubmit={handleSearchSubmit} className="flex items-center rounded-md overflow-hidden bg-white shadow-sm border border-neutral-300">
+          <form onSubmit={handleSearchSubmit} className="flex items-center rounded-full overflow-hidden bg-[#242424]/90 border border-neutral-700/80 px-2 py-1 shadow-inner focus-within:border-amber-500/80">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="What are you looking for?"
-              className="w-full px-3 py-2 text-xs text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
+              className="w-full px-3 py-1.5 text-xs text-neutral-100 placeholder:text-neutral-500 bg-transparent focus:outline-none"
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-[#e03a3a] hover:bg-[#c92f2f] text-white flex items-center justify-center shrink-0"
+              className="w-8 h-8 rounded-full bg-gradient-to-br from-[#94743c] to-[#604822] text-amber-100 flex items-center justify-center shrink-0 shadow-sm"
               aria-label="Search catalogue"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-3.5 h-3.5" />
             </button>
           </form>
         </div>
@@ -585,10 +588,10 @@ export default function Header() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="w-6 h-6 rounded bg-amber-500 text-stone-950 font-black text-xs flex items-center justify-center">
-                    P
+                    V&amp;A
                   </span>
                   <h3 className="text-base font-black tracking-tight text-white">
-                    PLAYLUME B2B Portal
+                    V&amp;A Global Sourcing Portal
                   </h3>
                 </div>
                 <p className="text-xs text-neutral-400 mt-1">
@@ -650,7 +653,7 @@ export default function Header() {
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder={
-                      loginRole === "buyer" ? "e.g. +91 98250 11223" : "admin@playlume.in"
+                      loginRole === "buyer" ? "e.g. +91 98250 11223" : "admin@vaglobalsourcing.com"
                     }
                     className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
@@ -695,7 +698,7 @@ export default function Header() {
               {/* Links & Register Prompt */}
               <div className="mt-5 pt-4 border-t border-neutral-200 text-center text-xs space-y-2">
                 <p className="text-neutral-600">
-                  New to PLAYLUME Wholesale?{" "}
+                  New to V&amp;A Global Sourcing Wholesale?{" "}
                   <Link
                     href="/become-a-buyer"
                     onClick={() => setLoginModalOpen(false)}

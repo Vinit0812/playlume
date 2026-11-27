@@ -7,8 +7,8 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { Building2, ShieldCheck, TrendingUp, Layers, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Corporate Profile & Institutional Sourcing — PLAYLUME",
-  description: "About PLAYLUME: An established multi-category wholesale trading and distribution enterprise supplying verified merchandise to Indian commercial businesses.",
+  title: "Corporate Profile & Institutional Sourcing — V&A Global Sourcing",
+  description: "About V&A Global Sourcing: An established multi-category wholesale trading and distribution enterprise supplying verified merchandise to Indian commercial businesses.",
 };
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
             Institutional Profile
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mt-3">
-            About PLAYLUME
+            About V&amp;A Global Sourcing
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-3 leading-relaxed">
             Multi-category commercial wholesale trading and distribution enterprise. Bridging manufacturers with Indian retailers, wholesalers, and institutional buyers.
@@ -35,7 +35,7 @@ export default function AboutPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-extrabold text-slate-950">Who We Are</h2>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              PLAYLUME operates as a consolidated B2B wholesale trading company. We eliminate the friction of dealing with multiple unvetted vendors by centralizing verified sourcing across Toys, Apparel, Watches, Consumer Tech, Home & Kitchenware, and Stationery.
+              V&amp;A Global Sourcing operates as a consolidated B2B wholesale trading company. We eliminate the friction of dealing with multiple unvetted vendors by centralizing verified sourcing across Toys, Apparel, Artificial Jewellery, Consumer Tech, Home &amp; Kitchenware, and Fashion Accessories.
             </p>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Our sourcing-first infrastructure enables retail shop owners and regional stockists to procure high-margin merchandise at direct manufacturer rates with consolidated GST billing, batch inspection, and dependable freight tracking.

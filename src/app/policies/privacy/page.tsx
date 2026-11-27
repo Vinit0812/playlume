@@ -2,8 +2,8 @@ import { Shield, Lock, FileText, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy | PLAYLUME Wholesale Trading & Distribution",
-  description: "Enterprise data privacy and buyer protection policy for PLAYLUME B2B clients.",
+  title: "Privacy Policy | V&A Global Sourcing Wholesale Trading & Distribution",
+  description: "Enterprise data privacy and buyer protection policy for V&A Global Sourcing B2B clients.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
               <Lock className="w-5 h-5 text-blue-400" /> 1. Commitment to B2B Data Security
             </h2>
             <p>
-              PLAYLUME Wholesale Trading & Distribution operates strictly as a Business-to-Business (B2B) trade platform. We collect, process, and retain commercial enterprise data solely for business identity verification, GST compliance, order logistics, and proforma quotation processing under the provisions of the Information Technology Act, 2000 and associated data protection regulations.
+              V&A Global Sourcing Wholesale Trading & Distribution operates strictly as a Business-to-Business (B2B) trade platform. We collect, process, and retain commercial enterprise data solely for business identity verification, GST compliance, order logistics, and proforma quotation processing under the provisions of the Information Technology Act, 2000 and associated data protection regulations.
             </p>
           </section>
 
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-white">3. Non-Disclosure & Confidentiality Shield</h2>
             <p>
-              Your procurement volumes, agreed wholesale contract rates, and company contact details are strictly confidential. PLAYLUME never sells, rents, or exposes buyer details to third-party commercial brokers or advertisers. Data is exclusively routed to our internal trade desk, verified logistics carriers, and statutory GST e-way billing systems.
+              Your procurement volumes, agreed wholesale contract rates, and company contact details are strictly confidential. V&A Global Sourcing never sells, rents, or exposes buyer details to third-party commercial brokers or advertisers. Data is exclusively routed to our internal trade desk, verified logistics carriers, and statutory GST e-way billing systems.
             </p>
           </section>
 
@@ -77,8 +77,8 @@ export default function PrivacyPolicyPage() {
             </h2>
             <p className="text-slate-400 text-sm">
               For verification queries, GST certificate updates, or data rectification, contact our trade compliance desk at{" "}
-              <a href="mailto:compliance@playlume.in" className="text-blue-400 hover:underline">
-                compliance@playlume.in
+              <a href="mailto:compliance@V&A Global Sourcing.in" className="text-blue-400 hover:underline">
+                compliance@V&A Global Sourcing.in
               </a>{" "}
               or via WhatsApp at{" "}
               <a href="https://wa.me/919876543210" className="text-emerald-400 hover:underline">

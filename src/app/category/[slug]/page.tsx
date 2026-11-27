@@ -79,9 +79,9 @@ export async function generateMetadata({
   const category =
     CATEGORY_META.find((c) => c.slug === slug || c.id === slug) ||
     CATEGORIES_FEATURED.find((c) => c.slug === slug);
-  if (!category) return { title: "Category Not Found — PLAYLUME" };
+  if (!category) return { title: "Category Not Found — V&A Global Sourcing" };
   return {
-    title: `${category.name} Wholesale Sourcing & Distribution — PLAYLUME`,
+    title: `${category.name} Wholesale Sourcing & Distribution — V&A Global Sourcing`,
     description: `Direct factory wholesale pricing and verified MOQs for ${category.name}. Sourced for Indian retailers and commercial distributors.`,
   };
 }
@@ -144,12 +144,12 @@ export default async function CategoryLandingPage({
 
         {/* ─── Category Hero Banner ─── */}
         {categoryBanner ? (
-          <div className="mb-6 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/70">
+          <div className="mb-6 rounded-2xl overflow-hidden shadow-sm border border-neutral-200/70 bg-[#faf6f0]">
             <img
               src={categoryBanner}
               alt={`${categoryName} wholesale category`}
-              className="w-full object-cover"
-              style={{ maxHeight: "300px", objectPosition: "center" }}
+              className="w-full h-auto object-contain block"
+              style={{ aspectRatio: "1024 / 222" }}
             />
           </div>
         ) : (

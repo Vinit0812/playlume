@@ -63,11 +63,11 @@ export default function BecomeABuyerPage() {
             </div>
             <h1 className="text-2xl font-bold text-slate-950">Commercial Account Registered</h1>
             <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
-              Your trading business has been enrolled into the PLAYLUME commercial network. Your designated wholesale representative will contact you via WhatsApp with preferred rate slabs.
+              Your trading business has been enrolled into the V&amp;A Global Sourcing commercial network. Your designated wholesale representative will contact you via WhatsApp with preferred rate slabs.
             </p>
             <div className="mt-8 pt-6 border-t border-slate-100">
               <a
-                href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20PLAYLUME%2C%20I%20have%20registered%20as%20an%20authorized%20buyer.`}
+                href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20V%26A%20Global%20Sourcing%2C%20I%20have%20registered%20as%20an%20authorized%20buyer.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs py-3 rounded-xl transition shadow-md"
@@ -88,7 +88,7 @@ export default function BecomeABuyerPage() {
                 Register as an Authorized Wholesale Buyer
               </h1>
               <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">
-                Connect your retail store, wholesale firm, or distribution network with PLAYLUME. Access tiered manufacturer rate contracts, recurring volume allocations, and customized supply solutions.
+                Connect your retail store, wholesale firm, or distribution network with V&amp;A Global Sourcing. Access tiered manufacturer rate contracts, recurring volume allocations, and customized supply solutions.
               </p>
             </div>
 

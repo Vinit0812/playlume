@@ -7,8 +7,8 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { Phone, Mail, MapPin, MessageSquare, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Commercial Trade Desk & Wholesale Contact — PLAYLUME",
-  description: "Contact the PLAYLUME commercial wholesale trade desk. Connect with our sourcing specialists via phone, email, or direct WhatsApp.",
+  title: "Commercial Trade Desk & Wholesale Contact — V&A Global Sourcing",
+  description: "Contact the V&A Global Sourcing commercial wholesale trade desk. Connect with our sourcing specialists via phone, email, or direct WhatsApp.",
 };
 
 export default function ContactPage() {
@@ -62,7 +62,7 @@ export default function ContactPage() {
             </div>
 
             <a
-              href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20PLAYLUME%2C%20I%20have%20an%20urgent%20wholesale%20procurement%20inquiry.`}
+              href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20V%26A%20Global%20Sourcing%2C%20I%20have%20an%20urgent%20wholesale%20procurement%20inquiry.`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-md shadow-emerald-600/25"

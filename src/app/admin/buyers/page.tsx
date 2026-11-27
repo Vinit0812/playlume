@@ -154,7 +154,7 @@ export default function AdminBuyersPage() {
                     <a
                       href={`https://wa.me/${b.whatsapp}?text=Hello%20${encodeURIComponent(
                         b.name
-                      )}%2C%20this%20is%20PLAYLUME%20Wholesale%20Desk.`}
+                      )}%2C%20this%20is%20V&A Global Sourcing%20Wholesale%20Desk.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold hover:bg-emerald-100 transition shadow-xs"

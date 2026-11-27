@@ -17,10 +17,10 @@ import {
 } from "lucide-react";
 
 export default function AdminSettingsPage() {
-  const [companyName, setCompanyName] = useState("PLAYLUME Wholesale Trading & Distribution Pvt Ltd");
+  const [companyName, setCompanyName] = useState("V&A Global Sourcing Wholesale Trading & Distribution Pvt Ltd");
   const [gstin, setGstin] = useState("27AABCP1234F1Z5");
   const [whatsappNumber, setWhatsappNumber] = useState("+91 98765 43210");
-  const [inquiryEmail, setInquiryEmail] = useState("trade@playlume.in");
+  const [inquiryEmail, setInquiryEmail] = useState("trade@V&A Global Sourcing.in");
   const [quoteValidityDays, setQuoteValidityDays] = useState("7");
   const [defaultGstRate, setDefaultGstRate] = useState("18");
   const [warehouseAddress, setWarehouseAddress] = useState(

@@ -13,7 +13,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-export const metadata: Metadata = { title: "Executive Dashboard — PLAYLUME Admin" };
+export const metadata: Metadata = { title: "Executive Dashboard — V&A Global Sourcing Admin" };
 
 export default function AdminDashboard() {
   const stats = [

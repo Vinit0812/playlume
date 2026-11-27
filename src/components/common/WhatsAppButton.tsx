@@ -4,7 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { MessageSquare } from "lucide-react";
 
 export default function WhatsAppButton() {
-  const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20PLAYLUME%2C%20I%20am%20a%20commercial%20buyer%20interested%20in%20wholesale%20rates.`;
+  const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20V%26A%20Global%20Sourcing%2C%20I%20am%20a%20commercial%20buyer%20interested%20in%20wholesale%20rates.`;
 
   return (
     <aside aria-label="WhatsApp Wholesale Support" className="fixed bottom-6 right-6 z-50">

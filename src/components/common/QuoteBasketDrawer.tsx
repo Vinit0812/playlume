@@ -11,7 +11,7 @@ export default function QuoteBasketDrawer() {
   if (!isOpen) return null;
 
   const whatsappMessage = encodeURIComponent(
-    `Hello PLAYLUME Trade Desk, I would like a formal wholesale quotation for the following items:\n\n` +
+    `Hello V&A Global Sourcing Trade Desk, I would like a formal wholesale quotation for the following items:\n\n` +
       items
         .map(
           (i, idx) =>

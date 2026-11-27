@@ -2,7 +2,7 @@ import { Truck, Box, ShieldCheck, Clock, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Freight, Logistics & Shipping Policy | PLAYLUME Wholesale",
+  title: "Freight, Logistics & Shipping Policy | V&A Global Sourcing Wholesale",
   description: "B2B freight fulfillment, multi-state road logistics, palletization, and e-way bill protocols.",
 };
 
@@ -30,7 +30,7 @@ export default function ShippingPolicyPage() {
               <Box className="w-5 h-5 text-blue-400" /> 1. Master Packaging & Palletization
             </h2>
             <p>
-              To ensure zero transit damage across inter-state arterial routes, all PLAYLUME inventory is dispatched in export-grade 5-ply / 7-ply corrugated master cartons, reinforced with corner edge-protectors, plastic strap strapping, and waterproof stretch-shrink film wrapping. Master cartons bear clear batch markings, SKU barcoding, and gross/net weight indications.
+              To ensure zero transit damage across inter-state arterial routes, all V&A Global Sourcing inventory is dispatched in export-grade 5-ply / 7-ply corrugated master cartons, reinforced with corner edge-protectors, plastic strap strapping, and waterproof stretch-shrink film wrapping. Master cartons bear clear batch markings, SKU barcoding, and gross/net weight indications.
             </p>
           </section>
 

@@ -9,12 +9,12 @@ export default function Footer() {
         {/* Column 1: Corporate Profile */}
         <div className="space-y-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-brand-700 text-accent-400 flex items-center justify-center font-black text-base">
-              P
+            <div className="w-8 h-8 rounded-lg bg-amber-500 text-stone-950 flex items-center justify-center font-black text-xs tracking-tighter shadow-sm">
+              V&amp;A
             </div>
             <div>
-              <span className="font-extrabold text-white text-base tracking-tight block">PLAYLUME</span>
-              <span className="text-[9.5px] font-bold text-brand-400 uppercase tracking-widest block -mt-0.5">
+              <span className="font-extrabold text-white text-base tracking-tight block">V&amp;A GLOBAL SOURCING</span>
+              <span className="text-[9.5px] font-bold text-amber-400 uppercase tracking-widest block -mt-0.5">
                 Wholesale &amp; Trade
               </span>
             </div>
@@ -41,11 +41,11 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-slate-400">
             <li><Link href="/category/toys-games" className="hover:text-white transition">Toys &amp; Games</Link></li>
-            <li><Link href="/category/clothing" className="hover:text-white transition">Clothing &amp; Apparel</Link></li>
-            <li><Link href="/category/watches" className="hover:text-white transition">Watches &amp; Horology</Link></li>
-            <li><Link href="/category/electronics" className="hover:text-white transition">Consumer Electronics</Link></li>
+            <li><Link href="/category/clothing-apparel" className="hover:text-white transition">Clothing &amp; Apparel</Link></li>
+            <li><Link href="/category/artificial-jewellery" className="hover:text-white transition">Artificial Jewellery</Link></li>
+            <li><Link href="/category/consumer-electronics" className="hover:text-white transition">Consumer Electronics</Link></li>
             <li><Link href="/category/home-kitchen" className="hover:text-white transition">Home &amp; Kitchen</Link></li>
-            <li><Link href="/category/stationery" className="hover:text-white transition">Office &amp; Stationery</Link></li>
+            <li><Link href="/category/fashion-accessories" className="hover:text-white transition">Fashion Accessories</Link></li>
           </ul>
         </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
             </p>
             <p className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-accent-400 shrink-0" />
-              <span>trade@playlume.in</span>
+              <span>trade@vaglobalsourcing.com</span>
             </p>
             <p className="flex items-center gap-2">
               <Clock className="w-3.5 h-3.5 text-accent-400 shrink-0" />
@@ -93,7 +93,7 @@ export default function Footer() {
       {/* Bottom Legal Row */}
       <div className="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
         <div>
-          © 2026 PLAYLUME B2B Wholesale Trading &amp; Distribution. All rights reserved.
+          © 2026 V&amp;A Global Sourcing B2B Wholesale Trading &amp; Distribution. All rights reserved.
         </div>
         <div className="flex gap-4">
           <Link href="/policies/privacy" className="hover:text-white transition">

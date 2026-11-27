@@ -234,7 +234,7 @@ export default function CandleStyleHeroBanner() {
         <div className="text-center max-w-3xl mx-auto mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-extrabold uppercase tracking-widest mb-2">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>NIRAL INDUSTRIES • PLAYLUME WHOLESALE</span>
+            <span>NIRAL INDUSTRIES • V&amp;A GLOBAL SOURCING</span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl md:text-[38px] font-serif font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-200 uppercase leading-tight drop-shadow-sm">
@@ -369,7 +369,7 @@ export default function CandleStyleHeroBanner() {
               EXPLORE THE FULL COLLECTION
             </span>
             <span className="text-[10px] sm:text-[11px] font-medium text-amber-300/80 tracking-wide mt-0.5">
-              www.playlume.in/products
+              www.vaglobalsourcing.com/products
             </span>
           </Link>
         </div>

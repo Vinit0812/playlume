@@ -77,7 +77,7 @@ export default function QuotationsPage() {
   };
 
   const whatsappText = encodeURIComponent(
-    `*PLAYLUME COMMERCIAL PROFORMA QUOTATION*
+    `*V&A Global Sourcing COMMERCIAL PROFORMA QUOTATION*
 Quotation Ref: ${quotationNo}
 Buyer: ${buyerName} (${buyerCity})
 
@@ -127,7 +127,7 @@ Validity: 7 Days from issue date.`
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="w-7 h-7 rounded-lg bg-slate-950 text-white font-extrabold text-xs flex items-center justify-center">P</div>
-              <span className="text-xl font-black text-slate-950">PLAYLUME</span>
+              <span className="text-xl font-black text-slate-950">V&A Global Sourcing</span>
             </div>
             <p className="text-slate-500 text-[11px]">B2B Wholesale Trading & Distribution Enterprise</p>
             <p className="text-slate-400 text-[10px]">GSTIN: 27AAAAA0000A1Z5 • Pan-India Commercial Trade</p>

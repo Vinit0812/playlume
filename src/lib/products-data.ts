@@ -1,4 +1,4 @@
-// Centralized master products repository for PLAYLUME B2B Wholesale Portal
+// Centralized master products repository for V&A Global Sourcing B2B Wholesale Portal
 // Generated from: Complete_Product_List_Website.xlsx
 // Categories: Toys & Games | Clothing & Apparel | Artificial Jewellery | Consumer Electronics | Home & Kitchen | Fashion Accessories
 
@@ -80,7 +80,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Reusable 8.5 inch LCD writing & drawing tablet with pressure-sensitive stylus, instant one-touch erase, and lock switch. High-margin impulse educational product for wholesale lot procurement.",
     detailedDescription: "The 8.5-inch LCD Writing Tablet provides an authentic pen-on-paper feeling without wasting ink or paper. Engineered with an ultra-durable ABS frame, safety screw-locked CR2025 coin cell chamber, and pressure-sensitive liquid crystal display. Ideal for preschools, schools, corporate giveaways, and retail gifting displays across India.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/lcd-tablet/blue-front.png",
     gallery: [
       { label: "Front Display", url: "/products/toys/lcd-tablet/blue-front.png" },
@@ -171,7 +171,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Natural eco-friendly pine wood Montessori geometric stacking blocks and multi-shape sorters with baby-safe water-based paints. Promotes spatial thinking and fine motor skills.",
     detailedDescription: "Precision-milled Montessori sensory toys crafted from sustainable pine wood. Non-splinter, chamfered edge safety design with vibrant lead-free non-toxic color coatings. Available in Wooden Geometric Blocks set or Shape Sorters set.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/montessori-stacking/geometric-blocks-front.png",
     gallery: [
       { label: "Geometric Blocks Front", url: "/products/toys/montessori-stacking/geometric-blocks-front.png" },
@@ -242,7 +242,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Interactive educational kids laptop featuring 20+ built-in learning programs for phonics, alphabet, math, memory games, and music. Includes charging adapter.",
     detailedDescription: "Full QWERTY layout kids computing simulator. Features realistic mouse clicker, high contrast backlit LCD display screen, interactive bilingual speech mode, and dedicated charging adapter. High ad-conversion and birthday gift favorite.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/kids-laptop/blue-front.png",
     gallery: [
       { label: "Open Screen View", url: "/products/toys/kids-laptop/blue-front.png" },
@@ -314,7 +314,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Solid wood cognitive memory chess with double-sided flashcards and precision-turned wooden color pegs. Fast-paced family and preschool brain training puzzle.",
     detailedDescription: "Complete wooden memory matching board game. Slot in any of the included theme flashcards, cover with pegs, and take turns uncovering matching pairs. Enhances photographic memory, hand-eye coordination, and visual recognition.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/memory-chess/chess-board-full.png",
     gallery: [
       { label: "Full Board View", url: "/products/toys/memory-chess/chess-board-full.png" },
@@ -355,7 +355,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Tear-resistant, machine-washable infant sensory cloth books featuring 3D tactile textures, crinkle foil pages, squeakers, and vibrant non-toxic prints.",
     detailedDescription: "Engineered for infants from 0 to 24 months. Each page introduces interactive tactile elements, textures, 3D animal tails, and crinkle paper sounds that captivate sensory curiosity. Completely non-toxic and bite-safe.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/cloth-books/animal-front.png",
     gallery: [
       { label: "Animal Theme Cover", url: "/products/toys/cloth-books/animal-front.png" },
@@ -441,7 +441,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Interactive early learning preschool board for alphabet and number recognition. Choose between magnetic snap-in board with stylus or chunky wooden shape sorter.",
     detailedDescription: "Designed for foundational Montessori preschool learning. Dual-sided layout provides letter and numeral recognition alongside guided tracing grooves. High volume staple item for playschools, nurseries, and retail toy stores.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/learning-board/magnetic-front.png",
     gallery: [
       { label: "Magnetic Board Front", url: "/products/toys/learning-board/magnetic-front.png" },
@@ -513,7 +513,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Ultra-soft premium plush unicorn with pastel rainbow mane and embroidered detailing. Available in 3 colors (Pink, White, Rainbow) and 3 sizes (30cm, 45cm, 60cm).",
     detailedDescription: "Crafted with cloud-soft micro-plush velvet fabric and hypoallergenic 100% pure virgin PP cotton stuffing. Double-stitched seams ensure longevity under frequent play. Top seller for Valentine, birthdays, and impulse gifting.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/plush-unicorn/pink-45cm-front.png",
     gallery: [
       { label: "Pink Front View", url: "/products/toys/plush-unicorn/pink-45cm-front.png" },
@@ -680,7 +680,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Viral sensation 2-in-1 reversible emotion plush toy. Simply flip inside out to change expression from happy and cheerful to moody angry face. High social media demand.",
     detailedDescription: "Precision double-stitched reversible plush toy. Flips effortlessly between two expressive faces. Ideal for mood expression, desk decor, kids gifts, and impulse counter retail sales.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/reversible-soft-toys/cat-happy-front.png",
     gallery: [
       { label: "Cat Happy Front", url: "/products/toys/reversible-soft-toys/cat-happy-front.png" },
@@ -766,7 +766,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Huggable soft animal plushies made with super-soft velvety fabrics and reinforced embroidery. Available in Teddy Bear, Plush Cat, and Plush Dog across Small, Medium, and Large.",
     detailedDescription: "A timeless retail staple for toy boutiques and department stores. Featuring child-safe stitched eyes, premium resilient polyfill stuffing, and ultra-snuggly touch. Commercial master lots packed ready for pan-India distribution.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/animal-plush/teddy-medium-front.png",
     gallery: [
       { label: "Teddy Bear Front", url: "/products/toys/animal-plush/teddy-medium-front.png" },
@@ -935,7 +935,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "7-piece multi-color baby rattle set with soft food-grade silicone teething edges. High volume, low ticket impulse lot ideal for bundles and gifting.",
     detailedDescription: "Complete 7-piece sensory infant rattle assortment. Specially designed with easy-grip handles for tiny fingers, internal gentle rattle beads, and soothing soft teether surfaces. BPA-free, saliva-proof, and easy to sanitize.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/baby-rattles/blue/01_blue_front_set_without_packaging.png",
     gallery: [
       { label: "Front View (No Packaging)", url: "/products/toys/baby-rattles/blue/01_blue_front_set_without_packaging.png" },
@@ -1017,7 +1017,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Multisensory hanging plush activity toys equipped with crinkle wings, internal chime bells, and universal clip hooks for cribs and prams.",
     detailedDescription: "High-contrast patterns and tactile textures stimulate early visual and motor development. Washable plush exterior with double-stitched reinforced seams for infant safety.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/soft-activity-toys/blue/01_blue_front_set_without_packaging.png",
     gallery: [
       { label: "Front Activity Set (No Packaging)", url: "/products/toys/soft-activity-toys/blue/01_blue_front_set_without_packaging.png" },
@@ -1100,7 +1100,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Foldable tri-wheel kids kick scooter with self-generating light-up LED wheels and 3-level height adjustable handlebar. Smooth and safe outdoor ride.",
     detailedDescription: "Equipped with wide non-slip deck, lean-to-turn intuitive steering technology, and battery-free kinetic LED flashing PU wheels. Folds completely flat with one pull for easy storage and transportation.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/kick-scooter/blue-front.png",
     gallery: [
       { label: "Blue Front View", url: "/products/toys/kick-scooter/blue-front.png" },
@@ -1205,7 +1205,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Sturdy trike cycle for toddlers featuring heavy-duty carbon steel frame, non-slip pedals, comfortable curved bucket seat, and dual storage baskets.",
     detailedDescription: "High-stability triangular geometry prevents tip-overs. Wide EVA puncture-proof all-terrain wheels ensure quiet indoor gliding and durable outdoor performance. Ergonomic handlebars with bell and soft comfort grips.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/kids-tricycle/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View (No Packaging)", url: "/products/toys/kids-tricycle/blue/01_blue_front_without_packaging.png" },
@@ -1290,7 +1290,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "High-speed 4WD remote control drift stunt car with 360-degree high-speed rotation, all-terrain tires, and responsive 2.4GHz remote controller.",
     detailedDescription: "Engineered for extreme performance stunts. Dual motor four-wheel drive handles asphalt, tiles, carpet, and dirt tracks. Comes with rechargeable battery pack and USB charger cable.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/rc-drift-car/black/01_black_front_without_packaging.png",
     gallery: [
       { label: "Front View (No Packaging)", url: "/products/toys/rc-drift-car/black/01_black_front_without_packaging.png" },
@@ -1372,7 +1372,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Heavy-duty 4WD remote control off-road truck with independent suspension shock absorbers, anti-skid oversized tread tires, and robust roll cage.",
     detailedDescription: "High-torque electric motor climbs grades up to 45 degrees over rocks, grass, sand, and rough terrain. Equipped with crash-proof bumper, responsive pistol-grip 2.4GHz transmitter, and rechargeable battery pack.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/toys/rc-4wd-car/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View (No Packaging)", url: "/products/toys/rc-4wd-car/blue/01_blue_front_without_packaging.png" },
@@ -1462,7 +1462,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "100% combed cotton pique polo t-shirts (220 GSM) with bio-wash finish, ribbed collar and cuffs, 2-button placket, and side slits.",
     detailedDescription: "Color-fast dye technology prevents bleeding and shrinkage across multiple washes. Reinforced shoulder seams and pre-shrunk fabric engineered for year-round retail and corporate bulk branding.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/polo-tshirts/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front Flat View (No Packaging)", url: "/products/clothing/polo-tshirts/blue/01_blue_front_without_packaging.png" },
@@ -1546,7 +1546,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Durable 100% cotton heavy twill casual cargo trousers featuring 6 functional utility pockets, reinforced knee stitching, and relaxed comfort straight-leg fit.",
     detailedDescription: "High-grade 280 GSM cotton twill pre-washed for zero shrinkage and ultra-soft hand feel. Heavy-duty brass zip fly, button closure, and wide belt loops. Available in high-demand earth tone wholesale lots.",
-    pickupHub: "PLAYLUME Ludhiana Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Ludhiana Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/cargo-pants/beige/01_beige_front_without_packaging.png",
     gallery: [
       { label: "Front Flat View (No Packaging)", url: "/products/clothing/cargo-pants/beige/01_beige_front_without_packaging.png" },
@@ -1643,7 +1643,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Everyday basic crew-neck t-shirt multipacks in 180 GSM bio-washed 100% combed cotton. High retail turnover essential staple for retail stores.",
     detailedDescription: "Silicone-softened finish offers superior breathability and comfort. Ribbed lycra crew neckline retains shape without sagging after repeated domestic and industrial washes.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/cotton-tshirts/pack-of-2-black-white/01_front_view.png",
     gallery: [
       { label: "Pack Front View (No Packaging)", url: "/products/clothing/cotton-tshirts/pack-of-2-black-white/01_front_view.png" },
@@ -1713,7 +1713,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Breathable cotton-linen blend short and mid-length ethnic kurtas with mandarin collar, wooden buttons, and side pockets.",
     detailedDescription: "Available in versatile solids and subtle handcrafted prints. Ideal for festive, casual Friday, and everyday ethnic retail. High-density weave offers wrinkle resistance and effortless comfort.",
-    pickupHub: "PLAYLUME Jaipur Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Jaipur Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/kurta-men.jpg",
     gallery: [
       { label: "Solid Cotton Kurta", url: "/products/kurta-men.jpg" },
@@ -1793,7 +1793,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "320 GSM cotton-poly brushed fleece zipper hoodie with kangaroo pockets, metal YKK zipper, double-layered hood, and matching drawstrings.",
     detailedDescription: "Warm brushed interior fleece retains body heat. Anti-pilling treatment keeps outer shell smooth after repeated machine washes. Ribbed waist and cuffs provide snug wind protection.",
-    pickupHub: "PLAYLUME Ludhiana Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Ludhiana Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/hoodie-men-black.jpg",
     gallery: [
       { label: "Black Zipper Hoodie", url: "/products/hoodie-men-black.jpg" },
@@ -1886,7 +1886,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Premium straight-cut and A-line women's kurtis crafted in 100% pure cotton and 14kg heavy rayon with intricate digital floral and geometric prints.",
     detailedDescription: "High-volume retail winner for daily office wear, college, and casual outings. Breathable fabric treated with color-fast dyes that withstand harsh machine washing. Features round neck with notched placket and three-quarter sleeves.",
-    pickupHub: "PLAYLUME Surat Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Surat Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png",
     gallery: [
       { label: "Front Flat View (No Packaging)", url: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png" },
@@ -1974,7 +1974,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Complete 3-piece designer ethnic ensemble featuring an embellished straight kurti, tailored straight ankle-length cigarette pants, and a coordinated lightweight dupatta.",
     detailedDescription: "High gross margin boutique category for festive, formal, and occasion wear. Premium cotton-silk and rayon slub fabrics with delicate gota patti and thread embroidery.",
-    pickupHub: "PLAYLUME Surat Textile Hub / Jaipur Hub / Bhiwandi Central",
+    pickupHub: "V&A Global Sourcing Surat Textile Hub / Jaipur Hub / Bhiwandi Central",
     image: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png",
     gallery: [
       { label: "Front Ensemble View", url: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png" },
@@ -2054,7 +2054,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "2-piece coordinated loungewear sleep sets featuring notch-collar button-down shirt and relaxed straight pyjamas with elasticated drawstring waist.",
     detailedDescription: "Woven in 100% breathable combed cotton and plush hosiery knit. Soft piping trim along collar, cuffs, and hem. Deep side pockets in pyjamas for everyday smartphone storage.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub / Surat Sourcing Desk",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub / Surat Sourcing Desk",
     image: "/products/clothing/night-suits/cotton-navy-hearts/01_navy_hearts_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/night-suits/cotton-navy-hearts/01_navy_hearts_front_without_packaging.png" },
@@ -2141,7 +2141,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Flowy, high-rise flared palazzos in premium rayon and breathable slub cotton with full elasticated waistband and side pockets.",
     detailedDescription: "High-volume retail staple paired with kurtis, short tops, and ethnic wear. Crease-resistant fabric with graceful drape that flatters all body types.",
-    pickupHub: "PLAYLUME Surat Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Surat Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/palazzo-pants/plain-black/01_front_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/palazzo-pants/plain-black/01_front_front_without_packaging.png" },
@@ -2228,7 +2228,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Versatile collection of casual round-neck graphic tees, ribbed crop tops, and button-accented peplum tunics in super-soft stretch cotton.",
     detailedDescription: "High-frequency fast fashion turnaround item for boutiques and retail counters. Anti-shrinkage treated with vivid screen and puff prints.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/cotton-tshirts/pack-of-2-black-white/01_front_view.png",
     gallery: [
       { label: "Front Casual Top View", url: "/products/clothing/cotton-tshirts/pack-of-2-black-white/01_front_view.png" },
@@ -2296,7 +2296,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Premium multipacks of crew-neck sports and graphic t-shirts for boys. 100% skin-safe combed cotton with durable non-toxic prints.",
     detailedDescription: "Bio-washed fabric engineered for active boys. Resists seam twisting and pilling after harsh machine wash. Available in fast-moving pack-of-2 and pack-of-3 retail assortments.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png" },
@@ -2369,7 +2369,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Cute and ultra-soft 2-piece nightwear sets for young girls featuring playful animal and floral prints, buttoned full-sleeve top, and matching elasticated pyjamas.",
     detailedDescription: "Hypoallergenic combed cotton knit that breathes easily through the night. Gentle encased waistband that leaves no marks on delicate skin.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/girls-night-suits/lavender-unicorn/01_lavender_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/girls-night-suits/lavender-unicorn/01_lavender_front_without_packaging.png" },
@@ -2456,7 +2456,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Vibrant matching summer playwear sets consisting of a breathable graphic crew-neck t-shirt and coordinated french terry shorts with dual pockets.",
     detailedDescription: "High-rotation everyday casual wear for toddlers and kids. Durable bio-washed cotton that withstands outdoor playgrounds and energetic play.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/coord-sets/mint-dino/01_mint_dino_print_front_view.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/coord-sets/mint-dino/01_mint_dino_print_front_view.png" },
@@ -2543,7 +2543,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Ultra-gentle combed organic cotton baby rompers with nickel-free crotch snap buttons for effortless diaper changes and envelope necklines.",
     detailedDescription: "Designed specifically for sensitive infant skin. Flat-lock anti-chafing seams and cute pastel animal embroideries make this a beloved impulse baby-gifting line.",
-    pickupHub: "PLAYLUME Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Tirupur Sourcing Hub / Bhiwandi Central, Mumbai",
     image: "/products/clothing/baby-rompers/blue-teddy/blue_01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/baby-rompers/blue-teddy/blue_01_front_without_packaging.png" },
@@ -2630,7 +2630,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Charming A-line flare cotton frocks for young girls adorned with delicate floral patterns, back waist tie sash, and soft cotton lining.",
     detailedDescription: "Lightweight and summer friendly. High-grade breathable 60s cambric cotton with gentle ruffles that don't itch. Excellent year-round volume item for children's fashion retail.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub / Surat Sourcing Desk",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub / Surat Sourcing Desk",
     image: "/products/clothing/girls-frocks/blue-floral/01_blue_floral_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/clothing/girls-frocks/blue-floral/01_blue_floral_front_without_packaging.png" },
@@ -2721,7 +2721,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Intricately detailed royal jhumka earrings featuring premium micro-plating, filigree dome work, and matching suspended pearl/bead latkans. Very high impulse retail volume.",
     detailedDescription: "High-grade brass and copper alloy base with anti-tarnish protective lacquer coat. Hypoallergenic posts safe for prolonged wear. Available in Blue Enamel, Pink Meenakari, and Ruby Red variants with 2-angle studio photography.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/jhumka-earrings/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/jhumka-earrings/blue/01_blue_front_without_packaging.png" },
@@ -2796,7 +2796,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Minimal daily-wear solitaire and multi-cluster crystal stone stud earrings. Precision faceted stones with mirror shine and secure silicone backs.",
     detailedDescription: "High-demand impulse checkout product. Ultra-lightweight, skin-friendly nickel-free alloy. Ideal for daily office, college, and casual wear.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/stud-earrings/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/stud-earrings/blue/01_blue_front_without_packaging.png" },
@@ -2870,7 +2870,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Versatile hoop earrings in multiple sizes and textured finishes. Smooth polished surface with secure click-top latch closure.",
     detailedDescription: "High-shine electroplated hoops crafted from lightweight tubular brass. Feather-light feel for all-day comfort without pulling earlobes.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/hoop-earrings/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/hoop-earrings/blue/01_blue_front_without_packaging.png" },
@@ -2944,7 +2944,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Crescent moon Chandbali drop earrings with intricate Kundan setting, pearls, and colorful enamel. Statement festive and wedding jewellery.",
     detailedDescription: "Exquisite artisanal craftsmanship inspired by royal Rajasthani royal courts. Draped with miniature seed pearls and high-luster stone cluster work.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/chandbali-earrings/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/chandbali-earrings/blue/01_blue_front_without_packaging.png" },
@@ -3021,7 +3021,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Boho-chic German silver oxidised choker necklace set with matching dangling earrings. Embossed tribal floral motifs with adjustable dori rope.",
     detailedDescription: "One of the highest grossing ethnic jewellery lots in India. Non-corrosive silver finish that pairs elegantly with sarees, kurtis, and Indo-western outfits.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/oxidised-necklace/blue/01_blue_front_display_without_packaging.png",
     gallery: [
       { label: "Front Bust Display", url: "/products/jewellery/oxidised-necklace/blue/01_blue_front_display_without_packaging.png" },
@@ -3096,7 +3096,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Opulent Kundan choker necklace with matching dangling earrings and Maang Tikka. Hand-set glass Kundan stones with hand-painted Meenakari reverse.",
     detailedDescription: "Gold plated heavy bridal necklace crafted for grand weddings, receptions, and sangeet celebrations. Hand-strung emerald and ruby faux bead cascades.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/kundan-necklace/blue/01_blue_bust_display_without_packaging.png",
     gallery: [
       { label: "Bust Display View", url: "/products/jewellery/kundan-necklace/blue/01_blue_bust_display_without_packaging.png" },
@@ -3170,7 +3170,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Traditional South Indian matte gold finish temple jewellery set featuring Goddess Lakshmi and peacock carvings with Kemp stones.",
     detailedDescription: "Antiqued matte gold temple finish favored for South Indian weddings, Bharatanatyam, and festive poojas. Embellished with ruby red and emerald green stones.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/temple-jewellery/blue/01_blue_bust_display_without_packaging.png",
     gallery: [
       { label: "Bust Display View", url: "/products/jewellery/temple-jewellery/blue/01_blue_bust_display_without_packaging.png" },
@@ -3244,7 +3244,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Versatile statement choker necklace with matching drop earrings. Elegant velvet and pearl embellishments suitable for both western gowns and ethnic lehengas.",
     detailedDescription: "High-comfort contoured band fits snugly around the neck. Anti-allergic lining on the inner surface prevents skin friction.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/choker-necklace/blue/01_blue_bust_display_without_packaging.png",
     gallery: [
       { label: "Bust Display View", url: "/products/jewellery/choker-necklace/blue/01_blue_bust_display_without_packaging.png" },
@@ -3318,7 +3318,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Timeless lustrous faux pearl multi-layer necklace set with pearl stud earrings. Royal vintage aesthetics with high-durability shell pearl coating.",
     detailedDescription: "High-grade calibrated glass pearls with uniform nacre gloss and knotting between each bead. A staple luxury item for boutiques.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/necklace-earring-combo.jpg",
     gallery: [
       { label: "Classic Necklace View", url: "/products/necklace-earring-combo.jpg" },
@@ -3392,7 +3392,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Complete matching necklace and earrings combo set. Best-seller for gift shops, boutiques, and e-commerce bundles.",
     detailedDescription: "Coordinated necklace and chandelier earrings fashioned with CZ stones and pearl drops. Ready-to-retail luxury packaging box.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/necklace-earrings-combo/blue/01_blue_bust_display_without_packaging.png",
     gallery: [
       { label: "Bust Display View", url: "/products/jewellery/necklace-earrings-combo/blue/01_blue_bust_display_without_packaging.png" },
@@ -3466,7 +3466,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Grand multi-piece complete bridal ensemble including heavy choker, long haar, earrings, maang tikka, nath nose ring, and haathphool bracelets.",
     detailedDescription: "Showstopper bridal collection crafted for destination weddings and photo shoots. Features 24k micron matte gold plating with Austrian crystals and emerald bead accents.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/bridal-sets/blue/01_blue_bust_display_without_packaging.png",
     gallery: [
       { label: "Bridal Bust Display", url: "/products/jewellery/bridal-sets/blue/01_blue_bust_display_without_packaging.png" },
@@ -3543,7 +3543,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Embossed traditional metal and velvet chooda bangles & kadas with stone and pearl detailing. Available in standard size 2.4, 2.6, 2.8.",
     detailedDescription: "High-demand wedding and festive item. Premium non-fading lacquer polish with anti-allergic finish. Pairs seamlessly with bridal wear and daily festive kurtis.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/bangles-kadas/blue/01_blue_front_display_without_packaging.png",
     gallery: [
       { label: "Front Display View", url: "/products/jewellery/bangles-kadas/blue/01_blue_front_display_without_packaging.png" },
@@ -3619,7 +3619,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Contemporary fashion bracelets featuring dainty links, evil eye motifs, birthstones, and charm pendants. Adjustable extension lobster clasp.",
     detailedDescription: "High-velocity youth accessory. Anti-fade rhodium and rose gold finish. Perfect for stacking and layering.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/fashion-bracelets/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/fashion-bracelets/blue/01_blue_front_without_packaging.png" },
@@ -3693,7 +3693,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Free-size adjustable fashion rings in solitaire, floral, and cocktail motifs. Embedded cubic zirconia and faceted glass crystals.",
     detailedDescription: "One-size-fits-all flexible band eliminating sizing inventory headaches for retailers. High shine rhodium and gold polish.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/fashion-rings/blue/01_blue_front_without_packaging.png",
     gallery: [
       { label: "Front View", url: "/products/jewellery/fashion-rings/blue/01_blue_front_without_packaging.png" },
@@ -3767,7 +3767,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Bridal and daily wear silver and gold finish payals with melodic chime ghungroos and colorful evil-eye stone charms. Rust-proof alloy.",
     detailedDescription: "High-grade nickel-free alloy ensuring zero skin blackening. Available in traditional broad ghungroo styles and sleek modern layering chains.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/jewellery/anklets-payals/blue/01_blue_front_flat_lay_without_packaging.png",
     gallery: [
       { label: "Flat Lay View", url: "/products/jewellery/anklets-payals/blue/01_blue_front_flat_lay_without_packaging.png" },
@@ -3850,7 +3850,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Heavy-duty anti-slip phone holders featuring foldable ergonomic desktop stands and 360-degree rotating car air-vent/dashboard suction mounts.",
     detailedDescription: "Constructed with aircraft-grade aluminum hinges and premium weighted ABS. Anti-scratch silicone pads protect smartphone finish while charging cutout allows hassle-free cable routing.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/phone-stands/desktop-holder/01_front_without_packaging.png",
     gallery: [
       { label: "Desktop Stand Front View (No Packaging)", url: "/products/electronics/phone-stands/desktop-holder/01_front_without_packaging.png" },
@@ -3922,7 +3922,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Crystal clear anti-yellowing TPU shockproof mobile covers with reinforced air-cushion corner bumpers and camera lip protection.",
     detailedDescription: "High wholesale turnover staple. Available for all top-selling smartphone models (iPhone 13-16 series, Samsung Galaxy A/S series, Redmi Note series, Realme, and Vivo). Micro-dot interior prevents watermarking.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/categories/cat-electronics.png",
     gallery: [
       { label: "Transparent Anti-Yellowing Case", url: "/categories/cat-electronics.png" },
@@ -4001,7 +4001,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "0.33mm 9H hardness edge-to-edge tempered glass protector with oleophobic anti-fingerprint coating and bubble-free optical adhesive.",
     detailedDescription: "High-definition 99.9% clarity with 2.5D arc polished edges. Thermal tempered glass withstands drops, keys, and daily scratch hazards. Available in Silk Black border, Anti-Glare Grey Matte, and Ultra-Clear White border editions.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/screen-protectors/black/01_black_front_product_view_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/screen-protectors/black/01_black_front_product_view_without_packaging.png" },
@@ -4085,7 +4085,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "True wireless earbuds with environmental noise cancellation (ENC), 13mm bass boost drivers, fast auto-pairing Bluetooth 5.3, and digital LED battery display.",
     detailedDescription: "High wholesale margin champion for electronics counters and mobile accessory retailers. 30 hours of playback with pocketable magnetic charging case. Type-C fast charge support.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/wireless-earbuds/black/01_black_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/wireless-earbuds/black/01_black_front_without_packaging.png" },
@@ -4158,7 +4158,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Flexible silicone collar neckband earphones with magnetic auto-on/off earbuds, dual pairing, 10mm titanium dynamic drivers, and vibration call alerts.",
     detailedDescription: "Popular mass-market retail line. Up to 40 hours of continuous music playback with quick Type-C charging. Sweat-proof IPX5 rating makes it ideal for gym, jogging, and transit.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/neckbands/black/01_black_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/neckbands/black/01_black_front_without_packaging.png" },
@@ -4230,7 +4230,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Compact wireless cylindrical speaker with punchy 10W stereo output, dual passive bass radiators, TF card slot, USB playback, and integrated carry strap.",
     detailedDescription: "High-demand lifestyle electronics lot for retail shops. 1200mAh rechargeable battery delivers 8 hours of playtime. IPX4 splash-resistant mesh fabric body with responsive silicone buttons.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/bluetooth-speakers/charcoal-black/01_black_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/bluetooth-speakers/charcoal-black/01_black_front_without_packaging.png" },
@@ -4289,7 +4289,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Pocket-sized 10000mAh lithium-polymer power bank with dual USB 2.4A fast outputs, Type-C input, textured grip shell, and 4-LED power gauge indicator.",
     detailedDescription: "BIS certified safe charging with 9-layer intelligent circuit protection against voltage spikes, overheating, and short circuits. Slim 15mm aircraft-carry approved profile.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/power-banks-10000/black/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/power-banks-10000/black/01_front_without_packaging.png" },
@@ -4362,7 +4362,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "High-capacity 20000mAh external battery pack supporting 22.5W Quick Charge and USB-PD two-way fast charging for multi-device road trips and long power cuts.",
     detailedDescription: "Features triple output ports (2x USB-A + 1x Type-C PD) to power 3 devices simultaneously. Digital LED percentage readout displays exact remaining power.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/power-banks-10000/black/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/power-banks-10000/black/01_front_without_packaging.png" },
@@ -4429,7 +4429,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Compact BIS-approved Power Delivery (PD 3.0) and PPS wall charger adapters engineered for high-speed charging of iPhone, Samsung, Xiaomi, and Vivo devices.",
     detailedDescription: "Fireproof PC casing with internal intelligent power management chip preventing overheating and overcurrent. Multi-wattage lineup for budget and flagship mobile retail sales.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/fast-chargers/20w-white/01_20w_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/electronics/fast-chargers/20w-white/01_20w_front_without_packaging.png" },
@@ -4515,7 +4515,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Reinforced nylon-braided USB-A to Type-C and Type-C to Type-C high-speed data & quick charging cable with aluminum alloy housing.",
     detailedDescription: "Supports QC 3.0/4.0 and USB Power Delivery up to 65W/100W for smartphones, tablets, and lightweight laptops. Tested to survive 15,000+ bends at stress relief joints. Pure oxygen-free copper core.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/electronics/type-c-cables/black/01_black_coiled_cable_front_without_packaging.png",
     gallery: [
       { label: "Coiled Cable Front (No Packaging)", url: "/products/electronics/type-c-cables/black/01_black_coiled_cable_front_without_packaging.png" },
@@ -4603,7 +4603,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Compact manual string pull chopper and push vegetable slicer equipped with razor-sharp 3-tier 420 stainless steel blades and anti-skid silicone base.",
     detailedDescription: "One of the highest retail velocity household items in India. Chops onions, garlic, nuts, and vegetables in seconds without electricity. Food-grade BPA-free transparent container with locking lid.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/choppers-cutters/manual-chopper/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/choppers-cutters/manual-chopper/01_front_without_packaging.png" },
@@ -4675,7 +4675,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Multi-piece kitchen utensil sets featuring seamless non-scratch silicone cooking spatulas and heavy-gauge stainless steel skimmer/ladle sets.",
     detailedDescription: "Safe for non-stick cookware and air fryers up to 230°C. Ergonomic heat-insulated handles with hanging loops. Dishwasher safe and stain-resistant.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/spatula-sets/silicone-set/01_silicone_front_view.png",
     gallery: [
       { label: "Front Utensil Set View (No Packaging)", url: "/products/home/spatula-sets/silicone-set/01_silicone_front_view.png" },
@@ -4747,7 +4747,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Heavy-gauge die-cast aluminum frying pans with 5-layer German granite non-stick coating, induction spiral base, and stay-cool soft touch Bakelite handle.",
     detailedDescription: "100% PFOA and lead-free coating requires minimal cooking oil. Magnetized stainless steel induction base ensures even heat distribution on gas, induction, and ceramic stoves.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/cookware-pans/24cm/01_24cm_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/cookware-pans/24cm/01_24cm_front_without_packaging.png" },
@@ -4834,7 +4834,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Stackable clear kitchen storage jars with 4-side snap locking airtight silicone seal lids for pulses, grains, snacks, and spices.",
     detailedDescription: "High wholesale turnover staple for home stores. Crystal clear BPA-free shatterproof plastic lets you see contents instantly. Space-saving modular square design keeps pantry neat.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/storage-containers/set-of-4/01_set_4_front_without_packaging.png",
     gallery: [
       { label: "Front Jars View (No Packaging)", url: "/products/home/storage-containers/set-of-4/01_set_4_front_without_packaging.png" },
@@ -4920,7 +4920,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Insulated multi-compartment bento tiffin boxes with silicone leak-proof divider seals, cutlery slot with spoon/fork, and sturdy 4-sided clips.",
     detailedDescription: "High-volume school and office essential. Keeps food warm and separated without flavor mixing. Microwave safe inner tray and drop-proof outer bumper.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/lunch-boxes/adults-3-compartment/01_adults_3_front_without_packaging.png" },
@@ -5006,7 +5006,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Multifunctional foldable wardrobe cloth storage baskets and adjustable plastic drawer grid dividers for clothes, sarees, undergarments, and socks.",
     detailedDescription: "Heavyweight non-woven fabric with reinforced PP insert boards that keep their shape without bending. Foldable flat when not in use for convenient retail display and shipping.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/wardrobe-organisers/cloth-organisers/01_front_without_packaging.png",
     gallery: [
       { label: "Front Organizer View (No Packaging)", url: "/products/home/wardrobe-organisers/cloth-organisers/01_front_without_packaging.png" },
@@ -5078,7 +5078,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Single-wall premium 304 stainless steel sports bottles with leak-proof flip sipper spout, integrated carry carabiner loop, and scratch-resistant powder coat.",
     detailedDescription: "High-volume fitness, school, and office staple. Rust-proof, odor-free, and BPA-free construction that fits all standard bicycle and car bottle holders.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/steel-bottles/750ml/01_750ml_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/steel-bottles/750ml/01_750ml_front_without_packaging.png" },
@@ -5164,7 +5164,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Vacuum insulated double-wall stainless steel flasks that keep beverages steaming hot for 12 hours or ice-cold for 24 hours without sweat condensation.",
     detailedDescription: "High-margin gifting and executive retail product. Copper-plated inner vacuum chamber maximizes thermal retention. Sweat-proof outer shell with wide mouth for ice cubes.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/insulated-bottles/cold-bottle/01_cold_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/insulated-bottles/cold-bottle/01_cold_front_without_packaging.png" },
@@ -5237,7 +5237,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Bendable insulated copper wire fairy lights and ornamental globe string lights featuring warm ambient glow, 8 flashing modes, and USB/plug adapter power.",
     detailedDescription: "High-season festival and year-round home decor winner. Low heat emission ensures safety around curtains, bedrooms, and patio plants. IP65 waterproof rating.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/home/led-lights/fairy-lights/01_fairy_lights_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/home/led-lights/fairy-lights/01_fairy_lights_front_without_packaging.png" },
@@ -5309,7 +5309,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "King/queen sized bedsheet sets in breathable 210 TC combed cotton and super-soft glace microfiber with 2 matching pillow covers and coordinated cushion covers.",
     detailedDescription: "High-turnover home textile staple. Color-fast reactive digital printing ensures zero color fading over years of laundering. Fits standard double mattresses up to 10-inch thickness.",
-    pickupHub: "PLAYLUME Panipat Textile Hub / Ahmedabad Hub / Bhiwandi Central",
+    pickupHub: "V&A Global Sourcing Panipat Textile Hub / Ahmedabad Hub / Bhiwandi Central",
     image: "/products/home/bedsheets-cushions/cotton/01_cotton_front_product.png",
     gallery: [
       { label: "Front Product Display (No Packaging)", url: "/products/home/bedsheets-cushions/cotton/01_cotton_front_product.png" },
@@ -5386,7 +5386,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Chic quilted vegan leather crossbody sling bag featuring gold-toned twist turn lock, metal chain accent strap, and dual compartments.",
     detailedDescription: "High-margin boutique winner with high retail impulse turnover. Scratch-resistant PU exterior with stain-proof inner twill lining. Holds smartphone, makeup, keys, and cards with ease.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/sling-bags/black-quilted/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/sling-bags/black-quilted/01_front_without_packaging.png" },
@@ -5472,7 +5472,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Spacious multi-utility tote bags designed for everyday work, college, and casual travel. Fits a 14-inch laptop, water bottle, diary, and essentials.",
     detailedDescription: "Heavy-duty canvas and grained vegan leather construction with reinforced shoulder handles that withstand up to 10 kg loads. Zip top closure keeps contents secure.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/tote-bags/casual-style/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/tote-bags/casual-style/01_front_without_packaging.png" },
@@ -5544,7 +5544,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Glamorous handheld box clutch bags adorned with sparkling metallic sequins, diamond cut metal clasp, and detachable gold sling chain.",
     detailedDescription: "High-margin wedding, festive, and cocktail party essential. Hard shell construction protects delicate cosmetics and phones from external pressure.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/clutch-bags/black-sequin/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/clutch-bags/black-sequin/01_front_without_packaging.png" },
@@ -5630,7 +5630,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Compact structured top-handle mini handbags in quilted vegan leather with magnetic snap closure and convertible crossbody shoulder strap.",
     detailedDescription: "Extremely popular social media viral trend. Compact yet fits makeup compact, lipstick, cardholder, and keys. High retail rotation in young adult fashion retail.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/mini-handbags/black-quilted/01_black_quilted_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/mini-handbags/black-quilted/01_black_quilted_front_without_packaging.png" },
@@ -5717,7 +5717,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Multi-pocket compact women's wallets featuring 8 card slots, currency divider, ID window, and zip-around coin pouch.",
     detailedDescription: "High-grade scratch-proof vegan leather with smooth gliding alloy zipper. Slim profile slips effortlessly into handbags or works as an independent quick run wallet.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/womens-wallets/black/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/womens-wallets/black/01_front_without_packaging.png" },
@@ -5803,7 +5803,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Classic men's formal and casual belts featuring rotating alloy pin buckle, reversible double-sided strap (Black/Brown), and feather-edged stitching.",
     detailedDescription: "High wholesale turnover staple for menswear and formal retail stores. Micro-adjustable hole spacing ensures snug fit for waist sizes 30 to 42 inches.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/mens-belts/leather-black/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/mens-belts/leather-black/01_front_without_packaging.png" },
@@ -5903,7 +5903,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Ultra-compact aluminum popup card holder with bottom trigger switch that ejects 5-6 cards in a staggered order for effortless access. RFID signal blocking shield.",
     detailedDescription: "High-margin impulse checkout counter item. Protects credit and debit cards against unauthorized NFC contactless scanning. Featherlight 50g pocket-friendly design.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/card-holders/black-minimal/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/card-holders/black-minimal/01_front_without_packaging.png" },
@@ -5990,7 +5990,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Trending Korean style oversized hair claw clips and faux pearl bow clips with heavy metal spring mechanism for tight, non-slip hold on all hair textures.",
     detailedDescription: "High-volume retail counter staple with outstanding impulse buy rate. Unbreakable resin plastic with smooth rounded teeth that never tug or damage hair.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/hair-clips/pearl-bow/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/hair-clips/pearl-bow/01_front_without_packaging.png" },
@@ -6076,7 +6076,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Creep-free, anti-breakage hair scrunchies sewn in glossy Mulberry-touch satin silk and plush velvet with strong elastic band that holds ponytails securely without creases.",
     detailedDescription: "High-volume retail bundle lot. Protects hair follicles from friction and split ends. Available in packs of 3, 5, and 6 assorted jewel and pastel tones.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/scrunchies/pack-of-5/01_front_without_packaging.png",
     gallery: [
       { label: "Front Pack View (No Packaging)", url: "/products/fashion/scrunchies/pack-of-5/01_front_without_packaging.png" },
@@ -6162,7 +6162,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Statement hair bands featuring padded braided velvet, classic top knotted fabric, and delicate faux pearl studded bands with non-pinch comfort end tips.",
     detailedDescription: "High gross margin fashion accessory line for college, office, and party styling. Flexible inner plastic hoop fits all head sizes without causing temple headaches.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/hair-bands/black-knotted/01_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/hair-bands/black-knotted/01_front_without_packaging.png" },
@@ -6249,7 +6249,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "High-clarity polarized & UV400 fashion sunglasses featuring classic dark wayfarers, royal gold aviators, and retro cateye frames.",
     detailedDescription: "100% UV400 eye protection blocking UVA and UVB rays. Reinforced metal barrel hinges and scratch-resistant polycarbonate optical lenses. Includes generic microfiber carry pouch.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/sunglasses/black-wayfarer/01_black_wayfarer_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/sunglasses/black-wayfarer/01_black_wayfarer_front_without_packaging.png" },
@@ -6335,7 +6335,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Breathable 100% cotton twill curved-visor baseball caps with brass buckle adjustment and wide-brim outdoor bucket hats for sun and UV protection.",
     detailedDescription: "High-demand streetwear and outdoor summer retail favourite. Embroidered ventilation eyelets and pre-curved sturdy bill that retains crisp silhouette.",
-    pickupHub: "PLAYLUME Bhiwandi Central Hub, Mumbai",
+    pickupHub: "V&A Global Sourcing Bhiwandi Central Hub, Mumbai",
     image: "/products/fashion/caps-hats/baseball-black/01_black_baseball_cap_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/caps-hats/baseball-black/01_black_baseball_cap_front_without_packaging.png" },
@@ -6421,7 +6421,7 @@ const RAW_MASTER_PRODUCTS: MasterProduct[] = [
     status: "in_stock",
     description: "Silky soft modal viscose and fine acrylic stoles with fringed tassel borders, versatile for all-season neck wraps, headscarves, and ethnic shoulder drapes.",
     detailedDescription: "High-impulse fashion accessory line. Lightweight weave offers graceful drape without feeling bulky. Available in solid timeless shades and vibrant digital floral/paisley prints.",
-    pickupHub: "PLAYLUME Surat Textile Hub / Bhiwandi Central, Mumbai",
+    pickupHub: "V&A Global Sourcing Surat Textile Hub / Bhiwandi Central, Mumbai",
     image: "/products/fashion/scarves-stoles/plain/01_plain_front_without_packaging.png",
     gallery: [
       { label: "Front Product View (No Packaging)", url: "/products/fashion/scarves-stoles/plain/01_plain_front_without_packaging.png" },

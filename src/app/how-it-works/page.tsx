@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "How Wholesale Ordering Works — PLAYLUME B2B Trade",
+  title: "How Wholesale Ordering Works — V&A Global Sourcing B2B Trade",
   description:
     "Transparent 5-stage procurement workflow for retailers and wholesale distributors. MOQs, proforma invoicing, QC, and nationwide freight.",
 };
@@ -147,7 +147,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="text-center mb-8">
             <h3 className="text-xl font-bold text-neutral-text">Frequently Asked Questions</h3>
-            <p className="text-xs text-neutral-muted mt-1">Everything you need to know about placing bulk orders with PLAYLUME.</p>
+            <p className="text-xs text-neutral-muted mt-1">Everything you need to know about placing bulk orders with V&amp;A Global Sourcing.</p>
           </div>
 
           <div className="space-y-4">

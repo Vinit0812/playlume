@@ -145,7 +145,7 @@ export default function ProductDetailView({
 
   const variantSummary = activeVariant?.label ? ` [${activeVariant.label}]` : "";
   const whatsappMessage = encodeURIComponent(
-    `Hello PLAYLUME Trade Desk, I would like to inquire about wholesale order:\n\nProduct: ${product.name}${variantSummary}\nSKU: ${currentSku}\nQuantity: ${quantity} pcs\nIndicative Rate: ₹${currentUnitPrice}/pc\nSubtotal: ₹${lineTotal.toLocaleString()}\n\nPlease send formal proforma invoice with GST and freight terms.`
+    `Hello V&A Global Sourcing Trade Desk, I would like to inquire about wholesale order:\n\nProduct: ${product.name}${variantSummary}\nSKU: ${currentSku}\nQuantity: ${quantity} pcs\nIndicative Rate: ₹${currentUnitPrice}/pc\nSubtotal: ₹${lineTotal.toLocaleString()}\n\nPlease send formal proforma invoice with GST and freight terms.`
   );
 
   return (
@@ -234,7 +234,7 @@ export default function ProductDetailView({
 
             {/* Watermark / Brand Credential */}
             <div className="absolute bottom-3 right-4 text-right text-[10px] text-neutral-400 font-medium">
-              Verified Wholesale Sourcing by PLAYLUME Enterprise
+              Verified Wholesale Sourcing by V&amp;A Global Sourcing Enterprise
             </div>
           </div>
 
@@ -515,7 +515,7 @@ export default function ProductDetailView({
                 <span>
                   Pickup available at{" "}
                   <strong className="text-neutral-900">
-                    {product.pickupHub || "PLAYLUME Central Sourcing Hub, Bhiwandi, Mumbai"}
+                    {product.pickupHub || "V&A Global Sourcing Central Sourcing Hub, Bhiwandi, Mumbai"}
                   </strong>
                 </span>
                 <p className="text-neutral-500 text-[11px] mt-0.5">

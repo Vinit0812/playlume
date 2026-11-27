@@ -74,7 +74,7 @@ function EnquiryForm() {
 
         <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
           <a
-            href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20PLAYLUME%2C%20I%20have%20just%20submitted%20a%20commercial%20RFQ%20on%20your%20website.`}
+            href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello%20V%26A%20Global%20Sourcing%2C%20I%20have%20just%20submitted%20a%20commercial%20RFQ%20on%20your%20website.`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 rounded-xl transition shadow-md shadow-emerald-600/25"

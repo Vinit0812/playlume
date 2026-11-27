@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = findProductByIdOrSlug(slug) || MASTER_PRODUCTS[0];
   return {
-    title: `${product.name} (MOQ: ${product.moq} pcs) — PLAYLUME Wholesale`,
+    title: `${product.name} (MOQ: ${product.moq} pcs) — V&A Global Sourcing Wholesale`,
     description: product.description,
   };
 }
