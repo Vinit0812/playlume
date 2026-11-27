@@ -188,7 +188,7 @@ export default function ProductDetailView({
         
         {/* LEFT COLUMN: PRODUCT IMAGE GALLERY (6 Cols) */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="relative rounded-2xl border border-neutral-200 bg-white p-6 sm:p-10 aspect-4/3 flex flex-col items-center justify-center overflow-hidden shadow-sm group">
+          <div className="relative rounded-2xl border border-neutral-200 bg-white p-3 sm:p-6 aspect-4/3 flex flex-col items-center justify-center overflow-hidden shadow-sm group">
             {/* Direct Factory Tag */}
             <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 text-[11px] font-black uppercase tracking-wider shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -204,12 +204,12 @@ export default function ProductDetailView({
 
             {/* Product Artwork / Image */}
             {currentImage ? (
-              <div className="w-full h-full flex items-center justify-center p-2">
+              <div className="w-full h-full flex items-center justify-center p-1 sm:p-2">
                 <img
                   key={currentImage}
                   src={currentImage}
                   alt={`${product.name} - ${currentAngleLabel}`}
-                  className="max-h-72 sm:max-h-84 w-auto object-contain drop-shadow-md transform group-hover:scale-105 transition duration-300"
+                  className="w-full h-full max-h-[440px] object-contain drop-shadow-md transform group-hover:scale-105 transition duration-300"
                 />
               </div>
             ) : (
@@ -696,7 +696,7 @@ export default function ProductDetailView({
                 {/* Visual Thumbnail */}
                 <Link
                   href={`/product/${rel.slug}`}
-                  className="relative aspect-square bg-white border-b border-neutral-100 p-3 flex flex-col items-center justify-center overflow-hidden"
+                  className="relative aspect-square bg-white border-b border-neutral-100 p-1.5 sm:p-2 flex flex-col items-center justify-center overflow-hidden"
                 >
                   {rel.image ? (
                     <img

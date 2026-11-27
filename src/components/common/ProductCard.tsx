@@ -58,7 +58,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
       {/* Product Image Tile */}
       <Link
         href={productHref}
-        className={`relative flex items-center justify-center ${toneClass} overflow-hidden bg-white`}
+        className="relative flex items-center justify-center bg-white overflow-hidden"
         style={{ aspectRatio: "1 / 1" }}
       >
         {/* Discount Badge */}
@@ -72,7 +72,7 @@ export default function ProductCard({ product }: { product: ProductProps }) {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-contain group-hover:scale-105 transition duration-300 p-3"
+            className="w-full h-full object-contain group-hover:scale-105 transition duration-300 p-1.5 sm:p-2"
           />
         ) : (
           <Package className="w-16 h-16 opacity-40 group-hover:scale-105 transition" />
