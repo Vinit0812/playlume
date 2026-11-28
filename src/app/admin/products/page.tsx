@@ -1,64 +1,150 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Plus, Search, Filter, Package, ArrowRight, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { CATEGORIES_FEATURED } from "@/lib/constants";
 
-export const metadata: Metadata = { title: "Products Management" };
+export const metadata: Metadata = { title: "Admin Wholesale Lots Management" };
 
 export default function AdminProductsPage() {
+  const sampleAdminLots = [
+    {
+      sku: "PL-TAB-85",
+      name: "8.5\" Digital LCD Drawing Board with Stylus",
+      category: "Toys & Educational",
+      moq: 50,
+      indicativePrice: 75,
+      purchasePrice: 48,
+      margin: "₹27/pc margin",
+      availability: "In Stock",
+      status: "Published",
+    },
+    {
+      sku: "PL-WTC-01",
+      name: "Ultra-Thin Minimalist Analog Quartz Watch",
+      category: "Watches & Horology",
+      moq: 25,
+      indicativePrice: 185,
+      purchasePrice: 110,
+      margin: "₹75/pc margin",
+      availability: "Enquiry Only",
+      status: "Published",
+    },
+    {
+      sku: "PL-TEX-180",
+      name: "180 GSM Bio-Washed Combed Cotton T-Shirt",
+      category: "Apparel & Textiles",
+      moq: 30,
+      indicativePrice: 145,
+      purchasePrice: 92,
+      margin: "₹53/pc margin",
+      availability: "In Stock",
+      status: "Published",
+    },
+    {
+      sku: "PL-KIT-BLD",
+      name: "USB Rechargeable High-Speed Portable Fruit Blender",
+      category: "Home & Kitchenware",
+      moq: 20,
+      indicativePrice: 260,
+      purchasePrice: 165,
+      margin: "₹95/pc margin",
+      availability: "In Stock",
+      status: "Published",
+    },
+  ];
+
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="space-y-6 max-w-7xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Products</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage your wholesale product catalogue</p>
+          <h1 className="text-2xl font-extrabold text-slate-950">Wholesale Merchandise Lots</h1>
+          <p className="text-xs text-slate-500 mt-0.5">Manage product catalogue, stock availability flags, and private purchase pricing.</p>
         </div>
         <Link
           href="/admin/products/new"
-          className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-5 py-2 rounded-full transition-colors"
+          className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm"
         >
-          + Add Product
+          <Plus className="w-3.5 h-3.5" />
+          <span>Add Merchandise Lot</span>
         </Link>
       </div>
 
-      {/* Filters */}
-      <div className="bg-white rounded-xl border shadow-sm p-4 mb-5 flex gap-3 flex-wrap">
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="border border-gray-300 rounded-lg px-4 py-2 text-sm flex-1 min-w-48 focus:ring-2 focus:ring-indigo-500 outline-none"
-        />
-        <select className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-          <option>All Categories</option>
+      {/* Filter Bar */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <input
+            type="text"
+            placeholder="Search by SKU code or title..."
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-blue-600 outline-none"
+          />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
+        </div>
+        <select className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 outline-none">
+          <option>All 6 Merchandise Divisions</option>
+          {CATEGORIES_FEATURED.map((c) => (
+            <option key={c.slug}>{c.name}</option>
+          ))}
         </select>
-        <select className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-          <option>All Status</option>
-          <option>Published</option>
-          <option>Draft</option>
-          <option>Archived</option>
+        <select className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 outline-none">
+          <option>All Stock Availability</option>
+          <option>Available to Order</option>
+          <option>Available on Enquiry</option>
         </select>
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b">
-            <tr>
-              <th className="text-left p-4 font-medium text-gray-700">Product</th>
-              <th className="text-left p-4 font-medium text-gray-700">Category</th>
-              <th className="text-left p-4 font-medium text-gray-700">MOQ</th>
-              <th className="text-left p-4 font-medium text-gray-700">Availability</th>
-              <th className="text-left p-4 font-medium text-gray-700">Status</th>
-              <th className="text-left p-4 font-medium text-gray-700">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colSpan={6} className="text-center py-16 text-gray-400">
-                <div className="text-4xl mb-3">📦</div>
-                <p>No products yet. Add your first product!</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Product Table */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden text-xs">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+              <tr>
+                <th className="p-4">SKU & Merchandise Title</th>
+                <th className="p-4">Division</th>
+                <th className="p-4">Standard MOQ</th>
+                <th className="p-4">Wholesale Rate</th>
+                <th className="p-4">
+                  <span className="text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 font-bold">
+                    Private Cost
+                  </span>
+                </th>
+                <th className="p-4">Availability</th>
+                <th className="p-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {sampleAdminLots.map((item) => (
+                <tr key={item.sku} className="hover:bg-slate-50/60 transition">
+                  <td className="p-4">
+                    <span className="font-mono text-[10px] font-bold text-slate-400 block">{item.sku}</span>
+                    <span className="font-bold text-slate-900 block mt-0.5">{item.name}</span>
+                  </td>
+                  <td className="p-4 text-slate-600">{item.category}</td>
+                  <td className="p-4 font-semibold text-slate-900">{item.moq} pcs</td>
+                  <td className="p-4 font-black text-slate-950">₹{item.indicativePrice}</td>
+                  <td className="p-4 font-mono font-bold text-amber-700">
+                    ₹{item.purchasePrice} <span className="text-[10px] font-normal text-slate-400">({item.margin})</span>
+                  </td>
+                  <td className="p-4">
+                    <span
+                      className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold border ${
+                        item.availability === "In Stock"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          : "bg-amber-50 text-amber-700 border-amber-200"
+                      }`}
+                    >
+                      {item.availability}
+                    </span>
+                  </td>
+                  <td className="p-4 text-right">
+                    <Link href={`/product/${item.sku.toLowerCase()}`} className="text-blue-600 font-bold hover:underline">
+                      Inspect
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

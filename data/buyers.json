@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1795586601353,
+    "name": "check",
+    "businessName": "ABC Pvt Lts",
+    "type": "Retail Showroom",
+    "phone": "+91 8469831933",
+    "whatsapp": "918469831933",
+    "location": "Commercial Hub, India",
+    "status": "Active",
+    "registeredAt": "Just now"
+  },
+  {
+    "id": 1795586297421,
+    "name": "Vinit Test Buyer",
+    "businessName": "Vinit Trade Hub",
+    "type": "Regional Wholesaler",
+    "phone": "+91 9876543210",
+    "whatsapp": "9876543210",
+    "location": "Surat, Gujarat",
+    "status": "Active",
+    "registeredAt": "Just now"
+  },
+  {
+    "id": 1,
+    "name": "Ramesh Patel",
+    "businessName": "Patel Retail Enterprises",
+    "type": "Retail Showroom",
+    "phone": "+91 98250 11223",
+    "whatsapp": "919825011223",
+    "location": "Surat, Gujarat",
+    "status": "Active",
+    "registeredAt": "Nov 24, 2026"
+  },
+  {
+    "id": 2,
+    "name": "Harish Iyer",
+    "businessName": "South India Distributors",
+    "type": "Commercial Distributor",
+    "phone": "+91 98400 44556",
+    "whatsapp": "919840044556",
+    "location": "Chennai, Tamil Nadu",
+    "status": "Active",
+    "registeredAt": "Nov 22, 2026"
+  },
+  {
+    "id": 3,
+    "name": "Mukesh Agarwal",
+    "businessName": "Agarwal Stationery Mart",
+    "type": "Regional Wholesaler",
+    "phone": "+91 98300 77889",
+    "whatsapp": "919830077889",
+    "location": "Kolkata, West Bengal",
+    "status": "Active",
+    "registeredAt": "Nov 20, 2026"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "NIRAL INDUSTRIES • TRENDING CHRISTMAS COLLECTION",
+    "subtitle": "Original Collection Designs | Festive Candle Moulds & Decor | Direct Factory Sourcing",
+    "badge": "Festive Wholesale Sourcing • Rapid Dispatch",
+    "division": "Home & Festive Decor",
+    "ctaText": "Shop Festive Moulds",
+    "ctaLink": "/products?category=home-kitchen",
+    "position": "Hero Main",
+    "status": "active",
+    "imageUrl": "/banners/gemini-generated-image-kzibirk-1795610821489.png",
+    "bgColor": "from-[#141414] via-[#1c1712] to-[#141414]",
+    "accentColor": "#f59e0b",
+    "impressionCount": 16820,
+    "clickCount": 2340
+  },
+  {
+    "id": 2,
+    "title": "NIRAL INDUSTRIES • ELEGANT URLI & FESTIVE COLLECTION",
+    "subtitle": "Original Collection Designs | Metal Urlis & Diya Decor | Direct Factory Wholesale Sourcing",
+    "badge": "Festive Wholesale Lots • From ₹22/- Only",
+    "division": "Home & Festive Decor",
+    "ctaText": "Explore Urli Collection",
+    "ctaLink": "/products?category=home-kitchen",
+    "position": "Hero Main",
+    "status": "active",
+    "imageUrl": "/banners/gemini-generated-image-841aqo8-1795611000825.png",
+    "bgColor": "from-[#141414] via-[#1c1712] to-[#141414]",
+    "accentColor": "#f59e0b",
+    "impressionCount": 14820,
+    "clickCount": 1940
+  },
+  {
+    "id": 3,
+    "title": "NEXT-GEN GAN 65W FAST CHARGING & ELECTRONICS WHOLESALE",
+    "subtitle": "Master Carton Factory Rates for Super-Stockists & Retail Chains | BIS Certified",
+    "badge": "Direct Factory Lots • MOQ 20 pcs • Rapid Dispatch",
+    "division": "Consumer Electronics",
+    "ctaText": "View Electronics Catalogue",
+    "ctaLink": "/products?category=consumer-electronics",
+    "position": "Hero Main",
+    "status": "active",
+    "imageUrl": "/banners/gemini-generated-image-y02phcy-1795611034143.png",
+    "bgColor": "from-[#141414] via-[#121922] to-[#141414]",
+    "accentColor": "#f59e0b",
+    "impressionCount": 11420,
+    "clickCount": 1720
+  }
+]
