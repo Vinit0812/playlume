@@ -38,7 +38,7 @@ export async function GET(
         "Cache-Control": "public, max-age=3600",
       },
     });
-  } catch (err: any) {
+  } catch {
     return new NextResponse("Error reading banner file", { status: 500 });
   }
 }

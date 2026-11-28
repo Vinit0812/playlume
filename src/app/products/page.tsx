@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/common/Header";
@@ -18,19 +18,22 @@ function CatalogueContent() {
   const initialSearch = searchParams.get("search") || "";
   const initialStatus = searchParams.get("status") || "all";
 
+  const paramKey = searchParams.toString();
+  const [prevParamKey, setPrevParamKey] = useState(paramKey);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedStatus, setSelectedStatus] = useState(initialStatus);
   const [search, setSearch] = useState(initialSearch);
   const [sortBy, setSortBy] = useState("featured");
 
-  useEffect(() => {
+  if (paramKey !== prevParamKey) {
+    setPrevParamKey(paramKey);
     const cat = searchParams.get("category");
     const q = searchParams.get("search");
     const st = searchParams.get("status");
-    if (cat) setSelectedCategory(cat);
-    if (q) setSearch(q);
-    if (st) setSelectedStatus(st);
-  }, [searchParams]);
+    if (cat !== null) setSelectedCategory(cat);
+    if (q !== null) setSearch(q);
+    if (st !== null) setSelectedStatus(st);
+  }
 
   const categoriesList = [
     { id: "all", name: "All Merchandise Lines", count: ALL_PRODUCTS.length },

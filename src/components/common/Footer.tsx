@@ -36,10 +36,11 @@ export default function Footer() {
 
         {/* Column 2: Merchandise Lines */}
         <div>
-          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+          <h3 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
             Product Lines
-          </h4>
+          </h3>
           <ul className="space-y-2 text-slate-400">
+            <li><Link href="/categories" className="hover:text-white transition">All Merchandise Divisions</Link></li>
             <li><Link href="/category/toys-games" className="hover:text-white transition">Toys &amp; Games</Link></li>
             <li><Link href="/category/clothing-apparel" className="hover:text-white transition">Clothing &amp; Apparel</Link></li>
             <li><Link href="/category/artificial-jewellery" className="hover:text-white transition">Artificial Jewellery</Link></li>
@@ -51,25 +52,25 @@ export default function Footer() {
 
         {/* Column 3: For Trade Buyers */}
         <div>
-          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+          <h3 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
             For Trade Buyers
-          </h4>
+          </h3>
           <ul className="space-y-2 text-slate-400">
+            <li><Link href="/trending" className="hover:text-white transition">Trending Wholesale Deals</Link></li>
             <li><Link href="/enquiry" className="hover:text-white transition">Request a Bulk Quote</Link></li>
             <li><Link href="/how-it-works" className="hover:text-white transition">How Ordering Works</Link></li>
             <li><Link href="/become-a-buyer" className="hover:text-white transition">Register as a Buyer</Link></li>
             <li><Link href="/products" className="hover:text-white transition">Full Product Catalogue</Link></li>
             <li><Link href="/blog" className="hover:text-white transition">B2B Sourcing Guides</Link></li>
             <li><Link href="/about" className="hover:text-white transition">About Our Sourcing</Link></li>
-            <li><Link href="/admin/login" className="hover:text-white transition">Staff Management Portal</Link></li>
           </ul>
         </div>
 
         {/* Column 4: Contact & Operations */}
         <div className="space-y-2.5">
-          <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
+          <h3 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">
             Trade Operations
-          </h4>
+          </h3>
           <div className="text-slate-400 space-y-2">
             <p className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-accent-400 shrink-0" />

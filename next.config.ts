@@ -21,8 +21,14 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Protect admin routes
-        source: "/admin/(.*)",
+        // Protect admin root and nested admin routes
+        source: "/admin",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
+        source: "/admin/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
         ],

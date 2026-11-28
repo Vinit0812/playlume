@@ -7,8 +7,11 @@ import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
 import { ArrowRight, Layers, Gamepad2, Shirt, Watch, Cpu, Home, PenTool } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Merchandise Divisions & Categories — V&A Global Sourcing",
+  title: "Merchandise Divisions & Categories",
   description: "Explore all six wholesale merchandise divisions supported by V&A Global Sourcing: Toys & Games, Clothing & Apparel, Artificial Jewellery, Consumer Electronics, Home & Kitchen, and Fashion Accessories.",
+  alternates: {
+    canonical: "/categories",
+  },
 };
 
 export default function CategoriesPage() {

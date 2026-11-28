@@ -60,7 +60,24 @@ export default function AdminBannersPage() {
   };
 
   useEffect(() => {
-    loadBanners();
+    let active = true;
+    async function init() {
+      try {
+        const res = await fetch("/api/banners");
+        const data = await res.json();
+        if (active && data.success && Array.isArray(data.banners)) {
+          setBanners(data.banners);
+        }
+      } catch (err) {
+        console.error("Failed to load banners", err);
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    void init();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const toggleStatus = async (id: number, currentStatus: "active" | "inactive") => {
@@ -159,8 +176,8 @@ export default function AdminBannersPage() {
       } else {
         setUploadError(data.error || "Failed to upload image.");
       }
-    } catch (err: any) {
-      setUploadError(err.message || "Upload network error");
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : "Upload network error");
     } finally {
       setUploading(false);
     }

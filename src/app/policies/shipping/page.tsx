@@ -1,15 +1,23 @@
 import { Truck, Box, ShieldCheck, Clock, MapPin } from "lucide-react";
 import Link from "next/link";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 
 export const metadata = {
-  title: "Freight, Logistics & Shipping Policy | V&A Global Sourcing Wholesale",
+  title: "Freight, Logistics & Shipping Policy",
   description: "B2B freight fulfillment, multi-state road logistics, palletization, and e-way bill protocols.",
+  alternates: {
+    canonical: "/policies/shipping",
+  },
 };
 
 export default function ShippingPolicyPage() {
   return (
-    <div className="bg-[#090E1A] min-h-screen text-slate-100 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen flex flex-col bg-[#090E1A] text-slate-100 antialiased">
+      <Header />
+      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="border-b border-slate-800 pb-8 mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-950/60 text-blue-400 border border-blue-800/60 mb-4">
@@ -119,7 +127,10 @@ export default function ShippingPolicyPage() {
             </Link>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -6,8 +6,12 @@ export function middleware(request: NextRequest) {
 
   // Protect admin routes
   if (pathname.startsWith("/admin")) {
-    // Skip login page
-    if (pathname === "/admin/login") return NextResponse.next();
+    // Skip login page auth check but always enforce noindex header
+    if (pathname === "/admin/login") {
+      const response = NextResponse.next();
+      response.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return response;
+    }
 
     // Check for admin session token (NextAuth session cookie)
     const sessionToken =
@@ -15,8 +19,14 @@ export function middleware(request: NextRequest) {
       request.cookies.get("__Secure-next-auth.session-token");
 
     if (!sessionToken) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
+      const response = NextResponse.redirect(new URL("/admin/login", request.url));
+      response.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return response;
     }
+
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
   }
 
   return NextResponse.next();

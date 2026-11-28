@@ -49,10 +49,13 @@ export async function POST(request: NextRequest) {
       url: publicUrl,
       fileName,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Banner upload error:", error);
     return NextResponse.json(
-      { success: false, error: error.message || "Failed to upload banner image" },
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Failed to upload banner image",
+      },
       { status: 500 }
     );
   }

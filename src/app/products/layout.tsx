@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "/banners/toys-games-banner.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "V&A Global Sourcing Full Catalogue",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "All Wholesale Products & Sourcing Catalogue | V&A Global Sourcing",
     description:
       "Explore 200+ verified B2B wholesale merchandise lots across 6 core commercial divisions.",
-    images: ["/banners/toys-games-banner.png"],
+    images: ["/og-image.png"],
   },
 };
 

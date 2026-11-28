@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "/banners/toys-games-banner.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "V&A Wholesale Sourcing Knowledge Hub",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "B2B Wholesale Sourcing Guides & Retail Strategies | V&A Global Sourcing",
     description:
       "Actionable wholesale guides and supplier selection strategies for Indian retail businesses.",
-    images: ["/banners/toys-games-banner.png"],
+    images: ["/og-image.png"],
   },
 };
 

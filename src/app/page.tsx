@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "/banners/toys-games-banner.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "V&A Global Sourcing B2B Platform",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "V&A Global Sourcing | B2B Wholesale Trading India",
     description:
       "Direct manufacturer wholesale supplier for Toys, Apparel, Jewellery, Electronics, Home & Kitchen, and Accessories.",
-    images: ["/banners/toys-games-banner.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -122,6 +122,18 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Dynamic Homepage Hero Slider (Configurable from Admin Console) */}
         <DynamicHeroSlider />
+
+        {/* Primary SSR H1 Institutional Positioning Bar */}
+        <section className="bg-[#141414] text-white border-b border-neutral-800 px-4 py-4 sm:py-5">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white">
+              V&amp;A Global Sourcing — Multi-Category B2B Wholesale Trading &amp; Distribution India
+            </h1>
+            <p className="text-xs sm:text-sm text-neutral-300 mt-1 max-w-3xl mx-auto">
+              Factory-direct wholesale lots with transparent MOQs, GST invoicing &amp; E-Way bills across 6 core retail divisions.
+            </p>
+          </div>
+        </section>
 
         {/* 1. Top Wholesale Categories Carousel (Centered Header, Clean Layout) */}
         <CategoryCarousel />

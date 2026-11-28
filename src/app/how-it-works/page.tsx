@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
+import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
 import {
   FileText,
   Search,
@@ -16,9 +17,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "How Wholesale Ordering Works — V&A Global Sourcing B2B Trade",
+  title: "How B2B Wholesale Ordering Works",
   description:
     "Transparent 5-stage procurement workflow for retailers and wholesale distributors. MOQs, proforma invoicing, QC, and nationwide freight.",
+  alternates: {
+    canonical: "/how-it-works",
+  },
 };
 
 export default function HowItWorksPage() {
@@ -74,8 +78,20 @@ export default function HowItWorksPage() {
     },
   ];
 
+  const breadcrumbItems = [
+    { name: "Home", url: "/" },
+    { name: "How Wholesale Ordering Works", url: "/how-it-works" },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-surface-2 text-neutral-text antialiased">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <FaqJsonLd
+        items={faqs.map((faq) => ({
+          question: faq.q,
+          answer: faq.a,
+        }))}
+      />
       <Header />
 
       <main className="flex-1 py-12 px-4 max-w-7xl mx-auto w-full">
@@ -105,7 +121,7 @@ export default function HowItWorksPage() {
                   <div className="w-10 h-10 rounded-xl bg-brand-700 text-white font-black text-sm flex items-center justify-center mb-4">
                     {st.number}
                   </div>
-                  <h3 className="text-sm font-bold text-neutral-text mb-2">{st.title}</h3>
+                  <h2 className="text-sm font-bold text-neutral-text mb-2">{st.title}</h2>
                   <p className="text-xs text-neutral-muted leading-relaxed">{st.desc}</p>
                 </div>
               </div>
@@ -146,17 +162,17 @@ export default function HowItWorksPage() {
         {/* FAQs */}
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-neutral-text">Frequently Asked Questions</h3>
+            <h2 className="text-xl font-bold text-neutral-text">Frequently Asked Questions</h2>
             <p className="text-xs text-neutral-muted mt-1">Everything you need to know about placing bulk orders with V&amp;A Global Sourcing.</p>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq) => (
               <div key={faq.q} className="bg-white border border-line rounded-xl p-5 shadow-xs space-y-2">
-                <h4 className="text-sm font-bold text-neutral-text flex items-center gap-2">
+                <h3 className="text-sm font-bold text-neutral-text flex items-center gap-2">
                   <HelpCircle className="w-4 h-4 text-brand-600 shrink-0" />
                   <span>{faq.q}</span>
-                </h4>
+                </h3>
                 <p className="text-xs text-neutral-muted leading-relaxed pl-6">{faq.a}</p>
               </div>
             ))}

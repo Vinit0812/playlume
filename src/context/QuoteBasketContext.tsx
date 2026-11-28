@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 
 export interface BasketItem {
   id: string;
@@ -31,25 +31,36 @@ const QuoteBasketContext = createContext<QuoteBasketContextType | undefined>(und
 export function QuoteBasketProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<BasketItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
-    setMounted(true);
-    try {
-      const saved = localStorage.getItem("playlume_quote_basket");
-      if (saved) {
-        setItems(JSON.parse(saved));
+    let active = true;
+    Promise.resolve().then(() => {
+      if (!active) return;
+      hasLoadedRef.current = true;
+      try {
+        const saved = localStorage.getItem("playlume_quote_basket");
+        if (saved) {
+          setItems(JSON.parse(saved));
+        }
+      } catch {
+        // Ignore storage errors
       }
-    } catch (e) {}
+    });
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
-    if (mounted) {
+    if (hasLoadedRef.current) {
       try {
         localStorage.setItem("playlume_quote_basket", JSON.stringify(items));
-      } catch (e) {}
+      } catch {
+        // Ignore storage errors
+      }
     }
-  }, [items, mounted]);
+  }, [items]);
 
   const addItem = (product: Omit<BasketItem, "quantity">, qty?: number) => {
     setItems((prev) => {

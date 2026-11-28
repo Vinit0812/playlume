@@ -7,8 +7,11 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { Building2, ShieldCheck, TrendingUp, Layers, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Corporate Profile & Institutional Sourcing — V&A Global Sourcing",
+  title: "Corporate Profile & Institutional Sourcing",
   description: "About V&A Global Sourcing: An established multi-category wholesale trading and distribution enterprise supplying verified merchandise to Indian commercial businesses.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

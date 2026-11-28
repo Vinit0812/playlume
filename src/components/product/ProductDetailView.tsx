@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useQuoteBasket } from "@/context/QuoteBasketContext";
 import { MasterProduct } from "@/lib/products-data";
+import { SITE_CONFIG } from "@/lib/constants";
 import {
   Package,
   ShieldCheck,
@@ -145,7 +146,7 @@ export default function ProductDetailView({
 
   const variantSummary = activeVariant?.label ? ` [${activeVariant.label}]` : "";
   const whatsappMessage = encodeURIComponent(
-    `Hello V&A Global Sourcing Trade Desk, I would like to inquire about wholesale order:\n\nProduct: ${product.name}${variantSummary}\nSKU: ${currentSku}\nQuantity: ${quantity} pcs\nIndicative Rate: ₹${currentUnitPrice}/pc\nSubtotal: ₹${lineTotal.toLocaleString()}\n\nPlease send formal proforma invoice with GST and freight terms.`
+    `Hello V&A Global Sourcing Trade Desk, I would like to inquire about wholesale order:\n\nProduct: ${product.name}${variantSummary}\nSKU: ${currentSku}\nQuantity: ${quantity} pcs\nIndicative Rate: ₹${currentUnitPrice}/pc\nSubtotal: ₹${lineTotal.toLocaleString("en-IN")}\n\nPlease send formal proforma invoice with GST and freight terms.`
   );
 
   return (
@@ -428,7 +429,7 @@ export default function ProductDetailView({
                   Estimated Lot Value
                 </span>
                 <span className="text-base font-black text-neutral-900">
-                  ₹{lineTotal.toLocaleString()}
+                  ₹{lineTotal.toLocaleString("en-IN")}
                 </span>
               </div>
             </div>
@@ -436,38 +437,38 @@ export default function ProductDetailView({
 
           {/* Preferential Volume Price Slabs */}
           <div className="rounded-xl border border-neutral-200 overflow-hidden bg-white text-xs">
-            <div className="bg-neutral-100 px-3.5 py-2 font-bold text-neutral-700 border-b border-neutral-200 flex justify-between">
-              <span>Volume Slab</span>
-              <span>Wholesale Rate</span>
-            </div>
-            <div className="divide-y divide-neutral-100">
-              <div
-                className={`px-3.5 py-2 flex justify-between items-center ${
-                  quantity < tier2Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""
-                }`}
-              >
-                <span>{tier1Qty} – {tier2Qty - 1} pcs (Base MOQ)</span>
-                <span className="font-black">₹{tier1Price}/pc</span>
-              </div>
-              <div
-                className={`px-3.5 py-2 flex justify-between items-center ${
-                  quantity >= tier2Qty && quantity < tier3Qty
-                    ? "bg-amber-50/70 font-bold text-amber-900"
-                    : ""
-                }`}
-              >
-                <span>{tier2Qty} – {tier3Qty - 1} pcs (Master Carton)</span>
-                <span className="font-black text-emerald-700">₹{tier2Price}/pc (8% Off)</span>
-              </div>
-              <div
-                className={`px-3.5 py-2 flex justify-between items-center ${
-                  quantity >= tier3Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""
-                }`}
-              >
-                <span>{tier3Qty}+ pcs (Container / Pallet)</span>
-                <span className="font-black text-emerald-700">₹{tier3Price}/pc (15% Off)</span>
-              </div>
-            </div>
+            <table className="w-full border-collapse text-left" aria-label="Wholesale volume pricing slabs">
+              <thead>
+                <tr className="bg-neutral-100 font-bold text-neutral-700 border-b border-neutral-200">
+                  <th scope="col" className="px-3.5 py-2 font-bold">Volume Slab</th>
+                  <th scope="col" className="px-3.5 py-2 font-bold text-right">Wholesale Rate</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-100">
+                <tr
+                  className={quantity < tier2Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""}
+                >
+                  <td className="px-3.5 py-2">{tier1Qty} – {tier2Qty - 1} pcs (Base MOQ)</td>
+                  <td className="px-3.5 py-2 text-right font-black">₹{tier1Price}/pc</td>
+                </tr>
+                <tr
+                  className={
+                    quantity >= tier2Qty && quantity < tier3Qty
+                      ? "bg-amber-50/70 font-bold text-amber-900"
+                      : ""
+                  }
+                >
+                  <td className="px-3.5 py-2">{tier2Qty} – {tier3Qty - 1} pcs (Master Carton)</td>
+                  <td className="px-3.5 py-2 text-right font-black text-emerald-700">₹{tier2Price}/pc (8% Off)</td>
+                </tr>
+                <tr
+                  className={quantity >= tier3Qty ? "bg-amber-50/70 font-bold text-amber-900" : ""}
+                >
+                  <td className="px-3.5 py-2">{tier3Qty}+ pcs (Container / Pallet)</td>
+                  <td className="px-3.5 py-2 text-right font-black text-emerald-700">₹{tier3Price}/pc (15% Off)</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           {/* Wholesale Action Buttons */}
@@ -537,7 +538,7 @@ export default function ProductDetailView({
             <div className="flex items-center gap-2">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                  typeof window !== "undefined" ? window.location.href : ""
+                  `${SITE_CONFIG.url}/product/${product.slug}`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -559,7 +560,7 @@ export default function ProductDetailView({
               </a>
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                  typeof window !== "undefined" ? window.location.href : ""
+                  `${SITE_CONFIG.url}/product/${product.slug}`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -627,6 +628,22 @@ export default function ProductDetailView({
         {activeTab === "desc" && (
           <div className="space-y-4 text-sm text-neutral-700 leading-relaxed max-w-4xl">
             <p>{product.detailedDescription || product.description}</p>
+            <p className="text-neutral-600">
+              <strong className="text-neutral-900">Active Lot Configuration:</strong> SKU{" "}
+              <span className="font-semibold text-neutral-900">{currentSku}</span>
+              {activeVariant && Object.keys(activeVariant.attributes).length > 0 && (
+                <>
+                  {" "}
+                  (
+                  {Object.entries(activeVariant.attributes)
+                    .map(([k, v]) => `${k}: ${v}`)
+                    .join(", ")}
+                  )
+                </>
+              )}{" "}
+              · Wholesale ₹{basePrice}/pc (MOQ {baseMoq} pcs) · Master carton pack of{" "}
+              {product.packaging.unitsPerCarton} pcs ({product.packaging.grossWeight}).
+            </p>
             <p>
               All lots are manufactured under rigorous QA standards, inspected for finish consistency, and packed in heavy-duty export master cartons to withstand interstate transit across India.
             </p>
@@ -635,7 +652,11 @@ export default function ProductDetailView({
 
         {activeTab === "specs" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            {Object.entries(product.specs).map(([key, val]) => (
+            {Object.entries({
+              ...(activeVariant?.attributes || {}),
+              "Lot SKU": currentSku,
+              ...product.specs,
+            }).map(([key, val]) => (
               <div
                 key={key}
                 className="p-3 bg-neutral-50 rounded-xl border border-neutral-200 flex justify-between"

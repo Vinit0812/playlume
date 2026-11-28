@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CATEGORIES_FEATURED } from "@/lib/constants";
 import { Layers, Plus, ExternalLink } from "lucide-react";
 
-export const metadata: Metadata = { title: "Merchandise Divisions — V&A Global Sourcing Admin" };
+export const metadata: Metadata = { title: "Admin Merchandise Divisions" };
 
 export default function AdminCategoriesPage() {
   return (

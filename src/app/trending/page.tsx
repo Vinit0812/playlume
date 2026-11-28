@@ -4,49 +4,66 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { SITE_CONFIG } from "@/lib/constants";
+import {
+  MASTER_PRODUCTS,
+  findProductByIdOrSlug,
+  type MasterProduct,
+} from "@/lib/products-data";
 import { ArrowRight, Flame, MessageSquare, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Trending Wholesale Deals & Fast-Moving Lots — V&A Global Sourcing",
+  title: "Trending Wholesale Deals & Fast-Moving Lots",
   description: "High-demand wholesale lots with verified margins for Indian retailers and distributors.",
+  alternates: {
+    canonical: "/trending",
+  },
 };
 
 export default function TrendingPage() {
-  const deals = [
-    {
-      sku: "PL-TAB-85",
-      title: "8.5\" Digital LCD Drawing & Writing Board with Stylus",
-      category: "Toys & Educational",
-      slug: "lcd-writing-tablet-8-5",
-      moq: "50 Pieces",
-      wholesale: "₹75/pc",
-      retail: "₹199/pc",
-      margin: "62% Margin",
-      status: "In Stock — 1,200 pcs available",
-    },
-    {
-      sku: "PL-WTC-01",
-      title: "Ultra-Thin Minimalist Analog Quartz Watch (Steel Mesh)",
-      category: "Watches & Horology",
-      slug: "analog-quartz-mesh-watch",
-      moq: "25 Pieces",
-      wholesale: "₹185/pc",
-      retail: "₹599/pc",
-      margin: "69% Margin",
-      status: "Active Batch — 450 pcs",
-    },
-    {
-      sku: "PL-TEX-180",
-      title: "180 GSM Bio-Washed Combed Cotton Plain Crewneck T-Shirts",
-      category: "Apparel & Textiles",
-      slug: "cotton-crewneck-tshirt-180gsm",
-      moq: "30 Pieces",
-      wholesale: "₹145/pc",
-      retail: "₹499/pc",
-      margin: "71% Margin",
-      status: "In Stock — 2,000 pcs (Assorted)",
-    },
-  ];
+  const pickTrendingProduct = (preferredIds: string[], categorySlug: string): MasterProduct | undefined => {
+    for (const id of preferredIds) {
+      const match = findProductByIdOrSlug(id);
+      if (match) return match;
+    }
+    return (
+      MASTER_PRODUCTS.find((p) => p.categorySlug === categorySlug && p.priority === "high") ||
+      MASTER_PRODUCTS.find((p) => p.categorySlug === categorySlug)
+    );
+  };
+
+  const selectedProducts = [
+    pickTrendingProduct(["lcd-writing-tablet-85-inch-blue", "TOY-EDU-001-B"], "toys-games"),
+    pickTrendingProduct(["APP-MEN-005-P2", "cotton-tshirt-packs-solid-colors"], "clothing-apparel"),
+    pickTrendingProduct([], "consumer-electronics"),
+    pickTrendingProduct([], "home-kitchen"),
+    pickTrendingProduct([], "artificial-jewellery"),
+    pickTrendingProduct([], "fashion-accessories"),
+  ].filter((p): p is MasterProduct => Boolean(p));
+
+  const deals = selectedProducts.map((product) => {
+    const marginPct =
+      product.mrp > product.price
+        ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
+        : 0;
+    const statusLabel =
+      product.status === "in_stock"
+        ? `In Stock — ${product.packaging.unitsPerCarton} pcs/carton`
+        : product.status === "limited"
+          ? `Active Batch — ${product.packaging.unitsPerCarton} pcs/carton`
+          : "Available on Trade Allocation";
+
+    return {
+      sku: product.sku,
+      title: product.name,
+      category: product.category,
+      slug: product.slug,
+      moq: `${product.moq} Pieces`,
+      wholesale: `₹${product.price}/pc`,
+      retail: `₹${product.mrp}/pc`,
+      margin: `${marginPct}% Margin`,
+      status: statusLabel,
+    };
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased">

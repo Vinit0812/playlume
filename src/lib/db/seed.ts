@@ -53,8 +53,9 @@ export async function seedDatabase() {
     try {
       await db.insert(categories).values(cat);
       console.log(`Seeded category: ${cat.name}`);
-    } catch (e: any) {
-      console.log(`Category ${cat.name} already exists or DB offline:`, e?.message || e);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      console.log(`Category ${cat.name} already exists or DB offline:`, msg);
     }
   }
 

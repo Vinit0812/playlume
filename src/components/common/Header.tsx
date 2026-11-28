@@ -58,7 +58,7 @@ const CATEGORY_DATA: CategoryNav[] = [
     items: [
       { name: "Men's Clothing", slug: "mens-clothing", image: "/products/clothing/polo-tshirts/blue/01_blue_front_without_packaging.png" },
       { name: "Women's Clothing", slug: "womens-clothing", image: "/products/clothing/printed-kurtis/cotton-navy-floral/01_front_without_packaging.png" },
-      { name: "Kids Clothing", slug: "kids-clothing", image: "/products/clothing/boys-tshirts/pack-of-2/01_front_product_view.png" },
+      { name: "Kids Clothing", slug: "kids-clothing", image: "/products/clothing/boys-tshirt-packs/pack-of-2/01_front_product_view.png" },
     ],
   },
   {
@@ -219,18 +219,18 @@ export default function Header() {
           TIER 1: MAIN HEADER (CandleMould Style: Dark Charcoal / Black)
           ========================================================= */}
       <header className="bg-[#181818] text-white border-b border-neutral-800 sticky top-0 z-40 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-6">
           
           {/* 1. Brand Logo (V&A Global Sourcing) */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-stone-950 font-black text-sm tracking-tighter shadow-md group-hover:scale-105 transition transform">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0 group">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-stone-950 font-black text-xs sm:text-sm tracking-tighter shadow-md shrink-0 group-hover:scale-105 transition transform">
               V&amp;A
             </div>
-            <div className="leading-tight">
-              <span className="font-black text-lg sm:text-xl text-white tracking-tight block">
+            <div className="leading-tight min-w-0">
+              <span className="font-black text-sm sm:text-xl text-white tracking-tight block truncate">
                 V&amp;A GLOBAL SOURCING
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold text-neutral-400 uppercase tracking-widest block -mt-0.5">
+              <span className="text-[8.5px] sm:text-[10px] font-bold text-neutral-400 uppercase tracking-widest block -mt-0.5 truncate">
                 Wholesale &amp; Trade
               </span>
             </div>
@@ -387,7 +387,7 @@ export default function Header() {
           </div>
 
           {/* 3. Right Section: New Arrival Ticker, Login & Quote Basket */}
-          <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-5 shrink-0">
             {/* Ticker / Promo Text */}
             <div className="hidden lg:flex flex-col text-right">
               <span className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">
@@ -459,7 +459,7 @@ export default function Header() {
             ========================================================= */}
         <nav className="hidden md:block bg-[#1f1f1f] border-t border-neutral-800 relative z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <ul className="flex items-center gap-1 sm:gap-2 text-xs font-semibold text-neutral-200 py-2">
+            <ul className="flex flex-wrap xl:flex-nowrap items-center gap-1 xl:gap-0.5 2xl:gap-1.5 text-xs xl:text-[11px] 2xl:text-xs font-semibold text-neutral-200 py-2">
               
               {/* Category Dropdowns */}
               {CATEGORY_DATA.map((cat) => (
@@ -471,7 +471,7 @@ export default function Header() {
                 >
                   <Link
                     href={`/category/${cat.slug}`}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded hover:text-white hover:bg-neutral-800 transition"
+                    className="inline-flex items-center gap-1 px-2 xl:px-1.5 2xl:px-3 py-1.5 rounded hover:text-white hover:bg-neutral-800 transition whitespace-nowrap"
                   >
                     <span>{cat.name}</span>
                     <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition-transform duration-150" />
@@ -521,7 +521,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/products?status=limited"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded text-amber-400 hover:text-amber-300 hover:bg-neutral-800 transition font-bold"
+                  className="inline-flex items-center gap-1 px-2 xl:px-1.5 2xl:px-3 py-1.5 rounded text-amber-400 hover:text-amber-300 hover:bg-neutral-800 transition font-bold whitespace-nowrap"
                 >
                   <Tag className="w-3.5 h-3.5" />
                   <span>Clearance Offer</span>
@@ -532,7 +532,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/blog"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-neutral-300 hover:text-white hover:bg-neutral-800 transition font-semibold"
+                  className="inline-flex items-center gap-1.5 px-2 xl:px-1.5 2xl:px-3 py-1.5 rounded text-neutral-300 hover:text-white hover:bg-neutral-800 transition font-semibold whitespace-nowrap"
                 >
                   <BookOpen className="w-3.5 h-3.5 text-amber-400" />
                   <span>Sourcing Guides</span>
@@ -543,7 +543,7 @@ export default function Header() {
               <li className="ml-auto">
                 <Link
                   href="/become-a-buyer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-amber-500 hover:bg-amber-400 text-stone-950 font-black tracking-tight text-xs transition shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-3 xl:px-2.5 2xl:px-3.5 py-1.5 rounded-md bg-amber-500 hover:bg-amber-400 text-stone-950 font-black tracking-tight text-xs xl:text-[11px] 2xl:text-xs transition shadow-sm whitespace-nowrap"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Wholesale - Bulk Buy</span>

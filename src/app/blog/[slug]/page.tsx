@@ -5,6 +5,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import { BLOG_POSTS, getBlogPostBySlug, getRelatedBlogPosts } from "@/lib/blog-data";
+import { markdownToHtml } from "@/lib/markdown";
 import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
 import { BreadcrumbJsonLd, ArticleJsonLd } from "@/components/seo/JsonLd";
 import {
@@ -29,7 +30,7 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Wholesale Sourcing Guide Not Found | V&A Global Sourcing",
+      title: "Wholesale Sourcing Guide Not Found",
       description: "The requested trade guide could not be found in our knowledge hub.",
       robots: { index: false, follow: false },
     };
@@ -37,7 +38,7 @@ export async function generateMetadata({
 
   const title = post.seoTitle || post.title;
   const canonicalUrl = `/blog/${post.slug}`;
-  const imageUrl = `${SITE_CONFIG.url}/banners/toys-games-banner.png`;
+  const imageUrl = `${SITE_CONFIG.url}/og-image.png`;
 
   return {
     title,
@@ -102,7 +103,7 @@ export default async function BlogPostPage({
     { name: post.title, url: `/blog/${post.slug}` },
   ];
 
-  const featuredImg = `${SITE_CONFIG.url}/banners/toys-games-banner.png`;
+  const featuredImg = `${SITE_CONFIG.url}/og-image.png`;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f6] text-neutral-900 antialiased">
@@ -180,8 +181,8 @@ export default async function BlogPostPage({
         {/* ─── Article Body ─── */}
         <article className="bg-white border border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-xs mb-12">
           <div
-            className="prose prose-neutral prose-sm sm:prose-base max-w-none text-neutral-700 leading-relaxed space-y-6"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            className="text-neutral-700 text-sm sm:text-base leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
           />
 
           {/* Wholesale Trade Callout Box */}

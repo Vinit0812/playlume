@@ -156,6 +156,9 @@ export interface ProductJsonLdProps {
   moq: number;
   inStock?: boolean;
   brand?: string;
+  mpn?: string;
+  color?: string;
+  additionalProperty?: { name: string; value: string }[];
 }
 
 export function ProductJsonLd({
@@ -169,6 +172,9 @@ export function ProductJsonLd({
   moq,
   inStock = true,
   brand = SITE_CONFIG.name,
+  mpn,
+  color,
+  additionalProperty,
 }: ProductJsonLdProps) {
   const productUrl = `${SITE_CONFIG.url}/product/${slug}`;
   const absoluteImages = images.map((img) =>
@@ -183,11 +189,22 @@ export function ProductJsonLd({
     description,
     image: absoluteImages,
     sku,
+    ...(mpn ? { mpn } : {}),
+    ...(color ? { color } : {}),
     category,
     brand: {
       "@type": "Brand",
       name: brand,
     },
+    ...(additionalProperty && additionalProperty.length > 0
+      ? {
+          additionalProperty: additionalProperty.map((prop) => ({
+            "@type": "PropertyValue",
+            name: prop.name,
+            value: prop.value,
+          })),
+        }
+      : {}),
     offers: {
       "@type": "Offer",
       url: productUrl,
@@ -307,6 +324,53 @@ export function FaqJsonLd({ items }: { items: FaqItem[] }) {
         text: item.answer,
       },
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+
+export interface CollectionPageProps {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+  totalCount: number;
+}
+
+export function CollectionPageJsonLd({
+  name,
+  description,
+  url,
+  items,
+  totalCount,
+}: CollectionPageProps) {
+  const fullUrl = url.startsWith("http") ? url : `${SITE_CONFIG.url}${url}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${fullUrl}#collection`,
+    name,
+    description,
+    url: fullUrl,
+    isPartOf: {
+      "@id": `${SITE_CONFIG.url}/#website`,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: totalCount,
+      itemListElement: items.slice(0, 20).map((item, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        name: item.name,
+        url: item.url.startsWith("http") ? item.url : `${SITE_CONFIG.url}${item.url}`,
+      })),
+    },
   };
 
   return (

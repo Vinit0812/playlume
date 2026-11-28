@@ -109,10 +109,10 @@ export default function CategoryCarousel() {
   };
 
   return (
-    <section className="py-14 sm:py-18 px-4 bg-slate-50/70 border-b border-slate-200/80 relative">
+    <section className="py-14 sm:py-18 px-4 bg-slate-50/70 border-b border-slate-200/80 relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header with Centered Title & Right View All */}
-        <div className="relative flex items-center justify-center mb-10 sm:mb-12">
+        <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-8 sm:mb-12">
           <div className="text-center relative">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 tracking-tight">
               Top Wholesale Categories
@@ -135,7 +135,7 @@ export default function CategoryCarousel() {
 
           <Link
             href="/products"
-            className="absolute right-0 text-xs sm:text-sm font-bold text-neutral-500 hover:text-amber-600 transition flex items-center gap-1"
+            className="sm:absolute sm:right-0 text-xs sm:text-sm font-bold text-neutral-500 hover:text-amber-600 transition flex items-center gap-1 pt-1 sm:pt-0"
           >
             <span>View All</span>
           </Link>

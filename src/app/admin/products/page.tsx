@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Plus, Search, Filter, Package, ArrowRight, ShieldAlert, CheckCircle2 } from "lucide-react";
 import { CATEGORIES_FEATURED } from "@/lib/constants";
 
-export const metadata: Metadata = { title: "Wholesale Lots Management — V&A Global Sourcing Admin" };
+export const metadata: Metadata = { title: "Admin Wholesale Lots Management" };
 
 export default function AdminProductsPage() {
   const sampleAdminLots = [

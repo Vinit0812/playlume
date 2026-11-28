@@ -40,7 +40,24 @@ export default function AdminEnquiriesPage() {
   };
 
   useEffect(() => {
-    fetchEnquiries();
+    let active = true;
+    async function init() {
+      try {
+        const res = await fetch("/api/enquiries");
+        const json = await res.json();
+        if (active && json.data && Array.isArray(json.data)) {
+          setEnquiries(json.data);
+        }
+      } catch (e) {
+        console.error("Failed to fetch enquiries:", e);
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    void init();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const filtered = enquiries.filter((enq) => {

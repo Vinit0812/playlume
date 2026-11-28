@@ -7,8 +7,11 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { Phone, Mail, MapPin, MessageSquare, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Commercial Trade Desk & Wholesale Contact — V&A Global Sourcing",
+  title: "Commercial Trade Desk & Wholesale Contact",
   description: "Contact the V&A Global Sourcing commercial wholesale trade desk. Connect with our sourcing specialists via phone, email, or direct WhatsApp.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

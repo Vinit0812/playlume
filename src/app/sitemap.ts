@@ -5,27 +5,29 @@ import { BLOG_POSTS } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const now = new Date();
+  const lastUpdated = new Date("2026-11-28T00:00:00Z");
 
   // 1. Static Core Landing Pages
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}`, lastModified: now, changeFrequency: "daily", priority: 1.0 },
-    { url: `${baseUrl}/products`, lastModified: now, changeFrequency: "daily", priority: 0.95 },
-    { url: `${baseUrl}/categories`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
-    { url: `${baseUrl}/trending`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
-    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
-    { url: `${baseUrl}/enquiry`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/become-a-buyer`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/policies/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/policies/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}`, lastModified: lastUpdated, changeFrequency: "daily", priority: 1.0 },
+    { url: `${baseUrl}/products`, lastModified: lastUpdated, changeFrequency: "daily", priority: 0.95 },
+    { url: `${baseUrl}/categories`, lastModified: lastUpdated, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${baseUrl}/trending`, lastModified: lastUpdated, changeFrequency: "daily", priority: 0.85 },
+    { url: `${baseUrl}/blog`, lastModified: lastUpdated, changeFrequency: "daily", priority: 0.85 },
+    { url: `${baseUrl}/how-it-works`, lastModified: lastUpdated, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/enquiry`, lastModified: lastUpdated, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/become-a-buyer`, lastModified: lastUpdated, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/about`, lastModified: lastUpdated, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/contact`, lastModified: lastUpdated, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/policies/privacy`, lastModified: lastUpdated, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/policies/shipping`, lastModified: lastUpdated, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/policies/terms`, lastModified: lastUpdated, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   // 2. Commercial Category Pages
   const categoryPages: MetadataRoute.Sitemap = CATEGORY_META.map((cat) => ({
     url: `${baseUrl}/category/${cat.slug}`,
-    lastModified: now,
+    lastModified: lastUpdated,
     changeFrequency: "weekly",
     priority: 0.9,
   }));
@@ -33,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 3. Unrolled Commercial Products (219 Active SKUs)
   const productPages: MetadataRoute.Sitemap = MASTER_PRODUCTS.map((prod) => ({
     url: `${baseUrl}/product/${prod.slug}`,
-    lastModified: now,
+    lastModified: lastUpdated,
     changeFrequency: "weekly",
     priority: 0.8,
   }));

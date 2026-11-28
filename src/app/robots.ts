@@ -22,6 +22,31 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/admin", "/admin/*", "/api/*"],
       },
+      {
+        userAgent: "OAI-SearchBot",
+        allow: "/",
+        disallow: ["/admin", "/admin/*", "/api/*", "/*?*search=*", "/*?*ref=*"],
+      },
+      {
+        userAgent: "ChatGPT-User",
+        allow: "/",
+        disallow: ["/admin", "/admin/*", "/api/*"],
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+        disallow: ["/admin", "/admin/*", "/api/*", "/*?*search=*", "/*?*ref=*"],
+      },
+      {
+        userAgent: "Claude-SearchBot",
+        allow: "/",
+        disallow: ["/admin", "/admin/*", "/api/*", "/*?*search=*", "/*?*ref=*"],
+      },
+      {
+        userAgent: "Claude-User",
+        allow: "/",
+        disallow: ["/admin", "/admin/*", "/api/*"],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
   };

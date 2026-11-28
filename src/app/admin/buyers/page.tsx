@@ -38,7 +38,24 @@ export default function AdminBuyersPage() {
   };
 
   useEffect(() => {
-    fetchBuyers();
+    let active = true;
+    async function init() {
+      try {
+        const res = await fetch("/api/buyers");
+        const json = await res.json();
+        if (active && json.data && Array.isArray(json.data)) {
+          setBuyers(json.data);
+        }
+      } catch (e) {
+        console.error("Failed to fetch buyers:", e);
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    void init();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const filtered = buyers.filter((b) => {

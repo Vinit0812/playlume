@@ -1,15 +1,24 @@
 import { Shield, Lock, FileText, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata = {
-  title: "Privacy Policy | V&A Global Sourcing Wholesale Trading & Distribution",
+  title: "Commercial Privacy Policy",
   description: "Enterprise data privacy and buyer protection policy for V&A Global Sourcing B2B clients.",
+  alternates: {
+    canonical: "/policies/privacy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-[#090E1A] min-h-screen text-slate-100 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen flex flex-col bg-[#090E1A] text-slate-100 antialiased">
+      <Header />
+      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="border-b border-slate-800 pb-8 mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-950/60 text-blue-400 border border-blue-800/60 mb-4">
@@ -77,8 +86,8 @@ export default function PrivacyPolicyPage() {
             </h2>
             <p className="text-slate-400 text-sm">
               For verification queries, GST certificate updates, or data rectification, contact our trade compliance desk at{" "}
-              <a href="mailto:compliance@V&A Global Sourcing.in" className="text-blue-400 hover:underline">
-                compliance@V&A Global Sourcing.in
+              <a href={`mailto:${SITE_CONFIG.email}`} className="text-blue-400 hover:underline">
+                {SITE_CONFIG.email}
               </a>{" "}
               or via WhatsApp at{" "}
               <a href="https://wa.me/919876543210" className="text-emerald-400 hover:underline">
@@ -96,7 +105,10 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
         </div>
-      </div>
+        </div>
+      </main>
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

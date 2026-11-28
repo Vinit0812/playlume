@@ -9,7 +9,7 @@ import CategoryStudioBanner from "@/components/category/CategoryStudioBanner";
 import { CATEGORIES_FEATURED, SITE_CONFIG } from "@/lib/constants";
 import { CATEGORY_META, MASTER_PRODUCTS } from "@/lib/products-data";
 import { CATEGORY_GUIDES } from "@/lib/category-guides";
-import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
+import { BreadcrumbJsonLd, CollectionPageJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
 import {
   ArrowRight,
   Package,
@@ -101,7 +101,7 @@ export async function generateMetadata({
 
   if (!category) {
     return {
-      title: "Wholesale Category Not Found | V&A Global Sourcing",
+      title: "Wholesale Category Not Found",
       description: "Category not found in our commercial wholesale catalogue.",
       robots: { index: false, follow: false },
     };
@@ -111,7 +111,7 @@ export async function generateMetadata({
   const startingRate = "from" in category ? category.from : category.startingPrice;
   const description = `Direct factory wholesale supplier for ${category.name}. Verified MOQs from ${category.moq || '20 pcs'}, starting wholesale prices from ${startingRate || '₹49'}, GST invoices, and pan-India distribution from Gujarat.`;
   const canonicalUrl = `/category/${category.slug}`;
-  const bannerImage = CATEGORY_BANNER_MAP[category.slug] || "/banners/toys-games-banner.png";
+  const bannerImage = CATEGORY_BANNER_MAP[category.slug] || "/category-banners/banner-toys.png";
 
   return {
     title,
@@ -200,6 +200,23 @@ export default async function CategoryLandingPage({
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f6] text-neutral-900 antialiased">
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CollectionPageJsonLd
+        name={
+          activeSubCategoryName
+            ? `${activeSubCategoryName} — ${categoryName} Wholesale`
+            : `Wholesale ${categoryName}`
+        }
+        description={
+          categoryMeta?.description ||
+          `Direct factory wholesale ${categoryName} lots with verified MOQs and pan-India dispatch.`
+        }
+        url={sub ? `/category/${categorySlug}?sub=${sub}` : `/category/${categorySlug}`}
+        totalCount={displayedProducts.length}
+        items={displayedProducts.map((p) => ({
+          name: p.name,
+          url: `/product/${p.slug}`,
+        }))}
+      />
       {guide && <FaqJsonLd items={guide.faqs} />}
       <Header />
 

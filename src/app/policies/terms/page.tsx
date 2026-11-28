@@ -1,15 +1,23 @@
 import { FileCheck, AlertTriangle, Truck, Receipt, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 
 export const metadata = {
-  title: "Wholesale Terms of Supply | V&A Global Sourcing Trading & Distribution",
+  title: "Wholesale Terms of Supply",
   description: "Commercial wholesale agreement, MOQ thresholds, proforma terms, and billing specifications.",
+  alternates: {
+    canonical: "/policies/terms",
+  },
 };
 
 export default function TermsOfSupplyPage() {
   return (
-    <div className="bg-[#090E1A] min-h-screen text-slate-100 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen flex flex-col bg-[#090E1A] text-slate-100 antialiased">
+      <Header />
+      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="border-b border-slate-800 pb-8 mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-950/60 text-blue-400 border border-blue-800/60 mb-4">
@@ -94,7 +102,10 @@ export default function TermsOfSupplyPage() {
             </Link>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

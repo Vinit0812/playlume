@@ -8,8 +8,59 @@ import { BreadcrumbJsonLd, ProductJsonLd } from "@/components/seo/JsonLd";
 import {
   findProductByIdOrSlug,
   getRelatedProducts,
+  type MasterProduct,
 } from "@/lib/products-data";
 import { SITE_CONFIG } from "@/lib/constants";
+
+function getVariantContext(product: MasterProduct) {
+  const matchedVariant = product.variantItems?.find(
+    (item) =>
+      item.sku === product.sku ||
+      `${product.id}`.endsWith(item.id) ||
+      product.name.endsWith(`– ${item.label}`)
+  );
+
+  const variantAttributes = matchedVariant?.attributes || {};
+  const attrPairs = Object.entries(variantAttributes).map(
+    ([key, val]) => `${key}: ${val}`
+  );
+  const variantAttrSummary = attrPairs.join(", ");
+  const colorValue =
+    variantAttributes.Color ||
+    variantAttributes.Colour ||
+    variantAttributes.Shade ||
+    undefined;
+
+  const uniqueMetaDescription = variantAttrSummary
+    ? `Order ${product.name} (SKU ${product.sku} · ${variantAttrSummary}) in ${product.subCategory}. Wholesale ₹${product.price}/pc (MRP ₹${product.mrp}/pc), MOQ ${product.moq} pcs, ${product.packaging.unitsPerCarton} pcs/carton.`
+    : `Bulk sourcing for ${product.name} (SKU ${product.sku}) in ${product.subCategory}. MOQ ${product.moq} pcs, wholesale ₹${product.price}/pc (MRP ₹${product.mrp}/pc), GST billing & pan-India dispatch.`;
+
+  const uniqueSchemaDescription = variantAttrSummary
+    ? `${product.description} Variant specification: ${variantAttrSummary} (SKU ${product.sku}, ${product.packaging.unitsPerCarton} pcs/master carton, ${product.packaging.grossWeight}).`
+    : `${product.description} SKU ${product.sku}, ${product.packaging.unitsPerCarton} pcs/master carton (${product.packaging.grossWeight}).`;
+
+  const additionalProperty = [
+    ...Object.entries(variantAttributes).map(([name, value]) => ({
+      name,
+      value,
+    })),
+    ...Object.entries(product.specs).map(([name, value]) => ({
+      name,
+      value,
+    })),
+    {
+      name: "Master Carton Pack",
+      value: `${product.packaging.unitsPerCarton} pcs (${product.packaging.grossWeight})`,
+    },
+  ];
+
+  return {
+    colorValue,
+    uniqueMetaDescription,
+    uniqueSchemaDescription,
+    additionalProperty,
+  };
+}
 
 export async function generateMetadata({
   params,
@@ -21,14 +72,15 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Wholesale Product Not Found | V&A Global Sourcing",
+      title: "Wholesale Product Not Found",
       description: "The requested wholesale product could not be located in our commercial inventory.",
       robots: { index: false, follow: false },
     };
   }
 
-  const title = `${product.name} Wholesale Supplier India`;
-  const description = `Bulk sourcing for ${product.name}. Minimum Order Quantity: ${product.moq} pcs. Wholesale rate: ₹${product.price}/pc (Retail MRP: ₹${product.mrp}). Direct factory lots, GST invoicing, and pan-India dispatch from Gujarat.`;
+  const { uniqueMetaDescription } = getVariantContext(product);
+  const title = `${product.name} Wholesale (${product.sku})`;
+  const description = uniqueMetaDescription;
   const canonicalUrl = `/product/${product.slug}`;
   const imageUrl = product.image || "/brand-logo.png";
 
@@ -86,6 +138,8 @@ export default async function ProductDetailPage({
   }
 
   const relatedProducts = getRelatedProducts(product.id, 5);
+  const { colorValue, uniqueSchemaDescription, additionalProperty } =
+    getVariantContext(product);
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
@@ -99,9 +153,12 @@ export default async function ProductDetailPage({
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <ProductJsonLd
         name={product.name}
-        description={product.description}
+        description={uniqueSchemaDescription}
         images={[product.image || "/brand-logo.png"]}
         sku={product.sku}
+        mpn={product.sku}
+        color={colorValue}
+        additionalProperty={additionalProperty}
         slug={product.slug}
         category={product.category}
         price={product.price}
